@@ -1,0 +1,12 @@
+using System.Collections.Generic;
+
+namespace HaloEzAPI.Model.Response
+{
+    public class FlexibleStats
+    {
+        public IEnumerable<StatCounter> MedalStats { get; set; } 
+        public IEnumerable<StatCounter> ImpulseStatCounters { get; set; }
+        public IEnumerable<StatTimelapse> MedalTimelapses { get; set; }
+        public IEnumerable<StatTimelapse> ImpulseTimelapses { get; set; } 
+    }
+}
