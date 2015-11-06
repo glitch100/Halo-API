@@ -24,6 +24,10 @@ namespace HaloEzAPI.Converter
             }
 
             var value = serializer.Deserialize<String>(reader);
+            if (value == string.Empty)
+            {
+                return TimeSpan.MinValue;
+            }
             return XmlConvert.ToTimeSpan(value);
         }
 

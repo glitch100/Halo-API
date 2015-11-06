@@ -9,6 +9,6 @@ namespace HaloEzAPI.Model.Response
         public CSR HighestCsrAttained { get; set; }
         public IEnumerable<GameBaseVariantStat> ArenaGameBaseVariantStats { get; set; }
         public IEnumerable<TopGameBaseVariant> TopGameBaseVariants { get; set; }
-        public Guid HighestCsrPlaylistId { get; set; }
+        public Guid? HighestCsrPlaylistId { get; set; }
     }
 }
