@@ -17,6 +17,9 @@ Currently in the process of modelling everything out and adding more endpoints a
 
 ####Usage
 
+You can download the source or get it via **NuGet**!
+[https://www.nuget.org/packages/HaloEzAPI](https://www.nuget.org/packages/HaloEzAPI)
+
 ```C#
 //Initialize service with API Token. Optionally provide base api url
 var haloApiService = new HaloAPIService("MYAPITOKEN");
