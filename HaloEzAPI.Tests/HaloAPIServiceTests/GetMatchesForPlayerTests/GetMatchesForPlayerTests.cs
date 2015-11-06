@@ -5,26 +5,18 @@ using NUnit.Framework;
 namespace HaloEzAPI.Tests.HaloAPIServiceTests.GetMatchesForPlayerTests
 {
     [TestFixture]
-    public class GetMatchesForPlayerTests
+    public class GetMatchesForPlayerTests : BaseHaloAPIServiceTests
     {
-        private HaloAPIService _haloApiService;
-
-        [SetUp]
-        public void SetUp()
-        {
-            _haloApiService = new HaloAPIService("YOURTOKENHERE");
-        }
-
         [TestCase("Glitch100", GameMode.Arena)]
         public void Default_DoesNotThrowException(string gamerTag,GameMode gameMode)
         {
-            Assert.DoesNotThrow(async () => await _haloApiService.GetMatchesForPlayer(gamerTag, gameMode));
+            Assert.DoesNotThrow(async () => await HaloApiService.GetMatchesForPlayer(gamerTag, gameMode));
         }
 
         [TestCase("Glitch100", GameMode.Arena)]
         public async void Default_DoesNotReturnNull(string gamerTag,GameMode gameMode)
         {
-            var result = await _haloApiService.GetMatchesForPlayer(gamerTag, gameMode);
+            var result = await HaloApiService.GetMatchesForPlayer(gamerTag, gameMode);
             Assert.IsNotNull(result);
         }
 
@@ -33,13 +25,13 @@ namespace HaloEzAPI.Tests.HaloAPIServiceTests.GetMatchesForPlayerTests
         [TestCase("asfasd9f8adf89andfa98sdfa",GameMode.Arena)]
         public void ProvideInvalidGamertag_ThrowsException(string gamerTag,GameMode gameMode)
         {
-            Assert.Throws<HaloAPIException>(async () => await _haloApiService.GetMatchesForPlayer(gamerTag, gameMode),CommonErrorMessages.InvalidGamerTag);
+            Assert.Throws<HaloAPIException>(async () => await HaloApiService.GetMatchesForPlayer(gamerTag, gameMode), CommonErrorMessages.InvalidGamerTag);
         }
 
         [TestCase("Glitch100")]
         public async void ProvideValidGamertag_GetValidReponse(string gamerTag)
         {
-            var result = await _haloApiService.GetMatchesForPlayer(gamerTag,GameMode.All);
+            var result = await HaloApiService.GetMatchesForPlayer(gamerTag, GameMode.All);
             Assert.AreEqual(result.Count,25);
         }
 
@@ -47,7 +39,7 @@ namespace HaloEzAPI.Tests.HaloAPIServiceTests.GetMatchesForPlayerTests
         [TestCase("Glitch100",6,15)]
         public async void ProvideStartAndCount_GetValidReponse(string gamerTag,int start, int count)
         {
-            var result = await _haloApiService.GetMatchesForPlayer(gamerTag, GameMode.All, start, count);
+            var result = await HaloApiService.GetMatchesForPlayer(gamerTag, GameMode.All, start, count);
             Assert.AreEqual(result.Count, count);
             Assert.AreEqual(result.Start, start);
         }

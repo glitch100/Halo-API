@@ -138,9 +138,13 @@ namespace HaloEzAPI
         /// </summary>
         /// <param name="matchId">The Match Id</param>
         /// <returns></returns>
-        public async Task<ArenaPostGameReport> GetArenaPostGameCarnageReport(string matchId)
+        public async Task<ArenaPostGameReport> GetArenaPostGameCarnageReport(Guid matchId)
         {
-            var message = await _httpClient.GetAsync(Endpoints.Stats.GetPostGameCarnageReport(matchId,GameMode.Arena));
+            if (matchId == Guid.Empty)
+            {
+                throw new HaloAPIException(CommonErrorMessages.InvalidMatchId);
+            }
+            var message = await _httpClient.GetAsync(Endpoints.Stats.GetPostGameCarnageReport(matchId.ToString(),GameMode.Arena));
             var messageObject = await HandleResponse<ArenaPostGameReport>(message);
             return messageObject;
         }         

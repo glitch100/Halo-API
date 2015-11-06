@@ -47,6 +47,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HaloAPIServiceTests\BaseHaloAPIServiceTests.cs" />
+    <Compile Include="HaloAPIServiceTests\GetArenaPostGameCarnageReportTests\GetArenaPostGameCarnageReportTests.cs" />
     <Compile Include="HaloAPIServiceTests\GetMatchesForPlayerTests\GetMatchesForPlayerTests.cs" />
     <Compile Include="HaloAPIServiceTests\HaloAPIServiceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
