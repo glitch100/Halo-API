@@ -23,3 +23,16 @@ var playerMatches = await haloAPIService.GetMatchesForPlayer("Glitch100", GameMo
 //Example of returning gamevariants from the match result set 
 var gameVariants = playerMatches.Results.Select(r => r.GameVariants);
 ```
+
+####On the way
+- Adding more endpoints
+- Full test coverage
+- More advanced logic and determination
+
+####Help? 
+Contact me on Twitter @Glitch100
+
+####Notes
+
+Please note that if you pull the repo the tests will need your API Key in order to pass as I haven't interfaced out the `HttpClient` and they rely on genuine data.
+
