@@ -2,9 +2,9 @@ using System;
 
 namespace HaloEzAPI.Model.Response
 {
-    public class StatCounter
+    public class StatCounter<T>
     {
-        public Guid Id { get; set; }
+        public T Id { get; set; }
         public int Count { get; set; }
     }
 }

@@ -35,6 +35,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Net.Http.Extensions, Version=2.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -55,19 +56,25 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HaloAPIService.cs" />
+    <Compile Include="IHaloAPIService.cs" />
+    <Compile Include="Model\Response\ArenaPlaylistStat.cs" />
+    <Compile Include="Model\Response\ArenaStats.cs" />
     <Compile Include="Model\Response\CreditsEarned.cs" />
     <Compile Include="Model\Response\CSR.cs" />
     <Compile Include="Model\Response\Enemy.cs" />
+    <Compile Include="Model\Response\Error\CommonErrorMessages.cs" />
     <Compile Include="Model\Response\Error\HaloAPIError.cs" />
     <Compile Include="Model\Response\FlexibleStats.cs" />
+    <Compile Include="Model\Response\GameBaseVariantStat.cs" />
     <Compile Include="Model\Response\Id.cs" />
     <Compile Include="Model\Response\Kill.cs" />
     <Compile Include="Model\Response\KillDetail.cs" />
     <Compile Include="Model\Response\Match.cs" />
     <Compile Include="Model\Response\MatchCompletedDate.cs" />
     <Compile Include="Model\Response\MatchPlayer.cs" />
+    <Compile Include="Model\Response\MedalAward.cs" />
+    <Compile Include="Model\Response\PlayerMatchBreakdown.cs" />
     <Compile Include="Model\Response\PlayerMatches.cs" />
-    <Compile Include="Model\Response\MedalStatCounter.cs" />
     <Compile Include="Model\Response\MetaCommendationDelta.cs" />
     <Compile Include="Model\Response\MetRequirement.cs" />
     <Compile Include="Model\Response\Player.cs" />
@@ -75,10 +82,14 @@
     <Compile Include="Model\Response\ProgressiveCommendationDelta.cs" />
     <Compile Include="Model\Response\RewardSetObject.cs" />
     <Compile Include="Model\Response\RoundStat.cs" />
+    <Compile Include="Model\Response\ServiceRecord.cs" />
+    <Compile Include="Model\Response\ServiceRecordQueryResponse.cs" />
+    <Compile Include="Model\Response\ServiceRecordResult.cs" />
     <Compile Include="Model\Response\StatCounter.cs" />
     <Compile Include="Model\Response\StatTimelapse.cs" />
     <Compile Include="Model\Response\Team.cs" />
     <Compile Include="Model\Response\TeamStat.cs" />
+    <Compile Include="Model\Response\TopGameBaseVariant.cs" />
     <Compile Include="Model\Response\Variant.cs" />
     <Compile Include="Model\Response\WeaponId.cs" />
     <Compile Include="Model\Response\WeaponKillDetail.cs" />

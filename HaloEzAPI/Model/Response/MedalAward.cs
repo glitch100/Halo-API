@@ -1,8 +1,8 @@
 namespace HaloEzAPI.Model.Response
 {
-    public class MedalStatCounter
+    public class MedalAward
     {
-        public int Id { get; set; }
+        public int MedalId { get; set; }
         public int Count { get; set; }
     }
 }

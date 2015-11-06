@@ -31,6 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -45,8 +46,14 @@
     <Compile Include="Enum\OwnerType.cs" />
     <Compile Include="Enum\PlayerMatchResult.cs" />
     <Compile Include="Enum\ResourceType.cs" />
+    <Compile Include="Enum\ResultCode.cs" />
     <Compile Include="Enum\RewardSourceType.cs" />
-    <Compile Include="Interfaces\IHaloAPIService.cs" />
+    <Compile Include="Interfaces\IEquipmentDamageDealt.cs" />
+    <Compile Include="Interfaces\IMeleeDamageDealt.cs" />
+    <Compile Include="Interfaces\IPlayerKDA.cs" />
+    <Compile Include="Interfaces\IPlayerStat.cs" />
+    <Compile Include="Interfaces\IRangeDamageDealt.cs" />
+    <Compile Include="Interfaces\IWinLoss.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

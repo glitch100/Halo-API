@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.ComponentModel.DataAnnotations;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -40,9 +41,41 @@ namespace HaloEzAPI
                 return values.BuildUri(baseUrl);
             }
 
-            public static Uri GetArenaPostGameCarnageReport(string matchId)
+            public static Uri GetPostGameCarnageReport(string matchId, GameMode gameMode)
             {
-                return new Uri(string.Format("{0}/{1}/{2}/arena/matches{3}", MajorPrefix, MinorPrefix, Title, matchId));
+                if (gameMode == GameMode.Arena)
+                {
+                    return new Uri(string.Format("{0}/{1}/{2}/arena/matches{3}", MajorPrefix, MinorPrefix, Title, matchId));
+                }
+                if (gameMode == GameMode.Campaign)
+                {
+                    throw new NotImplementedException();
+                    return new Uri(string.Format("{0}/{1}/{2}/campaign/matches{3}", MajorPrefix, MinorPrefix, Title, matchId));
+                }                
+                if (gameMode == GameMode.Custom)
+                {
+                    throw new NotImplementedException();
+                    return new Uri(string.Format("{0}/{1}/{2}/custom/matches{3}", MajorPrefix, MinorPrefix, Title, matchId));
+                }
+                if (gameMode == GameMode.Warzone)
+                {
+                    throw new NotImplementedException();
+                    return new Uri(string.Format("{0}/{1}/{2}/warzone/matches{3}", MajorPrefix, MinorPrefix, Title, matchId));
+                }
+                throw new HaloAPIException("Unsupported GameMode provided for Post Game Carnage Report");
+            }            
+            
+            public static Uri GetServiceRecords(string[] players, GameMode gameMode)
+            {
+                if (gameMode == GameMode.Arena)
+                {
+                    return new Uri(string.Format("{0}/{1}/{2}/servicerecords/arena?players{3}", MajorPrefix, MinorPrefix, Title, string.Join(",",players)));
+                }
+                if (gameMode == GameMode.Campaign)
+                {
+                    return new Uri(string.Format("{0}/{1}/{2}/servicerecords/campaign?players{3}", MajorPrefix, MinorPrefix, Title, string.Join(",", players)));
+                }
+                throw new HaloAPIException("Unsupported GameMode provided for Service Record. Please use Arena, or Campaign");
             }
         }
     }
@@ -73,7 +106,7 @@ namespace HaloEzAPI
             var messageObject = JsonConvert.DeserializeObject<PlayerMatches>(messageJson);
             if (messageObject == null)
             {
-                throw new HaloAPIException() { StandardMessage = "Unable to deserialize object." };
+                throw new HaloAPIException(CommonErrorMessages.CantDeserialize);
             }
             return messageObject;
         }
@@ -85,12 +118,29 @@ namespace HaloEzAPI
         /// <returns></returns>
         public async Task<IEnumerable<PlayerStat>> GetArenaPostGameCarnageReport(string matchId)
         {
-            var message = await _httpClient.GetAsync(Endpoints.Stats.GetArenaPostGameCarnageReport(matchId));
+            var message = await _httpClient.GetAsync(Endpoints.Stats.GetPostGameCarnageReport(matchId,GameMode.Arena));
             var messageJson = await message.Content.ReadAsStringAsync();
             var messageObject = JsonConvert.DeserializeObject<IEnumerable<PlayerStat>>(messageJson);
             if (messageObject == null)
             {
-                throw new HaloAPIException() {StandardMessage = "Unable to deserialize object."};
+                throw new HaloAPIException(CommonErrorMessages.CantDeserialize);
+            }
+            return messageObject;
+        }         
+        
+        /// <summary>
+        /// Gets Arena Service Record for specified list of players
+        /// </summary>
+        /// <param name="players"></param>
+        /// <returns></returns>
+        public async Task<ServiceRecordQueryResponse> GetArenaServiceRecords([Range(1, 32)]string[] players)
+        {
+            var message = await _httpClient.GetAsync(Endpoints.Stats.GetServiceRecords(players, GameMode.Arena));
+            var messageJson = await message.Content.ReadAsStringAsync();
+            var messageObject = JsonConvert.DeserializeObject<ServiceRecordQueryResponse>(messageJson);
+            if (messageObject == null)
+            {
+                throw new HaloAPIException(CommonErrorMessages.CantDeserialize);
             }
             return messageObject;
         } 
