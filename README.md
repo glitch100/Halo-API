@@ -2,7 +2,7 @@
 
 A C# Wrapper for the official Halo 5 API that can be seen at [developer.haloapi.com](developer.haloapi.com) - Easy to use, and implement. 
 
-*Current Version: 0.3*
+*Current Version: 0.5*
 
 ###Currently Supported
 - GetMatchesForPlayer
