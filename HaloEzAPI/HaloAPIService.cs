@@ -84,7 +84,7 @@ namespace HaloEzAPI
     {
         private readonly HttpClient _httpClient;
 
-        public HaloAPIService(string apiToken, string baseApiUrl)
+        public HaloAPIService(string apiToken, string baseApiUrl = "https://www.haloapi.com")
         {
             Endpoints.MajorPrefix = baseApiUrl;
             _httpClient = new HttpClient(new HttpClientHandler());
@@ -99,7 +99,7 @@ namespace HaloEzAPI
         /// <param name="start">Start of result set</param>
         /// <param name="count">Count of results at any one time</param>
         /// <returns></returns>
-        public async Task<PlayerMatches> GetMatchesForPlayer(string gamerTag, GameMode gameMode, int start, int count)
+        public async Task<PlayerMatches> GetMatchesForPlayer(string gamerTag, GameMode gameMode, int start = 0, int count = 25)
         {
             var message = await _httpClient.GetAsync(Endpoints.Stats.GetMatchesForPlayer(gamerTag,gameMode,start,count));
             var messageJson = await message.Content.ReadAsStringAsync();
