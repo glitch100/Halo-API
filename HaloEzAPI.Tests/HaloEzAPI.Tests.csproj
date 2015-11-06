@@ -48,9 +48,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HaloAPIServiceTests\BaseHaloAPIServiceTests.cs" />
-    <Compile Include="HaloAPIServiceTests\GetArenaPostGameCarnageReportTests\GetArenaPostGameCarnageReportTests.cs" />
-    <Compile Include="HaloAPIServiceTests\GetArenaServiceRecordsTests\GetArenaServiceRecordsTests.cs" />
-    <Compile Include="HaloAPIServiceTests\GetMatchesForPlayerTests\GetMatchesForPlayerTests.cs" />
+    <Compile Include="HaloAPIServiceTests\Stats\GetArenaPostGameCarnageReportTests.cs" />
+    <Compile Include="HaloAPIServiceTests\Stats\GetArenaServiceRecordsTests.cs" />
+    <Compile Include="HaloAPIServiceTests\Stats\GetCampaignPostGameCarnageReportTests.cs" />
+    <Compile Include="HaloAPIServiceTests\Stats\GetCustomPostGameCarnageReportTests.cs" />
+    <Compile Include="HaloAPIServiceTests\Stats\GetMatchesForPlayerTests.cs" />
     <Compile Include="HaloAPIServiceTests\HaloAPIServiceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

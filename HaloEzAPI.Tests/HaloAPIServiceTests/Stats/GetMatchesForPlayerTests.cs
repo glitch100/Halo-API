@@ -2,7 +2,7 @@
 using HaloEzAPI.Model.Response.Error;
 using NUnit.Framework;
 
-namespace HaloEzAPI.Tests.HaloAPIServiceTests.GetMatchesForPlayerTests
+namespace HaloEzAPI.Tests.HaloAPIServiceTests.Stats
 {
     [TestFixture]
     public class GetMatchesForPlayerTests : BaseHaloAPIServiceTests
