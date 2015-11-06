@@ -114,6 +114,7 @@
     <Compile Include="Model\Response\TeamStat.cs" />
     <Compile Include="Model\Response\TopGameBaseVariant.cs" />
     <Compile Include="Model\Response\Variant.cs" />
+    <Compile Include="Model\Response\WarzonePostGameReport.cs" />
     <Compile Include="Model\Response\WeaponId.cs" />
     <Compile Include="Model\Response\WeaponKillDetail.cs" />
     <Compile Include="Model\Response\XpInfo.cs" />

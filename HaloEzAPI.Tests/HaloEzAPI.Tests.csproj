@@ -54,6 +54,7 @@
     <Compile Include="HaloAPIServiceTests\Stats\GetCustomPostGameCarnageReportTests.cs" />
     <Compile Include="HaloAPIServiceTests\Stats\GetMatchesForPlayerTests.cs" />
     <Compile Include="HaloAPIServiceTests\HaloAPIServiceTests.cs" />
+    <Compile Include="HaloAPIServiceTests\Stats\GetWarzonePostGameCarnageReportTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

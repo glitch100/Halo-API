@@ -2,13 +2,14 @@
 
 A C# Wrapper for the official Halo 5 API that can be seen at [http://developer.haloapi.com](http://developer.haloapi.com) - Easy to use, and implement. 
 
-*Current Version: 0.1.1*
+*Current Version: 0.1.2*
 
 ###Currently Supported
 - GetMatchesForPlayer
 - GetArenaPostGameCarnageReport
 - GetCustomPostGameCarnageReport
 - GetCapaignPostGameCarnageReport
+- GetWarzonePostGameCarnageReport
 - GetArenaServiceRecords
 
 

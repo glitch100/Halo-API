@@ -13,5 +13,6 @@ namespace HaloEzAPI
         Task<CampaignPostGameReport> GetCampaignPostGameCarnageReport(Guid matchId);
         Task<ServiceRecordQueryResponse> GetArenaServiceRecords([Range(1, 32)] string[] players);
         Task<CustomPostGameReport> GetCustomPostGameCarnageReport(Guid matchId);
+        Task<WarzonePostGameReport> GetWarzonePostGameCarnageReport(Guid matchId);
     }
 }

@@ -57,7 +57,6 @@ namespace HaloEzAPI
                 }
                 if (gameMode == GameMode.Warzone)
                 {
-                    throw new NotImplementedException();
                     return new Uri(string.Format("{0}/{1}/{2}/warzone/matches/{3}", MajorPrefix, MinorPrefix, Title, matchId));
                 }
                 throw new HaloAPIException("Unsupported GameMode provided for Post Game Carnage Report");
@@ -181,6 +180,22 @@ namespace HaloEzAPI
             }
             var message = await _httpClient.GetAsync(Endpoints.Stats.GetPostGameCarnageReport(matchId.ToString(), GameMode.Custom));
             var messageObject = await HandleResponse<CustomPostGameReport>(message);
+            return messageObject;
+        }       
+        
+        /// <summary>
+        /// Get Warzone Post Game Carnage report for a specified match id
+        /// </summary>
+        /// <param name="matchId">The match id</param>
+        /// <returns></returns>
+        public async Task<WarzonePostGameReport> GetWarzonePostGameCarnageReport(Guid matchId)
+        {
+            if (matchId == Guid.Empty)
+            {
+                throw new HaloAPIException(CommonErrorMessages.InvalidMatchId);
+            }
+            var message = await _httpClient.GetAsync(Endpoints.Stats.GetPostGameCarnageReport(matchId.ToString(), GameMode.Warzone));
+            var messageObject = await HandleResponse<WarzonePostGameReport>(message);
             return messageObject;
         }
 
