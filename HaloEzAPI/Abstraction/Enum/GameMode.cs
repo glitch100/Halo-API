@@ -13,6 +13,6 @@ namespace HaloEzAPI.Abstraction.Enum
         Campaign,
         Custom,
         Warzone,
-        Any
+        All
     }
 }

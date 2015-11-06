@@ -20,13 +20,15 @@ namespace HaloEzAPI
         {
             public static readonly string MinorPrefix = "stats";
 
-            public static Uri GetMatchesForPlayer(string gamertag, GameMode gamemode = GameMode.Any, int start = 0, int count = 25)
+            public static Uri GetMatchesForPlayer(string gamertag, GameMode gamemode = GameMode.All, int start = 0, int count = 25)
             {
                 var values = new NameValueCollection();
-                if (gamemode != GameMode.Any)
+
+                if (gamemode != GameMode.All)
                 {
                     values.Add("modes", gamemode.ToString().ToLower());
                 }
+
                 if (start > 0)
                 {
                     values.Add("start", start.ToString());
@@ -122,6 +124,10 @@ namespace HaloEzAPI
         /// <returns></returns>
         public async Task<PlayerMatches> GetMatchesForPlayer(string gamerTag, GameMode gameMode, int start = 0, int count = 25)
         {
+            if (string.IsNullOrEmpty(gamerTag))
+            {
+                throw new HaloAPIException(CommonErrorMessages.InvalidGamerTag);
+            }
             var message = await _httpClient.GetAsync(Endpoints.Stats.GetMatchesForPlayer(gamerTag,gameMode,start,count));
             var messageObject = await HandleResponse<PlayerMatches>(message);
             return messageObject;

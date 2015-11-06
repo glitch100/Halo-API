@@ -111,7 +111,7 @@
     <Compile Include="Model\Response\WeaponId.cs" />
     <Compile Include="Model\Response\WeaponKillDetail.cs" />
     <Compile Include="Model\Response\XpInfo.cs" />
-    <Compile Include="NameValueCollectionExtensions.cs" />
+    <Compile Include="Extensions\NameValueCollectionExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
