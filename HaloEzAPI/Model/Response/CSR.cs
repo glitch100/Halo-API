@@ -6,6 +6,6 @@ namespace HaloEzAPI.Model.Response
         public int DesignationId { get; set; }
         public int Csr { get; set; }
         public int PercentTotNextTier { get; set; }
-        public int Rank { get; set; }
+        public int? Rank { get; set; }
     }
 }

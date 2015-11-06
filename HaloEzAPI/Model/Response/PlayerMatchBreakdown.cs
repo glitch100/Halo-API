@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using HaloEzAPI.Abstraction.Interfaces;
+using Newtonsoft.Json;
 
 namespace HaloEzAPI.Model.Response
 {
@@ -30,13 +31,14 @@ namespace HaloEzAPI.Model.Response
         public int TotalGamesWon { get; set; }
         public int TotalGamesLost { get; set; }
         public int TotalGamesTied { get; set; }
+        [JsonConverter(typeof(Converter.TimeSpanConverter))]
         public TimeSpan TotalTimePlayed { get; set; }
         public int TotalGrenadeKills { get; set; }
-        public MedalAward MedalAwards { get; set; }
+        public IEnumerable<MedalAward> MedalAwards { get; set; }
         public IEnumerable<Kill> DestroyedEnemyVehicles { get; set; }
         public IEnumerable<Kill> EnemyKills { get; set; }
         public IEnumerable<WeaponKillDetail> WeaponStats { get; set; }
-        public IEnumerable<StatCounter<int>> Impulses { get; set; }
+        public IEnumerable<StatCounter<uint>> Impulses { get; set; }
         public int TotalSpartanKills { get; set; }
     }
 }

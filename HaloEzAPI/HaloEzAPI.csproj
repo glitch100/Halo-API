@@ -69,9 +69,11 @@
     <Compile Include="Abstraction\Interfaces\IPlayerStat.cs" />
     <Compile Include="Abstraction\Interfaces\IRangeDamageDealt.cs" />
     <Compile Include="Abstraction\Interfaces\IWinLoss.cs" />
+    <Compile Include="Converter\TimeSpanConverter.cs" />
     <Compile Include="HaloAPIService.cs" />
     <Compile Include="IHaloAPIService.cs" />
     <Compile Include="Model\Response\ArenaPlaylistStat.cs" />
+    <Compile Include="Model\Response\ArenaPostGameReport.cs" />
     <Compile Include="Model\Response\ArenaStats.cs" />
     <Compile Include="Model\Response\CreditsEarned.cs" />
     <Compile Include="Model\Response\CSR.cs" />
@@ -85,6 +87,7 @@
     <Compile Include="Model\Response\KillDetail.cs" />
     <Compile Include="Model\Response\Match.cs" />
     <Compile Include="Model\Response\MatchCompletedDate.cs" />
+    <Compile Include="Model\Response\MatchDetails.cs" />
     <Compile Include="Model\Response\MatchPlayer.cs" />
     <Compile Include="Model\Response\MedalAward.cs" />
     <Compile Include="Model\Response\PlayerMatchBreakdown.cs" />

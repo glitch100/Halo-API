@@ -15,7 +15,7 @@ namespace HaloEzAPI.Model.Response
         public FlexibleStats FlexibleStats { get; set; }
         public CreditsEarned CreditsEarned { get; set; }
         public IEnumerable<MetaCommendationDelta> MetaCommendationDeltas { get; set; }
-        public ProgressiveCommendationDelta ProgressiveCommendationDeltas { get; set; }
+        public IEnumerable<ProgressiveCommendationDelta> ProgressiveCommendationDeltas { get; set; }
         public Player Player { get; set; }
         public int TeamId { get; set; }
         public int Rank { get; set; }

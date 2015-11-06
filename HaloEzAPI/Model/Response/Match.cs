@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 
 namespace HaloEzAPI.Model.Response
 {
-    public class Match
+    public class Match : MatchDetails
     {
         /// <summary>
         /// The ID for this match. More match details are available via the applicable
@@ -26,27 +26,7 @@ namespace HaloEzAPI.Model.Response
         /// Playlists are available via the Metadata API.
         /// </summary>
         public Guid HopperId { get; set; }
-        
-        /// <summary>
-        /// The ID of the base map for this match. Maps are available via the Metadata API.
-        /// </summary>
-        public Guid MapId { get; set; }
-
-        public Variant MapVariant { get; set; }
-
-        /// <summary>
-        /// The ID of the game base variant for this match. Game base variants are available
-        /// via the Metadata API.
-        /// </summary>
-        public Guid GameBaseVariantId { get; set; }
-
-        public Variant GameVariant { get; set; }
-
-        [JsonConverter(typeof(TimeSpanConverter))]
-        public TimeSpan MatchDuration { get; set; }
-
-        public MatchCompletedDate ISO8601Date { get; set; }
-
+        public MatchCompletedDate MatchCompletedDate { get; set; }
         public IEnumerable<Team> Teams { get; set; }
         public IEnumerable<MatchPlayer> Players { get; set; }
         public bool IsTeamGame { get; set; }

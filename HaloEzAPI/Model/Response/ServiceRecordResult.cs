@@ -11,7 +11,7 @@ namespace HaloEzAPI.Model.Response
         public string Id { get; set; }
 
         public ResultCode ResultCode { get; set; }
-        public IEnumerable<ServiceRecord> Result { get; set; }
+        public ServiceRecord Result { get; set; }
  
     }
 }
