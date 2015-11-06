@@ -16,7 +16,7 @@ Currently in the process of modelling everything out and adding more endpoints a
 
 ####Usage
 
-You can download the source or get it via Nuget!
+You can download the source or get it via **NuGet**!
 [https://www.nuget.org/packages/HaloEzAPI](https://www.nuget.org/packages/HaloEzAPI)
 
 ```C#
