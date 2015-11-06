@@ -31,7 +31,7 @@ namespace HaloEzAPI.Model.Response
         public int TotalGamesWon { get; set; }
         public int TotalGamesLost { get; set; }
         public int TotalGamesTied { get; set; }
-        [JsonConverter(typeof(Converter.TimeSpanConverter))]
+        [JsonConverter(typeof(Converter.JSONTimeSpanConverter))]
         public TimeSpan TotalTimePlayed { get; set; }
         public int TotalGrenadeKills { get; set; }
         public IEnumerable<MedalAward> MedalAwards { get; set; }

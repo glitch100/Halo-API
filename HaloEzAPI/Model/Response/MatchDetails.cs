@@ -10,7 +10,7 @@ namespace HaloEzAPI.Model.Response
         public Guid GameBaseVariantId { get; set; }
         public Variant GameVariant { get; set; }
         public bool IsTeamGame { get; set; }
-        [JsonConverter(typeof(Converter.TimeSpanConverter))]
+        [JsonConverter(typeof(Converter.JSONTimeSpanConverter))]
         public TimeSpan MatchDuration { get; set; }
     }
 }

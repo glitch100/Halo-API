@@ -69,7 +69,7 @@
     <Compile Include="Abstraction\Interfaces\IPlayerStat.cs" />
     <Compile Include="Abstraction\Interfaces\IRangeDamageDealt.cs" />
     <Compile Include="Abstraction\Interfaces\IWinLoss.cs" />
-    <Compile Include="Converter\TimeSpanConverter.cs" />
+    <Compile Include="Converter\JSONTimeSpanConverter.cs" />
     <Compile Include="HaloAPIService.cs" />
     <Compile Include="IHaloAPIService.cs" />
     <Compile Include="Model\Response\ArenaPlaylistStat.cs" />

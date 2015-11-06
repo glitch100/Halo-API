@@ -7,7 +7,7 @@ namespace HaloEzAPI.Model.Response
     {
         public Guid Id { get; set; }
         [JsonIgnore]
-        [JsonConverter(typeof(Converter.TimeSpanConverter))]
+        [JsonConverter(typeof(Converter.JSONTimeSpanConverter))]
         public TimeSpan Timelapse { get; set; }
     }
 }
