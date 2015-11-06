@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using HaloEzAPI.Abstraction.Enum;
 using HaloEzAPI.Model.Response.Error;
 using NUnit.Framework;
 
-namespace HaloEzAPI.Tests.HaloAPIServiceTests.GetArenaPostGameCarnageReportTests
+namespace HaloEzAPI.Tests.HaloAPIServiceTests.Stats
 {
     [TestFixture]
     public class GetArenaPostGameCarnageReportTests : BaseHaloAPIServiceTests

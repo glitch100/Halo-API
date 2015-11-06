@@ -8,6 +8,5 @@ namespace HaloEzAPI.Model.Response
         public int MeasurementMatchesLeft { get; set; }
         public CSR HighestCsr { get; set; }
         public CSR Csr { get; set; }
-
     }
 }

@@ -56,6 +56,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstraction\Enum\CreditResult.cs" />
+    <Compile Include="Abstraction\Enum\Difficulty.cs" />
     <Compile Include="Abstraction\Enum\EnumResolver.cs" />
     <Compile Include="Abstraction\Enum\GameMode.cs" />
     <Compile Include="Abstraction\Enum\OwnerType.cs" />
@@ -64,6 +65,7 @@
     <Compile Include="Abstraction\Enum\ResultCode.cs" />
     <Compile Include="Abstraction\Enum\RewardSourceType.cs" />
     <Compile Include="Abstraction\Interfaces\IEquipmentDamageDealt.cs" />
+    <Compile Include="Abstraction\Interfaces\IMatchVariants.cs" />
     <Compile Include="Abstraction\Interfaces\IMeleeDamageDealt.cs" />
     <Compile Include="Abstraction\Interfaces\IPlayerKDA.cs" />
     <Compile Include="Abstraction\Interfaces\IPlayerStat.cs" />
@@ -72,11 +74,15 @@
     <Compile Include="Converter\JSONTimeSpanConverter.cs" />
     <Compile Include="HaloAPIService.cs" />
     <Compile Include="IHaloAPIService.cs" />
+    <Compile Include="Model\Response\ArenaPlayerStat.cs" />
     <Compile Include="Model\Response\ArenaPlaylistStat.cs" />
     <Compile Include="Model\Response\ArenaPostGameReport.cs" />
     <Compile Include="Model\Response\ArenaStats.cs" />
+    <Compile Include="Model\Response\CampaignPlayerStat.cs" />
+    <Compile Include="Model\Response\CampaignPostGameReport.cs" />
     <Compile Include="Model\Response\CreditsEarned.cs" />
     <Compile Include="Model\Response\CSR.cs" />
+    <Compile Include="Model\Response\CustomPostGameReport.cs" />
     <Compile Include="Model\Response\Enemy.cs" />
     <Compile Include="Model\Response\Error\CommonErrorMessages.cs" />
     <Compile Include="Model\Response\Error\HaloAPIError.cs" />
@@ -95,7 +101,7 @@
     <Compile Include="Model\Response\MetaCommendationDelta.cs" />
     <Compile Include="Model\Response\MetRequirement.cs" />
     <Compile Include="Model\Response\Player.cs" />
-    <Compile Include="Model\Response\PlayerStat.cs" />
+    <Compile Include="Model\Response\BasePlayerStat.cs" />
     <Compile Include="Model\Response\ProgressiveCommendationDelta.cs" />
     <Compile Include="Model\Response\RewardSetObject.cs" />
     <Compile Include="Model\Response\RoundStat.cs" />

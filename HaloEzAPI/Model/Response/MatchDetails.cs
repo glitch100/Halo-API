@@ -12,5 +12,11 @@ namespace HaloEzAPI.Model.Response
         public bool IsTeamGame { get; set; }
         [JsonConverter(typeof(Converter.JSONTimeSpanConverter))]
         public TimeSpan MatchDuration { get; set; }
+        [JsonConverter(typeof(Converter.JSONTimeSpanConverter))]
+        public TimeSpan TotalDuration { get; set; }
+        public Guid MapVariantId { get; set; }
+        public Guid GameVariantId { get; set; }
+        public Guid PlaylistId { get; set; }
+        public bool IsMatchOver { get; set; }
     }
 }

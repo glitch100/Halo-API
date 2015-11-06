@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using HaloEzAPI.Abstraction.Enum;
 using NUnit.Framework;
 
-namespace HaloEzAPI.Tests.HaloAPIServiceTests.GetArenaServiceRecordsTests
+namespace HaloEzAPI.Tests.HaloAPIServiceTests.Stats
 {
     public class GetArenaServiceRecordsTests : BaseHaloAPIServiceTests
     {

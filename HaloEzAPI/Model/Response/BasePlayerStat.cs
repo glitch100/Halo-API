@@ -1,15 +1,11 @@
 using System;
 using System.Collections.Generic;
+using HaloEzAPI.Abstraction.Interfaces;
 
 namespace HaloEzAPI.Model.Response
 {
-    public class PlayerStat : PlayerMatchBreakdown
+    public class BasePlayerStat : PlayerMatchBreakdown
     {
-        public XpInfo XpInfo { get; set; }
-        public CSR PreviousCsr { get; set; }
-        public CSR CurrentCsr { get; set; }
-        public int MeasurementMatchesLeft { get; set; }
-        public IEnumerable<RewardSetObject> RewardSets { get; set; }
         public IEnumerable<KillDetail> KilledOpponentDetails { get; set; }
         public IEnumerable<KillDetail> KilledByOpponentDetails { get; set; }
         public FlexibleStats FlexibleStats { get; set; }
@@ -21,14 +17,6 @@ namespace HaloEzAPI.Model.Response
         public int Rank { get; set; }
         public bool DNF { get; set; }
         public string AvgLifeTimeOfPlayer { get; set; }
-        public IEnumerable<TeamStat> TeamStats { get; set; }
-        public bool IsMatchOver { get; set; }
-        public TimeSpan TotalDuration { get; set; }
-        public Guid MapVariantId { get; set; }
-        public Guid GameVariantId { get; set; }
-        public Guid PlaylistId { get; set; }
-        public Guid MapId { get; set; }
-        public Guid GameBaseVariantId { get; set; }
         public bool IsTeamGame { get; set; }
     }
 }

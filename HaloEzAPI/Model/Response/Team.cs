@@ -17,7 +17,7 @@
         /// Strongholds = number of points,
         /// Warzone = number of points
         /// </summary>
-        public int Score { get; set; }
+        public uint Score { get; set; }
 
         //The team's rank at the end of the match.
         public int Rank { get; set; }

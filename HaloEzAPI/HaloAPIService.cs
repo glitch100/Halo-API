@@ -49,12 +49,10 @@ namespace HaloEzAPI
                 }
                 if (gameMode == GameMode.Campaign)
                 {
-                    throw new NotImplementedException();
                     return new Uri(string.Format("{0}/{1}/{2}/campaign/matches/{3}", MajorPrefix, MinorPrefix, Title, matchId));
                 }                
                 if (gameMode == GameMode.Custom)
                 {
-                    throw new NotImplementedException();
                     return new Uri(string.Format("{0}/{1}/{2}/custom/matches/{3}", MajorPrefix, MinorPrefix, Title, matchId));
                 }
                 if (gameMode == GameMode.Warzone)
@@ -91,6 +89,7 @@ namespace HaloEzAPI
             _httpClient.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", apiToken);
         }
 
+
         private async Task<T> HandleResponse<T>(HttpResponseMessage message)
         {
             if (message.IsSuccessStatusCode)
@@ -110,6 +109,10 @@ namespace HaloEzAPI
             if (message.StatusCode == HttpStatusCode.InternalServerError)
             {
                 throw new HaloAPIException(message.ReasonPhrase);
+            }
+            if (message.StatusCode == HttpStatusCode.Unauthorized)
+            {
+                throw new HaloAPIException(CommonErrorMessages.AccessDenied);
             }
             throw  new HaloAPIException("Unknown Error in HandleResponse");
         }
@@ -147,8 +150,40 @@ namespace HaloEzAPI
             var message = await _httpClient.GetAsync(Endpoints.Stats.GetPostGameCarnageReport(matchId.ToString(),GameMode.Arena));
             var messageObject = await HandleResponse<ArenaPostGameReport>(message);
             return messageObject;
-        }         
-        
+        }
+
+        /// <summary>
+        /// Get Campaign Post Game Carnage report for a specified match id
+        /// </summary>
+        /// <param name="matchId">The match id</param>
+        /// <returns></returns>
+        public async Task<CampaignPostGameReport> GetCampaignPostGameCarnageReport(Guid matchId)
+        {
+            if (matchId == Guid.Empty)
+            {
+                throw new HaloAPIException(CommonErrorMessages.InvalidMatchId);
+            }
+            var message = await _httpClient.GetAsync(Endpoints.Stats.GetPostGameCarnageReport(matchId.ToString(), GameMode.Campaign));
+            var messageObject = await HandleResponse<CampaignPostGameReport>(message);
+            return messageObject;
+        }
+
+        /// <summary>
+        /// Get Custom Post Game Carnage report for a specified match id
+        /// </summary>
+        /// <param name="matchId">The match id</param>
+        /// <returns></returns>
+        public async Task<CustomPostGameReport> GetCustomPostGameCarnageReport(Guid matchId)
+        {
+            if (matchId == Guid.Empty)
+            {
+                throw new HaloAPIException(CommonErrorMessages.InvalidMatchId);
+            }
+            var message = await _httpClient.GetAsync(Endpoints.Stats.GetPostGameCarnageReport(matchId.ToString(), GameMode.Custom));
+            var messageObject = await HandleResponse<CustomPostGameReport>(message);
+            return messageObject;
+        }
+
         /// <summary>
         /// Gets Arena Service Record for specified list of players
         /// </summary>
