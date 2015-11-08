@@ -51,6 +51,7 @@
     <Compile Include="HaloAPIServiceTests\Stats\GetArenaPostGameCarnageReportTests.cs" />
     <Compile Include="HaloAPIServiceTests\Stats\GetArenaServiceRecordsTests.cs" />
     <Compile Include="HaloAPIServiceTests\Stats\GetCampaignPostGameCarnageReportTests.cs" />
+    <Compile Include="HaloAPIServiceTests\Stats\GetCampaignServiceRecordsTests.cs" />
     <Compile Include="HaloAPIServiceTests\Stats\GetCustomPostGameCarnageReportTests.cs" />
     <Compile Include="HaloAPIServiceTests\Stats\GetMatchesForPlayerTests.cs" />
     <Compile Include="HaloAPIServiceTests\HaloAPIServiceTests.cs" />

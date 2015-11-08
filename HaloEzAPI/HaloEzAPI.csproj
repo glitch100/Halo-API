@@ -77,9 +77,15 @@
     <Compile Include="Model\Response\ArenaPlayerStat.cs" />
     <Compile Include="Model\Response\ArenaPlaylistStat.cs" />
     <Compile Include="Model\Response\ArenaPostGameReport.cs" />
+    <Compile Include="Model\Response\ArenaServiceRecord.cs" />
     <Compile Include="Model\Response\ArenaStats.cs" />
+    <Compile Include="Model\Response\CampaignMissionStat.cs" />
     <Compile Include="Model\Response\CampaignPlayerStat.cs" />
     <Compile Include="Model\Response\CampaignPostGameReport.cs" />
+    <Compile Include="Model\Response\CampaignRunThroughStats.cs" />
+    <Compile Include="Model\Response\CampaignServiceRecord.cs" />
+    <Compile Include="Model\Response\CampaignServiceRecordQueryResponse.cs" />
+    <Compile Include="Model\Response\CampaignStat.cs" />
     <Compile Include="Model\Response\CreditsEarned.cs" />
     <Compile Include="Model\Response\CSR.cs" />
     <Compile Include="Model\Response\CustomPostGameReport.cs" />
@@ -105,8 +111,8 @@
     <Compile Include="Model\Response\ProgressiveCommendationDelta.cs" />
     <Compile Include="Model\Response\RewardSetObject.cs" />
     <Compile Include="Model\Response\RoundStat.cs" />
-    <Compile Include="Model\Response\ServiceRecord.cs" />
-    <Compile Include="Model\Response\ServiceRecordQueryResponse.cs" />
+    <Compile Include="Model\Response\BaseServiceRecord.cs" />
+    <Compile Include="Model\Response\ArenaServiceRecordQueryResponse.cs" />
     <Compile Include="Model\Response\ServiceRecordResult.cs" />
     <Compile Include="Model\Response\StatCounter.cs" />
     <Compile Include="Model\Response\StatTimelapse.cs" />
@@ -125,6 +131,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Limits\" />
     <Folder Include="Model\Request\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -3,7 +3,7 @@ using HaloEzAPI.Abstraction.Enum;
 
 namespace HaloEzAPI.Model.Response
 {
-    public class ServiceRecordResult
+    public class ServiceRecordResult<T> where T : BaseServiceRecord
     {
         /// <summary>
         /// Players GamerTag
@@ -11,7 +11,7 @@ namespace HaloEzAPI.Model.Response
         public string Id { get; set; }
 
         public ResultCode ResultCode { get; set; }
-        public ServiceRecord Result { get; set; }
+        public T Result { get; set; }
  
     }
 }

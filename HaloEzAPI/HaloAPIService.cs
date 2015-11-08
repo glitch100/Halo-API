@@ -80,7 +80,6 @@ namespace HaloEzAPI
     public class HaloAPIService : IHaloAPIService
     {
         private readonly HttpClient _httpClient;
-
         public HaloAPIService(string apiToken, string baseApiUrl = "https://www.haloapi.com")
         {
             Endpoints.MajorPrefix = baseApiUrl;
@@ -134,6 +133,8 @@ namespace HaloEzAPI
             var messageObject = await HandleResponse<PlayerMatches>(message);
             return messageObject;
         }
+        
+        #region Post Game Carnage Report
 
         /// <summary>
         /// Get a post game carnage report for a specified match id
@@ -198,16 +199,29 @@ namespace HaloEzAPI
             var messageObject = await HandleResponse<WarzonePostGameReport>(message);
             return messageObject;
         }
+        #endregion 
 
         /// <summary>
         /// Gets Arena Service Record for specified list of players
         /// </summary>
         /// <param name="players">Up to 32 Players can be requested</param>
         /// <returns></returns>
-        public async Task<ServiceRecordQueryResponse> GetArenaServiceRecords([Range(1, 32)]string[] players)
+        public async Task<ArenaServiceRecordQueryResponse> GetArenaServiceRecords([MaxLength(32)]string[] players)
         {
             var message = await _httpClient.GetAsync(Endpoints.Stats.GetServiceRecords(players, GameMode.Arena));
-            var messageObject = await HandleResponse<ServiceRecordQueryResponse>(message);
+            var messageObject = await HandleResponse<ArenaServiceRecordQueryResponse>(message);
+            return messageObject;
+        }        
+        
+        /// <summary>
+        /// Get Campaign Service Record for specified list of players
+        /// </summary>
+        /// <param name="players">Up to 32 players can be requested></param>
+        /// <returns></returns>
+        public async Task<CampaignServiceRecordQueryResponse> GetCampaignServiceRecords([MaxLength(32)]string[] players)
+        {
+            var message = await _httpClient.GetAsync(Endpoints.Stats.GetServiceRecords(players, GameMode.Campaign));
+            var messageObject = await HandleResponse<CampaignServiceRecordQueryResponse>(message);
             return messageObject;
         } 
     }
