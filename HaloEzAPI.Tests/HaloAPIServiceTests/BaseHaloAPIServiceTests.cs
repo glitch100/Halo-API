@@ -11,7 +11,7 @@ namespace HaloEzAPI.Tests.HaloAPIServiceTests
         [SetUp]
         public void SetUp()
         {
-            HaloApiService = new HaloAPIService("37c86fbf0f4247b980143cabb77b4a42");
+            HaloApiService = new HaloAPIService("YOURTOKENHERE");
         }
 
         [Test]
