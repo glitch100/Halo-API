@@ -45,7 +45,7 @@ var gameVariants = playerMatches.Results.Select(r => r.GameVariants);
 
 
 ####Help? 
-Contact me on Twitter [http://twitter.com/glitch100](@Glitch100)
+Contact me on Twitter **@Glitch100**
 
 ####Notes
 Please note that if you pull the repo the tests will need your API Key in order to pass as I haven't interfaced out the `HttpClient` and they rely on genuine data.
