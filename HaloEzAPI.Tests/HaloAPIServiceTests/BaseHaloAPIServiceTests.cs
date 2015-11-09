@@ -1,4 +1,5 @@
 ﻿using HaloEzAPI.Abstraction.Enum;
+using HaloEzAPI.Caching;
 using HaloEzAPI.Limits;
 using HaloEzAPI.Model.Response.Error;
 using NUnit.Framework;
@@ -13,6 +14,7 @@ namespace HaloEzAPI.Tests.HaloAPIServiceTests
         public void SetUp()
         {
             HaloApiService = new HaloAPIService("YOURTOKENHERE");
+            CacheManager.RemoveAll();
         }
 
         [Test]

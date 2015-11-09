@@ -15,7 +15,10 @@ namespace HaloEzAPI.Limits
         private static readonly HttpClient HttpClient;
         private static readonly SemaphoreSlim RateSemaphore;
         private const int Limit = 10;
-        private const int SecondsLimit = 10;
+        /// <summary>
+        /// Number of seconds the for the Limit of requests (10 seconds for 10 requests etc)
+        /// </summary>
+        public static int SecondsLimit = 10;
         private const string APITokenHeader = "Ocp-Apim-Subscription-Key";
         private static readonly Stopwatch Stopwatch;
         private static int _concurrentRequests = 0;

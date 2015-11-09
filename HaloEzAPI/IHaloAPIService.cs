@@ -11,9 +11,10 @@ namespace HaloEzAPI
         Task<PlayerMatches> GetMatchesForPlayer(string gamerTag, GameMode gameMode, int start, int count);
         Task<ArenaPostGameReport> GetArenaPostGameCarnageReport(Guid matchId);
         Task<CampaignPostGameReport> GetCampaignPostGameCarnageReport(Guid matchId);
-        Task<ArenaServiceRecordQueryResponse> GetArenaServiceRecords([Range(1, 32)] string[] players);
-        Task<CampaignServiceRecordQueryResponse> GetCampaignServiceRecords([Range(1, 32)] string[] players);
         Task<CustomPostGameReport> GetCustomPostGameCarnageReport(Guid matchId);
         Task<WarzonePostGameReport> GetWarzonePostGameCarnageReport(Guid matchId);
+        Task<ArenaServiceRecordQueryResponse> GetArenaServiceRecords([MaxLength(32)] string[] players);
+        Task<CampaignServiceRecordQueryResponse> GetCampaignServiceRecords([MaxLength(32)] string[] players);
+        Task<CustomGameServiceRecordQueryResponse> GetCustomGameServiceRecords([MaxLength(32)] string[] players);
     }
 }

@@ -1,10 +1,10 @@
 ﻿using System;
-using System.Collections.Specialized;
 using System.ComponentModel.DataAnnotations;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using HaloEzAPI.Abstraction.Enum;
+using HaloEzAPI.Caching;
 using HaloEzAPI.Limits;
 using HaloEzAPI.Model.Response;
 using HaloEzAPI.Model.Response.Error;
@@ -12,74 +12,11 @@ using Newtonsoft.Json;
 
 namespace HaloEzAPI
 {
-    internal static class Endpoints
-    {
-        internal static string MajorPrefix;
-        private const string Title = "h5";
-
-        public static class Stats
-        {
-            public static readonly string MinorPrefix = "stats";
-
-            public static Uri GetMatchesForPlayer(string gamertag, GameMode gamemode = GameMode.All, int start = 0, int count = 25)
-            {
-                var values = new NameValueCollection();
-
-                if (gamemode != GameMode.All)
-                {
-                    values.Add("modes", gamemode.ToString().ToLower());
-                }
-
-                if (start > 0)
-                {
-                    values.Add("start", start.ToString());
-                }
-                if (count > 0 && count < 25 )
-                {
-                    values.Add("count",count.ToString());
-                }
-                string baseUrl = string.Format("{0}/{1}/{2}/players/{3}/matches?",MajorPrefix,MinorPrefix,Title,gamertag);
-                return values.BuildUri(baseUrl);
-            }
-
-            public static Uri GetPostGameCarnageReport(string matchId, GameMode gameMode)
-            {
-                if (gameMode == GameMode.Arena)
-                {
-                    return new Uri(string.Format("{0}/{1}/{2}/arena/matches/{3}", MajorPrefix, MinorPrefix, Title, matchId));
-                }
-                if (gameMode == GameMode.Campaign)
-                {
-                    return new Uri(string.Format("{0}/{1}/{2}/campaign/matches/{3}", MajorPrefix, MinorPrefix, Title, matchId));
-                }                
-                if (gameMode == GameMode.Custom)
-                {
-                    return new Uri(string.Format("{0}/{1}/{2}/custom/matches/{3}", MajorPrefix, MinorPrefix, Title, matchId));
-                }
-                if (gameMode == GameMode.Warzone)
-                {
-                    return new Uri(string.Format("{0}/{1}/{2}/warzone/matches/{3}", MajorPrefix, MinorPrefix, Title, matchId));
-                }
-                throw new HaloAPIException("Unsupported GameMode provided for Post Game Carnage Report");
-            }            
-            
-            public static Uri GetServiceRecords(string[] players, GameMode gameMode)
-            {
-                if (gameMode == GameMode.Arena)
-                {
-                    return new Uri(string.Format("{0}/{1}/{2}/servicerecords/arena?players={3}", MajorPrefix, MinorPrefix, Title, string.Join(",",players)));
-                }
-                if (gameMode == GameMode.Campaign)
-                {
-                    return new Uri(string.Format("{0}/{1}/{2}/servicerecords/campaign?players={3}", MajorPrefix, MinorPrefix, Title, string.Join(",", players)));
-                }
-                throw new HaloAPIException("Unsupported GameMode provided for Service Record. Please use Arena, or Campaign");
-            }
-        }
-    }
-
     public class HaloAPIService : IHaloAPIService
     {
+        private const int StatCacheExpiry = 1;
+        private const int MetaCacheExpiry = 24;
+
         public HaloAPIService(string apiToken, string baseApiUrl = "https://www.haloapi.com")
         {
             Endpoints.MajorPrefix = baseApiUrl;
@@ -117,6 +54,19 @@ namespace HaloEzAPI
             throw new HaloAPIException(string.Format("Unknown Error in HandleResponse: {0}",message.RequestMessage));
         }
 
+        private async Task<T> ProcessRequest<T>(Uri endpoint,int cacheExpiryMin) where T : class
+        {
+            string key = endpoint.AbsoluteUri;
+            if (CacheManager.Contains(key))
+            {
+                return CacheManager.Get<T>(key);
+            }
+            var message = await RequestRateHttpClient.GetRequest(endpoint);
+            var messageObject = await HandleResponse<T>(message);
+            CacheManager.Add<T>(messageObject, key, cacheExpiryMin);
+            return messageObject;
+        }
+
         /// <summary>
         /// Get matches for a specific player, for specific gamemodes, and paginated
         /// </summary>
@@ -131,9 +81,7 @@ namespace HaloEzAPI
             {
                 throw new HaloAPIException(CommonErrorMessages.InvalidGamerTag);
             }
-            var message = await RequestRateHttpClient.GetRequest(Endpoints.Stats.GetMatchesForPlayer(gamerTag,gameMode,start,count));
-            var messageObject = await HandleResponse<PlayerMatches>(message);
-            return messageObject;
+            return await ProcessRequest<PlayerMatches>(Endpoints.Stats.GetMatchesForPlayer(gamerTag, gameMode, start, count), StatCacheExpiry);
         }
         
         #region Post Game Carnage Report
@@ -149,9 +97,7 @@ namespace HaloEzAPI
             {
                 throw new HaloAPIException(CommonErrorMessages.InvalidMatchId);
             }
-            var message = await RequestRateHttpClient.GetRequest(Endpoints.Stats.GetPostGameCarnageReport(matchId.ToString(),GameMode.Arena));
-            var messageObject = await HandleResponse<ArenaPostGameReport>(message);
-            return messageObject;
+            return await ProcessRequest<ArenaPostGameReport>(Endpoints.Stats.GetPostGameCarnageReport(matchId.ToString(), GameMode.Arena), StatCacheExpiry);
         }
 
         /// <summary>
@@ -165,9 +111,7 @@ namespace HaloEzAPI
             {
                 throw new HaloAPIException(CommonErrorMessages.InvalidMatchId);
             }
-            var message = await RequestRateHttpClient.GetRequest(Endpoints.Stats.GetPostGameCarnageReport(matchId.ToString(), GameMode.Campaign));
-            var messageObject = await HandleResponse<CampaignPostGameReport>(message);
-            return messageObject;
+            return await ProcessRequest<CampaignPostGameReport>(Endpoints.Stats.GetPostGameCarnageReport(matchId.ToString(), GameMode.Campaign), StatCacheExpiry);
         }
 
         /// <summary>
@@ -181,9 +125,7 @@ namespace HaloEzAPI
             {
                 throw new HaloAPIException(CommonErrorMessages.InvalidMatchId);
             }
-            var message = await RequestRateHttpClient.GetRequest(Endpoints.Stats.GetPostGameCarnageReport(matchId.ToString(), GameMode.Custom));
-            var messageObject = await HandleResponse<CustomPostGameReport>(message);
-            return messageObject;
+            return await ProcessRequest<CustomPostGameReport>(Endpoints.Stats.GetPostGameCarnageReport(matchId.ToString(), GameMode.Custom), StatCacheExpiry);
         }       
         
         /// <summary>
@@ -197,12 +139,11 @@ namespace HaloEzAPI
             {
                 throw new HaloAPIException(CommonErrorMessages.InvalidMatchId);
             }
-            var message = await RequestRateHttpClient.GetRequest(Endpoints.Stats.GetPostGameCarnageReport(matchId.ToString(), GameMode.Warzone));
-            var messageObject = await HandleResponse<WarzonePostGameReport>(message);
-            return messageObject;
+            return await ProcessRequest<WarzonePostGameReport>(Endpoints.Stats.GetPostGameCarnageReport(matchId.ToString(), GameMode.Warzone), StatCacheExpiry);
         }
         #endregion 
 
+        #region Service Records
         /// <summary>
         /// Gets Arena Service Record for specified list of players
         /// </summary>
@@ -210,9 +151,7 @@ namespace HaloEzAPI
         /// <returns></returns>
         public async Task<ArenaServiceRecordQueryResponse> GetArenaServiceRecords([MaxLength(32)]string[] players)
         {
-            var message = await RequestRateHttpClient.GetRequest(Endpoints.Stats.GetServiceRecords(players, GameMode.Arena));
-            var messageObject = await HandleResponse<ArenaServiceRecordQueryResponse>(message);
-            return messageObject;
+            return await ProcessRequest<ArenaServiceRecordQueryResponse>(Endpoints.Stats.GetServiceRecords(players, GameMode.Arena), StatCacheExpiry);
         }        
         
         /// <summary>
@@ -222,9 +161,18 @@ namespace HaloEzAPI
         /// <returns></returns>
         public async Task<CampaignServiceRecordQueryResponse> GetCampaignServiceRecords([MaxLength(32)]string[] players)
         {
-            var message = await RequestRateHttpClient.GetRequest(Endpoints.Stats.GetServiceRecords(players, GameMode.Campaign));
-            var messageObject = await HandleResponse<CampaignServiceRecordQueryResponse>(message);
-            return messageObject;
-        } 
+            return await ProcessRequest<CampaignServiceRecordQueryResponse>(Endpoints.Stats.GetServiceRecords(players, GameMode.Campaign), StatCacheExpiry);
+        }
+
+        /// <summary>
+        /// Get Custom Game Service Record for specified list of players
+        /// </summary>
+        /// <param name="players">Up to 32 players can be requested></param>
+        /// <returns></returns>
+        public async Task<CustomGameServiceRecordQueryResponse> GetCustomGameServiceRecords([MaxLength(32)] string[] players)
+        {
+            return await ProcessRequest<CustomGameServiceRecordQueryResponse>(Endpoints.Stats.GetServiceRecords(players, GameMode.Custom), StatCacheExpiry);
+        }
+        #endregion
     }
 }

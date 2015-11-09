@@ -57,6 +57,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CacheManagerTests\AddTests.cs" />
+    <Compile Include="CacheManagerTests\ContainsTests.cs" />
+    <Compile Include="CacheManagerTests\GetTests.cs" />
+    <Compile Include="CacheManagerTests\RemoveTests.cs" />
+    <Compile Include="HaloAPIServiceTests\Stats\GetCustomGameServiceRecordsTests.cs" />
     <Compile Include="RequestRateHttpClientTests\GetRequestTests.cs" />
     <Compile Include="RequestRateHttpClientTests\SetAPITokenTests.cs" />
     <Compile Include="HaloAPIServiceTests\BaseHaloAPIServiceTests.cs" />
@@ -79,6 +84,7 @@
       <Name>HaloEzAPI</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\HaloEzAPI\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\HaloEzAPI\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
   <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
