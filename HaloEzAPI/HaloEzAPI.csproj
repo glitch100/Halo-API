@@ -74,6 +74,9 @@
     <Compile Include="Converter\JSONTimeSpanConverter.cs" />
     <Compile Include="HaloAPIService.cs" />
     <Compile Include="IHaloAPIService.cs" />
+    <Compile Include="Limits\RequestRateHttpClient.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Model\Response\ArenaPlayerStat.cs" />
     <Compile Include="Model\Response\ArenaPlaylistStat.cs" />
     <Compile Include="Model\Response\ArenaPostGameReport.cs" />
@@ -131,7 +134,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Limits\" />
     <Folder Include="Model\Request\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

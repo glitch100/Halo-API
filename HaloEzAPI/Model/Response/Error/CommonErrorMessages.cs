@@ -6,5 +6,6 @@
         public static string InvalidGamerTag { get { return "Invalid GamerTag provided"; } }
         public static string InvalidMatchId { get { return "Invalid MatchId provided"; } }
         public static string AccessDenied { get { return "Access Denied - Invalid or No API Token provided"; } }
+        public static string TooManyRequests { get { return "Too many requests, please wait before sending more."; } }
     }
 }

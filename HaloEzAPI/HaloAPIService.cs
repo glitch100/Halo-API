@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using HaloEzAPI.Abstraction.Enum;
+using HaloEzAPI.Limits;
 using HaloEzAPI.Model.Response;
 using HaloEzAPI.Model.Response.Error;
 using Newtonsoft.Json;
@@ -79,16 +80,13 @@ namespace HaloEzAPI
 
     public class HaloAPIService : IHaloAPIService
     {
-        private readonly HttpClient _httpClient;
         public HaloAPIService(string apiToken, string baseApiUrl = "https://www.haloapi.com")
         {
             Endpoints.MajorPrefix = baseApiUrl;
-            _httpClient = new HttpClient(new HttpClientHandler());
-            _httpClient.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", apiToken);
+            RequestRateHttpClient.SetAPIToken(apiToken);
         }
 
-
-        private async Task<T> HandleResponse<T>(HttpResponseMessage message)
+        private async Task<T> HandleResponse<T>(HttpResponseMessage message)  where T : class 
         {
             if (message.IsSuccessStatusCode)
             {
@@ -112,7 +110,11 @@ namespace HaloEzAPI
             {
                 throw new HaloAPIException(CommonErrorMessages.AccessDenied);
             }
-            throw  new HaloAPIException("Unknown Error in HandleResponse");
+            if (message.StatusCode == (HttpStatusCode) 429)
+            {
+                throw new HaloAPIException(CommonErrorMessages.TooManyRequests);
+            }
+            throw new HaloAPIException(string.Format("Unknown Error in HandleResponse: {0}",message.RequestMessage));
         }
 
         /// <summary>
@@ -129,7 +131,7 @@ namespace HaloEzAPI
             {
                 throw new HaloAPIException(CommonErrorMessages.InvalidGamerTag);
             }
-            var message = await _httpClient.GetAsync(Endpoints.Stats.GetMatchesForPlayer(gamerTag,gameMode,start,count));
+            var message = await RequestRateHttpClient.GetRequest(Endpoints.Stats.GetMatchesForPlayer(gamerTag,gameMode,start,count));
             var messageObject = await HandleResponse<PlayerMatches>(message);
             return messageObject;
         }
@@ -147,7 +149,7 @@ namespace HaloEzAPI
             {
                 throw new HaloAPIException(CommonErrorMessages.InvalidMatchId);
             }
-            var message = await _httpClient.GetAsync(Endpoints.Stats.GetPostGameCarnageReport(matchId.ToString(),GameMode.Arena));
+            var message = await RequestRateHttpClient.GetRequest(Endpoints.Stats.GetPostGameCarnageReport(matchId.ToString(),GameMode.Arena));
             var messageObject = await HandleResponse<ArenaPostGameReport>(message);
             return messageObject;
         }
@@ -163,7 +165,7 @@ namespace HaloEzAPI
             {
                 throw new HaloAPIException(CommonErrorMessages.InvalidMatchId);
             }
-            var message = await _httpClient.GetAsync(Endpoints.Stats.GetPostGameCarnageReport(matchId.ToString(), GameMode.Campaign));
+            var message = await RequestRateHttpClient.GetRequest(Endpoints.Stats.GetPostGameCarnageReport(matchId.ToString(), GameMode.Campaign));
             var messageObject = await HandleResponse<CampaignPostGameReport>(message);
             return messageObject;
         }
@@ -179,7 +181,7 @@ namespace HaloEzAPI
             {
                 throw new HaloAPIException(CommonErrorMessages.InvalidMatchId);
             }
-            var message = await _httpClient.GetAsync(Endpoints.Stats.GetPostGameCarnageReport(matchId.ToString(), GameMode.Custom));
+            var message = await RequestRateHttpClient.GetRequest(Endpoints.Stats.GetPostGameCarnageReport(matchId.ToString(), GameMode.Custom));
             var messageObject = await HandleResponse<CustomPostGameReport>(message);
             return messageObject;
         }       
@@ -195,7 +197,7 @@ namespace HaloEzAPI
             {
                 throw new HaloAPIException(CommonErrorMessages.InvalidMatchId);
             }
-            var message = await _httpClient.GetAsync(Endpoints.Stats.GetPostGameCarnageReport(matchId.ToString(), GameMode.Warzone));
+            var message = await RequestRateHttpClient.GetRequest(Endpoints.Stats.GetPostGameCarnageReport(matchId.ToString(), GameMode.Warzone));
             var messageObject = await HandleResponse<WarzonePostGameReport>(message);
             return messageObject;
         }
@@ -208,7 +210,7 @@ namespace HaloEzAPI
         /// <returns></returns>
         public async Task<ArenaServiceRecordQueryResponse> GetArenaServiceRecords([MaxLength(32)]string[] players)
         {
-            var message = await _httpClient.GetAsync(Endpoints.Stats.GetServiceRecords(players, GameMode.Arena));
+            var message = await RequestRateHttpClient.GetRequest(Endpoints.Stats.GetServiceRecords(players, GameMode.Arena));
             var messageObject = await HandleResponse<ArenaServiceRecordQueryResponse>(message);
             return messageObject;
         }        
@@ -220,7 +222,7 @@ namespace HaloEzAPI
         /// <returns></returns>
         public async Task<CampaignServiceRecordQueryResponse> GetCampaignServiceRecords([MaxLength(32)]string[] players)
         {
-            var message = await _httpClient.GetAsync(Endpoints.Stats.GetServiceRecords(players, GameMode.Campaign));
+            var message = await RequestRateHttpClient.GetRequest(Endpoints.Stats.GetServiceRecords(players, GameMode.Campaign));
             var messageObject = await HandleResponse<CampaignServiceRecordQueryResponse>(message);
             return messageObject;
         } 

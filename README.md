@@ -2,7 +2,7 @@
 
 A C# Wrapper for the official Halo 5 API that can be seen at [http://developer.haloapi.com](http://developer.haloapi.com) - Easy to use, and implement. 
 
-*Current Version: 0.1.3*
+*Current Version: 0.1.4*
 
 ###Currently Supported
 - GetMatchesForPlayer
@@ -13,6 +13,7 @@ A C# Wrapper for the official Halo 5 API that can be seen at [http://developer.h
 - GetArenaServiceRecords
 - GetCampaignServiceRecords
 
+- **Rate Handling and Limit on Requests!**
 
 Currently in the process of modelling everything out and adding more endpoints as I go and building tests. Once in a more comfortable position then I will add more advanced features once all endpoints are complete
 
@@ -33,7 +34,6 @@ var gameVariants = playerMatches.Results.Select(r => r.GameVariants);
 
 ####On the way
 - Adding more endpoints
-- Full test coverage
 - More advanced logic and determination
 
 ####Help? 

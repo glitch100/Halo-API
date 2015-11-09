@@ -1,4 +1,5 @@
 ﻿using HaloEzAPI.Abstraction.Enum;
+using HaloEzAPI.Limits;
 using HaloEzAPI.Model.Response.Error;
 using NUnit.Framework;
 
@@ -11,13 +12,13 @@ namespace HaloEzAPI.Tests.HaloAPIServiceTests
         [SetUp]
         public void SetUp()
         {
-            HaloApiService = new HaloAPIService("37c86fbf0f4247b980143cabb77b4a42");
+            HaloApiService = new HaloAPIService("YOURTOKENHERE");
         }
 
         [Test]
         public void Default_InvalidAPIKey_Unauthorized()
         {
-            HaloApiService = new HaloAPIService("INVALID");
+            RequestRateHttpClient.SetAPIToken("INVALID");
             Assert.Throws<HaloAPIException>(async () => await HaloApiService.GetMatchesForPlayer("a", GameMode.Arena),
                 CommonErrorMessages.AccessDenied);
         }
