@@ -40,7 +40,6 @@ namespace HaloEzAPI.Tests.HaloAPIServiceTests.Stats
         [Test]
         public async void ProvideValidMatchId_ReturnsKnownDuration()
         {
-            //00:17:16.8890008
             var result = await HaloApiService.GetWarzonePostGameCarnageReport(_validGuid);
             Assert.AreEqual(result.TotalDuration.ToString(),"00:17:16.8890008");
         }

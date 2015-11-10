@@ -6,7 +6,7 @@ A C# Wrapper for the official Halo 5 API that can be seen at [http://developer.h
 
 Enjoy Halo 5 Guardians Game Data faster than ever before with this wrapper. Currently a WIP and soon to be finished and polished up, the API is updated almost daily with optimisations and more! Download it now, or utilise it via Nuget!
 
-###Current Version: 0.1.5 - 
+###Current Version: 0.1.6 - 
 ###Supported Features
 - Get Matches ForPlayer
 - Get Arena PostGame Carnage Report
@@ -15,9 +15,12 @@ Enjoy Halo 5 Guardians Game Data faster than ever before with this wrapper. Curr
 - Get Warzone PostGame Carnage Report
 - Get Arena Service Records
 - Get Campaign Service Records
-- **NEW** Get Custom Game Service Records
-- **NEW** Rate Handling and Limit on Requests!
-- **NEW** Caching of Requests (hourly stats/daily meta)!
+- Get Custom Game Service Records
+- **NEW** Get Warzone Service Records
+- Rate Handling and Limit on Requests!
+- Caching of Requests (hourly stats/daily meta)!
+- **NEW** GetCampaignMissions
+- **NEW** GetCommendations
 
 Currently in the process of modelling everything out and adding more endpoints as I go and building tests. Once in a more comfortable position then I will add more advanced features once all endpoints are complete
 
