@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Net;
 using System.Net.Http;
@@ -6,8 +7,9 @@ using System.Threading.Tasks;
 using HaloEzAPI.Abstraction.Enum;
 using HaloEzAPI.Caching;
 using HaloEzAPI.Limits;
-using HaloEzAPI.Model.Response;
 using HaloEzAPI.Model.Response.Error;
+using HaloEzAPI.Model.Response.MetaData;
+using HaloEzAPI.Model.Response.Stats;
 using Newtonsoft.Json;
 
 namespace HaloEzAPI
@@ -66,6 +68,8 @@ namespace HaloEzAPI
             CacheManager.Add<T>(messageObject, key, cacheExpiryMin);
             return messageObject;
         }
+
+        #region Stats
 
         /// <summary>
         /// Get matches for a specific player, for specific gamemodes, and paginated
@@ -173,6 +177,32 @@ namespace HaloEzAPI
         {
             return await ProcessRequest<CustomGameServiceRecordQueryResponse>(Endpoints.Stats.GetServiceRecords(players, GameMode.Custom), StatCacheExpiry);
         }
+
+        /// <summary>
+        /// Get Warzone Service Record for specified list of players
+        /// </summary>
+        /// <param name="players">Up to 32 players can be requested></param>
+        /// <returns></returns>
+        public async Task<WarzoneServiceRecordQueryResponse> GetWarzoneServiceRecords([MaxLength(32)] string[] players)
+        {
+            return await ProcessRequest<WarzoneServiceRecordQueryResponse>(Endpoints.Stats.GetServiceRecords(players, GameMode.Warzone), StatCacheExpiry);
+        }
+        #endregion
+
+        #endregion 
+
+        #region MetaData
+
+        public async Task<IEnumerable<CampaignMission>> GetCampaignMissions()
+        {
+            return await ProcessRequest<IEnumerable<CampaignMission>>(Endpoints.MetaData.GetCampaignMissions(), MetaCacheExpiry);
+        }
+
+        public async Task<IEnumerable<Commendation>> GetCommendations()
+        {
+            return await ProcessRequest<IEnumerable<Commendation>>(Endpoints.MetaData.GetCommendations(), MetaCacheExpiry);
+        }
+
         #endregion
     }
 }

@@ -12,7 +12,7 @@ namespace HaloEzAPI
 
         public static class Stats
         {
-            public static readonly string MinorPrefix = "stats";
+            internal static readonly string MinorPrefix = "stats";
 
             public static Uri GetMatchesForPlayer(string gamertag, GameMode gamemode = GameMode.All, int start = 0, int count = 25)
             {
@@ -69,9 +69,28 @@ namespace HaloEzAPI
                 if (gameMode == GameMode.Custom)
                 {
                     return new Uri(string.Format("{0}/{1}/{2}/servicerecords/custom?players={3}", MajorPrefix, MinorPrefix, Title, string.Join(",", players)));
+                }        
+                if (gameMode == GameMode.Warzone)
+                {
+                    return new Uri(string.Format("{0}/{1}/{2}/servicerecords/warzone?players={3}", MajorPrefix, MinorPrefix, Title, string.Join(",", players)));
                 }
                 throw new HaloAPIException("Unsupported GameMode provided for Service Record. Please use Arena, or Campaign");
             }
+        }
+
+        public static class MetaData
+        {
+            internal static readonly string MinorPrefix = "metadata";
+
+            public static Uri GetCampaignMissions()
+            {
+                return new Uri(string.Format("{0}/{1}/{2}/metadata/campaign-missions", MajorPrefix, MinorPrefix, Title));
+            }   
+        
+            public static Uri GetCommendations()
+            {
+                return new Uri(string.Format("{0}/{1}/{2}/metadata/commendations", MajorPrefix, MinorPrefix, Title));
+            }   
         }
     }
 }
