@@ -23,5 +23,11 @@ namespace HaloEzAPI
         
         //MetaData
         Task<IEnumerable<CampaignMission>> GetCampaignMissions();
+        Task<IEnumerable<Commendation>> GetCommendations();
+        Task<IEnumerable<Enemy>> GetEnemies();
+        Task<IEnumerable<FlexibleStat>> GetFlexibleStats();
+        Task<IEnumerable<GameBaseVariant>> GetGameBaseVariants();
+        Task<GameVariant> GetGameVariant(string id);
+
     }
 }

@@ -90,6 +90,31 @@ namespace HaloEzAPI
             public static Uri GetCommendations()
             {
                 return new Uri(string.Format("{0}/{1}/{2}/metadata/commendations", MajorPrefix, MinorPrefix, Title));
+            }        
+   
+            public static Uri GetCSRDesignations()
+            {
+                return new Uri(string.Format("{0}/{1}/{2}/metadata/csr-designations", MajorPrefix, MinorPrefix, Title));
+            }    
+  
+            public static Uri GetEnemies()
+            {
+                return new Uri(string.Format("{0}/{1}/{2}/metadata/enemies", MajorPrefix, MinorPrefix, Title));
+            }
+
+            public static Uri GetFlexibleStats()
+            {
+                return new Uri(string.Format("{0}/{1}/{2}/metadata/flexible-stats", MajorPrefix, MinorPrefix, Title));
+            }
+
+            public static Uri GetGameBaseVariants()
+            {
+                return new Uri(string.Format("{0}/{1}/{2}/metadata/game-base-variants", MajorPrefix, MinorPrefix, Title));
+            }   
+
+            public static Uri GetGameVariant(string id)
+            {
+                return new Uri(string.Format("{0}/{1}/{2}/metadata/game-variants/{3}", MajorPrefix, MinorPrefix, Title, id));
             }   
         }
     }

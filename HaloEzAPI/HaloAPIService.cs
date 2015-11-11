@@ -49,6 +49,10 @@ namespace HaloEzAPI
             {
                 throw new HaloAPIException(CommonErrorMessages.AccessDenied);
             }
+            if (message.StatusCode == HttpStatusCode.BadRequest)
+            {
+                throw new HaloAPIException(CommonErrorMessages.BadRequest);   
+            }
             if (message.StatusCode == (HttpStatusCode) 429)
             {
                 throw new HaloAPIException(CommonErrorMessages.TooManyRequests);
@@ -201,6 +205,26 @@ namespace HaloEzAPI
         public async Task<IEnumerable<Commendation>> GetCommendations()
         {
             return await ProcessRequest<IEnumerable<Commendation>>(Endpoints.MetaData.GetCommendations(), MetaCacheExpiry);
+        }
+
+        public async Task<IEnumerable<Enemy>> GetEnemies()
+        {
+            return await ProcessRequest<IEnumerable<Enemy>>(Endpoints.MetaData.GetEnemies(), MetaCacheExpiry);
+        }
+
+        public async Task<IEnumerable<FlexibleStat>> GetFlexibleStats()
+        {
+            return await ProcessRequest<IEnumerable<FlexibleStat>>(Endpoints.MetaData.GetFlexibleStats(), MetaCacheExpiry);
+        }
+
+        public async Task<IEnumerable<GameBaseVariant>> GetGameBaseVariants()
+        {
+            return await ProcessRequest<IEnumerable<GameBaseVariant>>(Endpoints.MetaData.GetGameBaseVariants(), MetaCacheExpiry);
+        }
+
+        public async Task<GameVariant> GetGameVariant(string id)
+        {
+            return await ProcessRequest<GameVariant>(Endpoints.MetaData.GetGameVariant(id), MetaCacheExpiry);
         }
 
         #endregion

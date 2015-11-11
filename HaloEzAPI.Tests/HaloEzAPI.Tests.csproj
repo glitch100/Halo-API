@@ -62,6 +62,10 @@
     <Compile Include="CacheManagerTests\GetTests.cs" />
     <Compile Include="CacheManagerTests\RemoveTests.cs" />
     <Compile Include="HaloAPIServiceTests\MetaData\GetCampaignMissionsTests.cs" />
+    <Compile Include="HaloAPIServiceTests\MetaData\GetEnemiesTests.cs" />
+    <Compile Include="HaloAPIServiceTests\MetaData\GetFlexibleStatsTests.cs" />
+    <Compile Include="HaloAPIServiceTests\MetaData\GetGameBaseVariantsTests.cs" />
+    <Compile Include="HaloAPIServiceTests\MetaData\GetGameVariantTests.cs" />
     <Compile Include="HaloAPIServiceTests\MetaData\GetGetCommendationsTests.cs" />
     <Compile Include="HaloAPIServiceTests\Stats\GetCustomGameServiceRecordsTests.cs" />
     <Compile Include="HaloAPIServiceTests\Stats\GetWarzoneServiceRecordsTests.cs" />
