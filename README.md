@@ -21,6 +21,7 @@ Enjoy Halo 5 Guardians Game Data faster than ever before with this wrapper. Curr
 - Get Campaign Service Records
 - Get Custom Game Service Records
 - Get Warzone Service Records
+
 - **Meta Data**
 - GetCampaignMissions
 - GetCommendations
