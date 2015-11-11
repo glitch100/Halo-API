@@ -8,6 +8,10 @@ Enjoy Halo 5 Guardians Game Data faster than ever before with this wrapper. Curr
 
 ###Current Version: 0.1.7 - 
 ###Supported Features
+- Rate Handling and Limit on Requests!
+- Caching of Requests (hourly stats/daily meta)!
+
+- **Stats**
 - Get Matches ForPlayer
 - Get Arena PostGame Carnage Report
 - Get Custom PostGame Carnage Report
@@ -17,15 +21,14 @@ Enjoy Halo 5 Guardians Game Data faster than ever before with this wrapper. Curr
 - Get Campaign Service Records
 - Get Custom Game Service Records
 - Get Warzone Service Records
-- Rate Handling and Limit on Requests!
-- Caching of Requests (hourly stats/daily meta)!
+- **Meta Data**
 - GetCampaignMissions
 - GetCommendations
-- **NEW** Get CSR Designations
-- **NEW** Get Enemies
-- **NEW** Get Flexible Stats
-- **NEW** Get Game Base Variants
-- **NEW** Get Game Variants
+- *NEW* Get CSR Designations
+- *NEW* Get Enemies
+- *NEW* Get Flexible Stats
+- *NEW* Get Game Base Variants
+- *NEW* Get Game Variants
 
 Currently in the process of modelling everything out and adding more endpoints as I go and building tests. Once in a more comfortable position then I will add more advanced features once all endpoints are complete
 
