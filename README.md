@@ -11,7 +11,7 @@ Enjoy Halo 5 Guardians Game Data faster than ever before with this wrapper. Curr
 - Rate Handling and Limit on Requests!
 - Caching of Requests (hourly stats/daily meta)!
 
-- **Stats**
+**Stats**
 - Get Matches ForPlayer
 - Get Arena PostGame Carnage Report
 - Get Custom PostGame Carnage Report
@@ -21,7 +21,8 @@ Enjoy Halo 5 Guardians Game Data faster than ever before with this wrapper. Curr
 - Get Campaign Service Records
 - Get Custom Game Service Records
 - Get Warzone Service Records
-- **Meta Data**
+
+**Meta Data**
 - GetCampaignMissions
 - GetCommendations
 - *NEW* Get CSR Designations
