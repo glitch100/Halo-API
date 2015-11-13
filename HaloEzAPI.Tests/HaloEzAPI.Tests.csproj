@@ -67,6 +67,15 @@
     <Compile Include="HaloAPIServiceTests\MetaData\GetGameBaseVariantsTests.cs" />
     <Compile Include="HaloAPIServiceTests\MetaData\GetGameVariantTests.cs" />
     <Compile Include="HaloAPIServiceTests\MetaData\GetGetCommendationsTests.cs" />
+    <Compile Include="HaloAPIServiceTests\MetaData\GetImpulsesTests.cs" />
+    <Compile Include="HaloAPIServiceTests\MetaData\GetMapsTests.cs" />
+    <Compile Include="HaloAPIServiceTests\MetaData\GetMapVariantTests.cs" />
+    <Compile Include="HaloAPIServiceTests\MetaData\GetMedalsTests.cs" />
+    <Compile Include="HaloAPIServiceTests\MetaData\GetPlaylistsTests.cs" />
+    <Compile Include="HaloAPIServiceTests\MetaData\GetRequisitionPackTests.cs" />
+    <Compile Include="HaloAPIServiceTests\MetaData\GetRequisitionTests.cs" />
+    <Compile Include="HaloAPIServiceTests\MetaData\GetSkullsTests.cs" />
+    <Compile Include="HaloAPIServiceTests\MetaData\GetSpartanRanksTests.cs" />
     <Compile Include="HaloAPIServiceTests\Stats\GetCustomGameServiceRecordsTests.cs" />
     <Compile Include="HaloAPIServiceTests\Stats\GetWarzoneServiceRecordsTests.cs" />
     <Compile Include="RequestRateHttpClientTests\GetRequestTests.cs" />

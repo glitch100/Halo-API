@@ -6,7 +6,7 @@ A C# Wrapper for the official Halo 5 API that can be seen at [http://developer.h
 
 Enjoy Halo 5 Guardians Game Data faster than ever before with this wrapper. Currently a WIP and soon to be finished and polished up, the API is updated almost daily with optimisations and more! Download it now, or utilise it via Nuget!
 
-###Current Version: 0.1.7 - 
+###Current Version: 0.2.0
 ###Supported Features
 - Rate Handling and Limit on Requests!
 - Caching of Requests (hourly stats/daily meta)!
@@ -25,13 +25,25 @@ Enjoy Halo 5 Guardians Game Data faster than ever before with this wrapper. Curr
 **Meta Data**
 - GetCampaignMissions
 - GetCommendations
-- *NEW* Get CSR Designations
-- *NEW* Get Enemies
-- *NEW* Get Flexible Stats
-- *NEW* Get Game Base Variants
-- *NEW* Get Game Variants
+- Get CSR Designations
+- Get Enemies
+- Get Flexible Stats
+- Get Game Base Variants
+- Get Game Variants
+- *NEW* Get Impulses
+- *NEW* Get Map Variants
+- *NEW* Get Maps
+- *NEW* Get Medals
+- *NEW* Get Playlists
+- *NEW* Get Requisition Pack
+- *NEW* Get Requistion
+- *NEW* Get Skulls
+- *NEW* Get Spartan Ranks
+- *NEW* Get Team Colours 
+- *NEW* Get Vehicles 
+- *NEW* Get Weapons 
 
-Currently in the process of modelling everything out and adding more endpoints as I go and building tests. Once in a more comfortable position then I will add more advanced features once all endpoints are complete
+Only one more set of endpoints to do until we hit the v1 release, at which point, I will begin refactoring and adding in advanced functionality to the Halo API!
 
 ####Usage
 
