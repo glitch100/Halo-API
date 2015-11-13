@@ -116,6 +116,72 @@ namespace HaloEzAPI
             {
                 return new Uri(string.Format("{0}/{1}/{2}/metadata/game-variants/{3}", MajorPrefix, MinorPrefix, Title, id));
             }   
+
+            public static Uri GetImpulses()
+            {
+                return new Uri(string.Format("{0}/{1}/{2}/metadata/impulses", MajorPrefix, MinorPrefix, Title));
+            }
+
+            public static Uri GetMapVariants(string id)
+            {
+                return new Uri(string.Format("{0}/{1}/{2}/metadata/map-variants/{3}", MajorPrefix, MinorPrefix, Title, id));
+            }
+
+            public static Uri GetMaps()
+            {
+                return new Uri(string.Format("{0}/{1}/{2}/metadata/maps", MajorPrefix, MinorPrefix, Title));
+            }            
+            
+            public static Uri GetMedals()
+            {
+                return new Uri(string.Format("{0}/{1}/{2}/metadata/medals", MajorPrefix, MinorPrefix, Title));
+            }            
+
+            public static Uri GetPlaylists()
+            {
+                return new Uri(string.Format("{0}/{1}/{2}/metadata/playlists", MajorPrefix, MinorPrefix, Title));
+            }
+
+            public static Uri GetRequisitionPack(Guid id)
+            {
+                return new Uri(string.Format("{0}/{1}/{2}/metadata/requisition-packs/{3}", MajorPrefix, MinorPrefix, Title,id.ToString()));
+            }
+
+            public static Uri GetRequisitionPacks()
+            {
+                return new Uri(string.Format("{0}/{1}/{2}/metadata/requisition-pack", MajorPrefix, MinorPrefix, Title));
+            }
+
+            public static Uri GetRequisition(Guid id)
+            {
+                return new Uri(string.Format("{0}/{1}/{2}/metadata/requisitions/{3}", MajorPrefix, MinorPrefix, Title, id));
+            }
+
+            public static Uri GetSkulls()
+            {
+                return new Uri(string.Format("{0}/{1}/{2}/metadata/skulls", MajorPrefix, MinorPrefix, Title));
+            }
+
+            public static Uri GetSpartanRanks()
+            {
+                return new Uri(string.Format("{0}/{1}/{2}/metadata/spartan-ranks", MajorPrefix, MinorPrefix, Title));
+            }
+
+            public static Uri GetTeamColors()
+            {
+                return new Uri(string.Format("{0}/{1}/{2}/metadata/team-colors", MajorPrefix, MinorPrefix, Title));
+            }
+
+            public static Uri GetVehicles()
+            {
+                return new Uri(string.Format("{0}/{1}/{2}/metadata/vehicles", MajorPrefix, MinorPrefix, Title));
+            }
+
+            public static Uri GetWeapons()
+            {
+                return new Uri(string.Format("{0}/{1}/{2}/metadata/weapons", MajorPrefix, MinorPrefix, Title));
+            }
+
         }
     }
 }

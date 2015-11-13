@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Net;
@@ -225,6 +226,71 @@ namespace HaloEzAPI
         public async Task<GameVariant> GetGameVariant(string id)
         {
             return await ProcessRequest<GameVariant>(Endpoints.MetaData.GetGameVariant(id), MetaCacheExpiry);
+        }
+
+        public async Task<IEnumerable<Impulse>> GetImpulses()
+        {
+            return await ProcessRequest<IEnumerable<Impulse>>(Endpoints.MetaData.GetImpulses(), MetaCacheExpiry);
+        }
+
+        public async Task<MapVariant> GetMapVariant(string id)
+        {
+            return await ProcessRequest<MapVariant>(Endpoints.MetaData.GetMapVariants(id), MetaCacheExpiry);
+        }
+
+        public async Task<IEnumerable<Map>> GetMaps()
+        {
+            return await ProcessRequest<IEnumerable<Map>>(Endpoints.MetaData.GetMaps(), MetaCacheExpiry);
+        }
+
+        public async Task<IEnumerable<Medal>> GetMedals()
+        {
+            return await ProcessRequest<IEnumerable<Medal>>(Endpoints.MetaData.GetMedals(), MetaCacheExpiry);
+        }
+
+        public async Task<IEnumerable<Playlist>> GetPlaylists()
+        {
+            return await ProcessRequest<IEnumerable<Playlist>>(Endpoints.MetaData.GetPlaylists(), MetaCacheExpiry);
+        }
+
+        public async Task<IEnumerable<RequisitionPack>> GetRequisitionPacks()
+        {
+            return await ProcessRequest<IEnumerable<RequisitionPack>>(Endpoints.MetaData.GetRequisitionPacks(), MetaCacheExpiry);
+        }
+
+        public async Task<RequisitionPack> GetRequisitionPack(Guid id)
+        {
+            return await ProcessRequest<RequisitionPack>(Endpoints.MetaData.GetRequisitionPack(id), MetaCacheExpiry);
+        }
+
+        public async Task<RequisitionPack> GetRequisition(Guid id)
+        {
+            return await ProcessRequest<RequisitionPack>(Endpoints.MetaData.GetRequisition(id), MetaCacheExpiry);
+        }
+
+        public async Task<IEnumerable<Skull>> GetSkulls()
+        {
+            return await ProcessRequest<IEnumerable<Skull>>(Endpoints.MetaData.GetSkulls(), MetaCacheExpiry);
+        }
+
+        public async Task<IEnumerable<SpartanRank>> GetSpartanRanks()
+        {
+            return await ProcessRequest<IEnumerable<SpartanRank>>(Endpoints.MetaData.GetSpartanRanks(), MetaCacheExpiry);
+        }
+
+        public async Task<IEnumerable<TeamColor>> GetTeamColours()
+        {
+            return await ProcessRequest<IEnumerable<TeamColor>>(Endpoints.MetaData.GetTeamColors(), MetaCacheExpiry);
+        }
+
+        public async Task<IEnumerable<Vehicle>> GetVehicles()
+        {
+            return await ProcessRequest<IEnumerable<Vehicle>>(Endpoints.MetaData.GetVehicles(), MetaCacheExpiry);
+        }
+
+        public async Task<IEnumerable<Weapon>> GetWeapons()
+        {
+            return await ProcessRequest<IEnumerable<Weapon>>(Endpoints.MetaData.GetWeapons(), MetaCacheExpiry);
         }
 
         #endregion

@@ -48,6 +48,7 @@
     </Reference>
     <Reference Include="System.Net.Http.WebRequest" />
     <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -64,12 +65,16 @@
     <Compile Include="Abstraction\Enum\Flair.cs" />
     <Compile Include="Abstraction\Enum\FlexibleStatType.cs" />
     <Compile Include="Abstraction\Enum\GameMode.cs" />
+    <Compile Include="Abstraction\Enum\MedalType.cs" />
     <Compile Include="Abstraction\Enum\MissionType.cs" />
     <Compile Include="Abstraction\Enum\OwnerType.cs" />
     <Compile Include="Abstraction\Enum\PlayerMatchResult.cs" />
+    <Compile Include="Abstraction\Enum\RarityType.cs" />
+    <Compile Include="Abstraction\Enum\ReqUseType.cs" />
     <Compile Include="Abstraction\Enum\ResourceType.cs" />
     <Compile Include="Abstraction\Enum\ResultCode.cs" />
     <Compile Include="Abstraction\Enum\RewardSourceType.cs" />
+    <Compile Include="Abstraction\Enum\WeaponType.cs" />
     <Compile Include="Abstraction\Interfaces\IEquipmentDamageDealt.cs" />
     <Compile Include="Abstraction\Interfaces\IMatchVariants.cs" />
     <Compile Include="Abstraction\Interfaces\IMeleeDamageDealt.cs" />
@@ -95,9 +100,22 @@
     <Compile Include="Model\Response\MetaData\FlexibleStat.cs" />
     <Compile Include="Model\Response\MetaData\GameBaseVariant.cs" />
     <Compile Include="Model\Response\MetaData\GameVariant.cs" />
+    <Compile Include="Model\Response\MetaData\Impulse.cs" />
     <Compile Include="Model\Response\MetaData\Level.cs" />
+    <Compile Include="Model\Response\MetaData\Map.cs" />
+    <Compile Include="Model\Response\MetaData\MapVariant.cs" />
+    <Compile Include="Model\Response\MetaData\Medal.cs" />
+    <Compile Include="Model\Response\MetaData\Playlist.cs" />
+    <Compile Include="Model\Response\MetaData\RankReward.cs" />
+    <Compile Include="Model\Response\MetaData\Requisition.cs" />
     <Compile Include="Model\Response\MetaData\RequisitionPack.cs" />
     <Compile Include="Model\Response\MetaData\Reward.cs" />
+    <Compile Include="Model\Response\MetaData\Skull.cs" />
+    <Compile Include="Model\Response\MetaData\SpartanRank.cs" />
+    <Compile Include="Model\Response\MetaData\SpriteLocation.cs" />
+    <Compile Include="Model\Response\MetaData\TeamColor.cs" />
+    <Compile Include="Model\Response\MetaData\Vehicle.cs" />
+    <Compile Include="Model\Response\MetaData\Weapon.cs" />
     <Compile Include="Model\Response\Stats\ArenaPlayerStat.cs" />
     <Compile Include="Model\Response\Stats\ArenaPlaylistStat.cs" />
     <Compile Include="Model\Response\Stats\ArenaPostGameReport.cs" />
