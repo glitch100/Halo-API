@@ -2,11 +2,11 @@ Halo API
 ---------------
 <img src="http://i.imgur.com/EP1ilsq.png?1" />
 
-A C# Wrapper for the official Halo 5 API that can be seen at [http://developer.haloapi.com](http://developer.haloapi.com) - Easy to use, and implement. 
+A C# Wrapper for the official Halo 5 API that can be seen at [http://developer.haloapi.com](http://developer.haloapi.com) - Easy to use, and implement. It contains all current endpoints, tests, a rate handler and a cache system!
 
-Enjoy Halo 5 Guardians Game Data faster than ever before with this wrapper. Currently a WIP and soon to be finished and polished up, the API is updated almost daily with optimisations and more! Download it now, or utilise it via Nuget!
+Enjoy Halo 5 Guardians Game Data faster than ever before with this wrapper. Currently a WIP and soon to be finished and polished up, the API is updated almost daily with optimisations and more! Download it now, or utilise it via **NuGet**!
 
-###Current Version: 0.2.0
+###Current Version: 1.0.1
 ###Supported Features
 - Rate Handling and Limit on Requests!
 - Caching of Requests (hourly stats/daily meta)!
@@ -30,20 +30,23 @@ Enjoy Halo 5 Guardians Game Data faster than ever before with this wrapper. Curr
 - Get Flexible Stats
 - Get Game Base Variants
 - Get Game Variants
-- *NEW* Get Impulses
-- *NEW* Get Map Variants
-- *NEW* Get Maps
-- *NEW* Get Medals
-- *NEW* Get Playlists
-- *NEW* Get Requisition Pack
-- *NEW* Get Requistion
-- *NEW* Get Skulls
-- *NEW* Get Spartan Ranks
-- *NEW* Get Team Colours 
-- *NEW* Get Vehicles 
-- *NEW* Get Weapons 
+- Get Impulses
+- Get Map Variants
+- Get Maps
+- Get Medals
+- Get Playlists
+- Get Requisition Pack
+- Get Requistion
+- Get Skulls
+- Get Spartan Ranks
+- Get Team Colours 
+- Get Vehicles 
+- Get Weapons 
 
-Only one more set of endpoints to do until we hit the v1 release, at which point, I will begin refactoring and adding in advanced functionality to the Halo API!
+**Profile**
+- *NEW* Get Emblem Image
+- *NEW* Get Spartan Image
+
 
 ####Usage
 
@@ -61,7 +64,6 @@ var gameVariants = playerMatches.Results.Select(r => r.GameVariants);
 ```
 
 ####Future Features On the way
-- Adding final endpoints
 - More advanced logic and determination
 - Culminating results into richer data
 

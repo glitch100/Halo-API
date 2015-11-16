@@ -183,5 +183,30 @@ namespace HaloEzAPI
             }
 
         }
+
+        public static class Profile
+        {
+            internal static readonly string MinorPrefix = "profile";
+
+            public static Uri GetEmblemImage(string gamerTag, int size = 256)
+            {
+                var values = new NameValueCollection {{"size", size.ToString()}};
+
+                var baseUrl = string.Format("{0}/{1}/{2}/profiles/{3}/emblem", MajorPrefix, MinorPrefix, Title,gamerTag);
+                return values.BuildUri(baseUrl);
+            }   
+
+            public static Uri GetSpartanImage(string gamerTag, int size = 256, CropType cropType = CropType.Full)
+            {
+                var values = new NameValueCollection
+                {
+                    {"size", size.ToString()},
+                    {"crop", cropType.ToString().ToLower()}
+                };
+
+                var baseUrl = string.Format("{0}/{1}/{2}/profiles/{3}/spartan", MajorPrefix, MinorPrefix, Title, gamerTag);
+                return values.BuildUri(baseUrl);
+            }   
+        }
     }
 }

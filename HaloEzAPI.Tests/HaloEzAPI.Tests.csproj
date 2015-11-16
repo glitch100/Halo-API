@@ -40,6 +40,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Net.Http.Extensions, Version=2.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\HaloEzAPI\packages\Microsoft.Net.Http.2.2.29\lib\net45\System.Net.Http.Extensions.dll</HintPath>
@@ -76,6 +77,11 @@
     <Compile Include="HaloAPIServiceTests\MetaData\GetRequisitionTests.cs" />
     <Compile Include="HaloAPIServiceTests\MetaData\GetSkullsTests.cs" />
     <Compile Include="HaloAPIServiceTests\MetaData\GetSpartanRanksTests.cs" />
+    <Compile Include="HaloAPIServiceTests\MetaData\GetVehiclesTests.cs" />
+    <Compile Include="HaloAPIServiceTests\MetaData\GetWeaponsTests.cs" />
+    <Compile Include="HaloAPIServiceTests\Profile\GetProfileEmblemTests.cs" />
+    <Compile Include="HaloAPIServiceTests\Profile\GetProfileImageTests.cs" />
+    <Compile Include="HaloAPIServiceTests\Profile\GetSpartanImageTests.cs" />
     <Compile Include="HaloAPIServiceTests\Stats\GetCustomGameServiceRecordsTests.cs" />
     <Compile Include="HaloAPIServiceTests\Stats\GetWarzoneServiceRecordsTests.cs" />
     <Compile Include="RequestRateHttpClientTests\GetRequestTests.cs" />

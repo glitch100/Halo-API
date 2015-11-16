@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Drawing;
 using System.Threading.Tasks;
 using HaloEzAPI.Abstraction.Enum;
 using HaloEzAPI.Model.Response.MetaData;
@@ -40,5 +41,7 @@ namespace HaloEzAPI
         Task<IEnumerable<TeamColor>> GetTeamColours();
         Task<IEnumerable<Vehicle>> GetVehicles();
         Task<IEnumerable<Weapon>> GetWeapons();
+        Task<Image> GetProfileEmblem(string gamerTag, int size = 256);
+        Task<Image> GetSpartanImage(string gamerTag, int size = 256, CropType cropType = CropType.Full);
     }
 }

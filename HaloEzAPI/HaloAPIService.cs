@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Drawing;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -19,6 +20,7 @@ namespace HaloEzAPI
     {
         private const int StatCacheExpiry = 1;
         private const int MetaCacheExpiry = 24;
+        private const int ProfileCacheExpirty = 24;
 
         public HaloAPIService(string apiToken, string baseApiUrl = "https://www.haloapi.com")
         {
@@ -26,7 +28,22 @@ namespace HaloEzAPI
             RequestRateHttpClient.SetAPIToken(apiToken);
         }
 
-        private async Task<T> HandleResponse<T>(HttpResponseMessage message)  where T : class 
+        private async Task<Image> HandleImageResponse(HttpResponseMessage message)
+        {
+            if (message.IsSuccessStatusCode)
+            {
+                Image image;
+                using (var stream = await message.Content.ReadAsStreamAsync())
+                {
+                    image = Image.FromStream(stream);
+                }
+                return image;
+            }
+            BaseHandleResponse(message);
+            throw new HaloAPIException(string.Format("Unknown Error in HandleImageResponse: {0}", message.RequestMessage));
+        }
+
+        private async Task<T> HandleResponse<T>(HttpResponseMessage message) where T : class
         {
             if (message.IsSuccessStatusCode)
             {
@@ -38,6 +55,12 @@ namespace HaloEzAPI
                 }
                 return messageObject;
             }
+            BaseHandleResponse(message);
+            throw new HaloAPIException(string.Format("Unknown Error in HandleResponse: {0}", message.RequestMessage));
+        }
+
+        internal void BaseHandleResponse(HttpResponseMessage message)
+        {
             if (message.StatusCode == HttpStatusCode.NotFound)
             {
                 throw new HaloAPIException(message.ReasonPhrase);
@@ -58,7 +81,19 @@ namespace HaloEzAPI
             {
                 throw new HaloAPIException(CommonErrorMessages.TooManyRequests);
             }
-            throw new HaloAPIException(string.Format("Unknown Error in HandleResponse: {0}",message.RequestMessage));
+        }
+
+        private async Task<Image> ProcessImageRequest(Uri endpoint, int cacheExpiryMin)
+        {
+            string key = endpoint.AbsoluteUri;
+            if (CacheManager.Contains(key))
+            {
+                return CacheManager.Get<Image>(key);
+            }
+            var message = await RequestRateHttpClient.GetRequest(endpoint);
+            var messageObject = await HandleImageResponse(message);
+            CacheManager.Add<Image>(messageObject, key, cacheExpiryMin);
+            return messageObject;
         }
 
         private async Task<T> ProcessRequest<T>(Uri endpoint,int cacheExpiryMin) where T : class
@@ -293,6 +328,18 @@ namespace HaloEzAPI
             return await ProcessRequest<IEnumerable<Weapon>>(Endpoints.MetaData.GetWeapons(), MetaCacheExpiry);
         }
 
+        #endregion
+
+        #region Profile
+        public async Task<Image> GetProfileEmblem(string gamerTag, int size = 256)
+        {
+            return await ProcessImageRequest(Endpoints.Profile.GetEmblemImage(gamerTag, size), ProfileCacheExpirty);
+        }
+
+        public async Task<Image> GetSpartanImage(string gamerTag, int size = 256, CropType cropType = CropType.Full)
+        {
+            return await ProcessImageRequest(Endpoints.Profile.GetSpartanImage(gamerTag, size, cropType), ProfileCacheExpirty);
+        }
         #endregion
     }
 }
