@@ -1,10 +1,11 @@
 using System;
 using System.Collections.Generic;
 using HaloEzAPI.Abstraction.Enum;
+using HaloEzAPI.Abstraction.Interfaces;
 
 namespace HaloEzAPI.Model.Response.MetaData
 {
-    public class GameBaseVariant
+    public class GameBaseVariant : IGuidContentIds
     {
         public string Name { get; set; }
         public string InternalName { get; set; }

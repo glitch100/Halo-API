@@ -1,10 +1,11 @@
 using System;
 using System.Collections.Generic;
 using HaloEzAPI.Abstraction.Enum;
+using HaloEzAPI.Abstraction.Interfaces;
 
 namespace HaloEzAPI.Model.Response.MetaData
 {
-    public class Commendation
+    public class Commendation : IGuidContentIds, IDetail
     {
         public CommendationType Type { get; set; }
         public string Name { get; set; }

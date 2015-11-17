@@ -1,9 +1,10 @@
 using System;
 using HaloEzAPI.Abstraction.Enum;
+using HaloEzAPI.Abstraction.Interfaces;
 
 namespace HaloEzAPI.Model.Response.MetaData
 {
-    public class Enemy
+    public class Enemy : IDetail
     {
         public Faction Faction { get; set; }
         public string Name { get; set; }

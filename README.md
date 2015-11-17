@@ -6,7 +6,9 @@ A C# Wrapper for the official Halo 5 API that can be seen at [http://developer.h
 
 Enjoy Halo 5 Guardians Game Data faster than ever before with this wrapper. Currently a WIP and soon to be finished and polished up, the API is updated almost daily with optimisations and more! Download it now, or utilise it via **NuGet**!
 
-###Current Version: 1.0.1
+###Current Version: 1.0.2
+Release Notes: Bug fixes, some minor refactoring, and removing disabled API Key, as well as adding in the ability to change the seconds limit and concurrent request limit.
+
 ###Supported Features
 - Rate Handling and Limit on Requests!
 - Caching of Requests (hourly stats/daily meta)!
@@ -44,8 +46,8 @@ Enjoy Halo 5 Guardians Game Data faster than ever before with this wrapper. Curr
 - Get Weapons 
 
 **Profile**
-- *NEW* Get Emblem Image
-- *NEW* Get Spartan Image
+- Get Emblem Image
+- Get Spartan Image
 
 
 ####Usage

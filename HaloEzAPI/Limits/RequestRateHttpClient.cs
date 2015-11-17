@@ -14,8 +14,8 @@ namespace HaloEzAPI.Limits
     public static class RequestRateHttpClient
     {
         private static readonly HttpClient HttpClient;
-        private static readonly SemaphoreSlim RateSemaphore;
-        private const int Limit = 10;
+        private static SemaphoreSlim _rateSemaphore;
+        private static int _limit = 10;
         /// <summary>
         /// Number of seconds the for the Limit of requests (10 seconds for 10 requests etc)
         /// </summary>
@@ -30,7 +30,7 @@ namespace HaloEzAPI.Limits
                 AutomaticDecompression =  DecompressionMethods.Deflate | DecompressionMethods.GZip 
             };
             HttpClient = new HttpClient(httpClientHandler);
-            RateSemaphore = new SemaphoreSlim(Limit,Limit);
+            _rateSemaphore = new SemaphoreSlim(_limit,_limit);
             Stopwatch = new Stopwatch();
         }
 
@@ -49,7 +49,25 @@ namespace HaloEzAPI.Limits
                 HttpClient.DefaultRequestHeaders.Remove(APITokenHeader);
             }
             HttpClient.DefaultRequestHeaders.Add(APITokenHeader, token);
+        }
 
+        /// <summary>
+        /// Recreates the Semaphore, and reassigns a Limit
+        /// </summary>
+        /// <param name="limit">Request limit</param>
+        public static void SetRequestLimit(int limit)
+        {
+            _limit = limit;
+            _rateSemaphore = new SemaphoreSlim(limit, limit);
+        }
+
+        /// <summary>
+        /// Assigns a new seconds limit
+        /// </summary>
+        /// <param name="limit">Seconds limit</param>
+        public static void SetSecondsLimit(int limit)
+        {
+            SecondsLimit = limit;
         }
 
         /// <summary>
@@ -59,8 +77,8 @@ namespace HaloEzAPI.Limits
         /// <returns></returns>
         public static async Task<HttpResponseMessage> GetRequest(Uri endpoint)
         {
-            await RateSemaphore.WaitAsync();
-            if (Stopwatch.Elapsed.Seconds >= SecondsLimit || RateSemaphore.CurrentCount == 0 || _concurrentRequests == Limit)
+            await _rateSemaphore.WaitAsync();
+            if (Stopwatch.Elapsed.Seconds >= SecondsLimit || _rateSemaphore.CurrentCount == 0 || _concurrentRequests == _limit)
             {
                 int seconds = Stopwatch.Elapsed.Seconds;
 
@@ -71,8 +89,8 @@ namespace HaloEzAPI.Limits
             _concurrentRequests++;
             var task = await HttpClient.GetAsync(endpoint).ContinueWith(t =>
             {
-                RateSemaphore.Release();
-                if (RateSemaphore.CurrentCount == Limit && Stopwatch.Elapsed.Seconds >= SecondsLimit)
+                _rateSemaphore.Release();
+                if (_rateSemaphore.CurrentCount == _limit && Stopwatch.Elapsed.Seconds >= SecondsLimit)
                 {
                     Stopwatch.Restart();
                     _concurrentRequests --;

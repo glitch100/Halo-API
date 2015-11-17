@@ -1,8 +1,9 @@
 ﻿using System;
+using HaloEzAPI.Abstraction.Interfaces;
 
 namespace HaloEzAPI.Model.Response.MetaData
 {
-    public class TeamColor
+    public class TeamColor : IDetail
     {
         public string Name { get; set; }
         public string Description { get; set; }

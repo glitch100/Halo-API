@@ -1,9 +1,10 @@
 using System;
 using HaloEzAPI.Abstraction.Enum;
+using HaloEzAPI.Abstraction.Interfaces;
 
 namespace HaloEzAPI.Model.Response.MetaData
 {
-    public class FlexibleStat
+    public class FlexibleStat : IGuidContentIds
     {
         public string Name { get; set; }
         public FlexibleStatType Type { get; set; }
