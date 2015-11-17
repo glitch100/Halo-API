@@ -1,9 +1,10 @@
 ﻿using System;
 using HaloEzAPI.Abstraction.Enum;
+using HaloEzAPI.Abstraction.Interfaces;
 
 namespace HaloEzAPI.Model.Response.MetaData
 {
-    public class CampaignMission
+    public class CampaignMission : IGuidContentIds, IDetail
     {
         public int MissionNumber { get; set; }
         public string Name { get; set; }

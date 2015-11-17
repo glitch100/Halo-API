@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using HaloEzAPI.Abstraction.Interfaces;
 
 namespace HaloEzAPI.Model.Response.MetaData
 {
-    public class Reward
+    public class Reward : IGuidContentIds
     {
         public int XP { get; set; }
         public IEnumerable<RequisitionPack> RequisitionPacks { get; set; }

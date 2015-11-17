@@ -1,8 +1,9 @@
 using System;
+using HaloEzAPI.Abstraction.Interfaces;
 
 namespace HaloEzAPI.Model.Response.MetaData
 {
-    public class GameVariant
+    public class GameVariant : IGuidContentIds
     {
         public string Name { get; set; }
         public string Description { get; set; }

@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using HaloEzAPI.Abstraction.Enum;
+using HaloEzAPI.Abstraction.Interfaces;
 
 namespace HaloEzAPI.Model.Response.MetaData
 {
-    public class Requisition
+    public class Requisition : IGuidContentIds, IDetail
     {
         public IEnumerable<GameMode> GameModes { get; set; }
         public string Name { get; set; }

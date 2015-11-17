@@ -1,8 +1,9 @@
 using System;
+using HaloEzAPI.Abstraction.Interfaces;
 
 namespace HaloEzAPI.Model.Response.MetaData
 {
-    public class MapVariant
+    public class MapVariant : IDetail, IGuidContentIds
     {
         public string Name { get; set; }
         public string Description { get; set; }

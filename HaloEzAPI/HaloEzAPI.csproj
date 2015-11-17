@@ -77,7 +77,9 @@
     <Compile Include="Abstraction\Enum\ResultCode.cs" />
     <Compile Include="Abstraction\Enum\RewardSourceType.cs" />
     <Compile Include="Abstraction\Enum\WeaponType.cs" />
+    <Compile Include="Abstraction\Interfaces\IDetail.cs" />
     <Compile Include="Abstraction\Interfaces\IEquipmentDamageDealt.cs" />
+    <Compile Include="Abstraction\Interfaces\IGuidContentIds.cs" />
     <Compile Include="Abstraction\Interfaces\IMatchVariants.cs" />
     <Compile Include="Abstraction\Interfaces\IMeleeDamageDealt.cs" />
     <Compile Include="Abstraction\Interfaces\IPlayerKDA.cs" />
@@ -168,6 +170,7 @@
     <Compile Include="Model\Response\Stats\TeamStat.cs" />
     <Compile Include="Model\Response\Stats\TopGameBaseVariant.cs" />
     <Compile Include="Model\Response\Stats\Variant.cs" />
+    <Compile Include="Model\Response\Stats\WarzonePlayerStat.cs" />
     <Compile Include="Model\Response\Stats\WarzonePostGameReport.cs" />
     <Compile Include="Model\Response\Stats\WarzoneServiceRecord.cs" />
     <Compile Include="Model\Response\Stats\WarzoneServiceRecordQueryResponse.cs" />
@@ -177,6 +180,7 @@
     <Compile Include="Model\Response\Stats\XpInfo.cs" />
     <Compile Include="Extensions\NameValueCollectionExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResponseProcessor.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -1,9 +1,10 @@
 using System;
 using HaloEzAPI.Abstraction.Enum;
+using HaloEzAPI.Abstraction.Interfaces;
 
 namespace HaloEzAPI.Model.Response.MetaData
 {
-    public class Medal
+    public class Medal : IDetail
     {
         public string Name { get; set; }
         public string Description { get; set; }
