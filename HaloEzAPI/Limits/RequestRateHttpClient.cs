@@ -80,9 +80,9 @@ namespace HaloEzAPI.Limits
             await _rateSemaphore.WaitAsync();
             if (Stopwatch.Elapsed.Seconds >= SecondsLimit || _rateSemaphore.CurrentCount == 0 || _concurrentRequests == _limit)
             {
-                int seconds = Stopwatch.Elapsed.Seconds;
-
-                Thread.Sleep((SecondsLimit - seconds) * 1000);
+                int seconds = (SecondsLimit - Stopwatch.Elapsed.Seconds) * 1000;
+                int sleep = seconds > 0 ? seconds : seconds * -1;
+                Thread.Sleep(sleep);
                 _concurrentRequests = 0;
                 Stopwatch.Restart();
             }
