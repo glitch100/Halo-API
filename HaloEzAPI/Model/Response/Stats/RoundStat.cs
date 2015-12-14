@@ -4,6 +4,6 @@ namespace HaloEzAPI.Model.Response.Stats
     {
         public int RoundNumber { get; set; }
         public int Rank { get; set; }
-        public int Score { get; set; }
+        public uint Score { get; set; }
     }
 }

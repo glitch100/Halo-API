@@ -2,9 +2,9 @@ namespace HaloEzAPI.Model.Response.Stats
 {
     public class CampaignPlayerStat : PlayerMatchBreakdown
     {
-        public int BiggestKillScore { get; set; }
+        public uint BiggestKillScore { get; set; }
         public FlexibleStats FlexibleStats { get; set; }
-        public int Score { get; set; }
+        public uint Score { get; set; }
         public Player Player { get; set; }
         public int TeamId { get; set; }
         public int Rank { get; set; }
