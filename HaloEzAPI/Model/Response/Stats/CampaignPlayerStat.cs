@@ -5,7 +5,7 @@ namespace HaloEzAPI.Model.Response.Stats
 {
     public class CampaignPlayerStat : PlayerMatchBreakdown
     {
-        public uint BiggestKillScore { get; set; }
+        public int BiggestKillScore { get; set; }
         public FlexibleStats FlexibleStats { get; set; }
         [JsonConverter(typeof(ScoreConverter))]
         public int Score { get; set; }
