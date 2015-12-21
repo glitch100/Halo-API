@@ -1,4 +1,5 @@
 using System;
+using HaloEzAPI.Converter;
 using Newtonsoft.Json;
 
 namespace HaloEzAPI.Model.Response.Stats
@@ -7,7 +8,7 @@ namespace HaloEzAPI.Model.Response.Stats
     {
         public Guid Id { get; set; }
         [JsonIgnore]
-        [JsonConverter(typeof(Converter.JSONTimeSpanConverter))]
+        [JsonConverter(typeof(TimeSpanConverter))]
         public TimeSpan Timelapse { get; set; }
     }
 }

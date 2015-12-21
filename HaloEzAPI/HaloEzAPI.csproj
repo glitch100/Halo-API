@@ -87,7 +87,8 @@
     <Compile Include="Abstraction\Interfaces\IRangeDamageDealt.cs" />
     <Compile Include="Abstraction\Interfaces\IWinLoss.cs" />
     <Compile Include="Caching\CacheManager.cs" />
-    <Compile Include="Converter\JSONTimeSpanConverter.cs" />
+    <Compile Include="Converter\TimeSpanConverter.cs" />
+    <Compile Include="Converter\ScoreConverter.cs" />
     <Compile Include="Endpoints.cs" />
     <Compile Include="HaloAPIService.cs" />
     <Compile Include="IHaloAPIService.cs" />
