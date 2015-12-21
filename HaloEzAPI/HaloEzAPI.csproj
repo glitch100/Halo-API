@@ -114,6 +114,7 @@
     <Compile Include="Model\Response\MetaData\Requisition.cs" />
     <Compile Include="Model\Response\MetaData\RequisitionPack.cs" />
     <Compile Include="Model\Response\MetaData\Reward.cs" />
+    <Compile Include="Model\Response\MetaData\Season.cs" />
     <Compile Include="Model\Response\MetaData\Skull.cs" />
     <Compile Include="Model\Response\MetaData\SpartanRank.cs" />
     <Compile Include="Model\Response\MetaData\SpriteLocation.cs" />

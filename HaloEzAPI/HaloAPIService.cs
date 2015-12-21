@@ -249,6 +249,11 @@ namespace HaloEzAPI
             return await _responseProcessor.ProcessRequest<IEnumerable<Weapon>>(Endpoints.MetaData.GetWeapons(), MetaCacheExpiry);
         }
 
+        public async Task<IEnumerable<Season>> GetSeasons()
+        {
+            return await _responseProcessor.ProcessRequest<IEnumerable<Season>>(Endpoints.MetaData.GetSeasons(), MetaCacheExpiry);
+        }
+
         #endregion
 
         #region Profile

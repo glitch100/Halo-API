@@ -182,6 +182,10 @@ namespace HaloEzAPI
                 return new Uri(string.Format("{0}/{1}/{2}/metadata/weapons", MajorPrefix, MinorPrefix, Title));
             }
 
+            public static Uri GetSeasons()
+            {
+                return new Uri(string.Format("{0}/{1}/{2}/metadata/seasons", MajorPrefix, MinorPrefix, Title));
+            }
         }
 
         public static class Profile

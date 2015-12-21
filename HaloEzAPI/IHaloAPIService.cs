@@ -41,6 +41,7 @@ namespace HaloEzAPI
         Task<IEnumerable<TeamColor>> GetTeamColours();
         Task<IEnumerable<Vehicle>> GetVehicles();
         Task<IEnumerable<Weapon>> GetWeapons();
+        Task<IEnumerable<Season>> GetSeasons();
 
         //Profile
         Task<Image> GetProfileEmblem(string gamerTag, int size = 256);

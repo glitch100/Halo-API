@@ -13,7 +13,7 @@ namespace HaloEzAPI.Tests.HaloAPIServiceTests
         [SetUp]
         public void SetUp()
         {
-            HaloApiService = new HaloAPIService("YOURTOKENHERE");
+            HaloApiService = new HaloAPIService("c1a6f9ae014644aca7d2887258b292d5");
             CacheManager.RemoveAll();
         }
 
