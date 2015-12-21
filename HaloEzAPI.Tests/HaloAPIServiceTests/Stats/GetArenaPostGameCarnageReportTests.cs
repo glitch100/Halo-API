@@ -43,5 +43,18 @@ namespace HaloEzAPI.Tests.HaloAPIServiceTests.Stats
             var result = await HaloApiService.GetArenaPostGameCarnageReport(_validGuid);
             Assert.IsFalse(result.PlayerStats.Any(ps => ps.Player.Gamertag == "CCCCCCCCCCCCCCCCCCCC"));
         }
+
+        [Test]
+        [TestCase("eaba11d8-ac94-432d-85f9-aed32d294e91")]
+        public async void ProvideValidMatchId_MetaCommendationDeltasAreSet(string matchId)
+        {
+            var result = await HaloApiService.GetArenaPostGameCarnageReport(new Guid(matchId));
+            
+            // The player earned the final level of the "Storm the Walls" Meta commendation
+            var player = result.PlayerStats.FirstOrDefault(ps => ps.Player.Gamertag == "N 2the eighbor");
+            Assert.IsNotNull(player, "Player should exist in results");
+            var guid = player.MetaCommendationDeltas.First().PreviousMetRequirements.First().Guid;
+            Assert.AreEqual(new Guid("af14745e-776d-4307-8e1d-3c0fa0520464"), guid, "Requirement guid should be correct");
+        }
     }
 }

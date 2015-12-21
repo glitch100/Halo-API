@@ -154,7 +154,7 @@
     <Compile Include="Model\Response\Stats\PlayerMatchBreakdown.cs" />
     <Compile Include="Model\Response\Stats\PlayerMatches.cs" />
     <Compile Include="Model\Response\Stats\MetaCommendationDelta.cs" />
-    <Compile Include="Model\Response\Stats\MetRequirement.cs" />
+    <Compile Include="Model\Response\Stats\RawGuid.cs" />
     <Compile Include="Model\Response\Stats\Player.cs" />
     <Compile Include="Model\Response\Stats\BasePlayerStat.cs" />
     <Compile Include="Model\Response\Stats\ProgressiveCommendationDelta.cs" />
