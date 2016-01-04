@@ -30,5 +30,14 @@ namespace HaloEzAPI.Tests.HaloAPIServiceTests.Stats
             var result = await HaloApiService.GetCustomPostGameCarnageReport(_validGuid);
             Assert.IsTrue(result.PlayerStats.Any(ps => ps.Player.Gamertag.Equals(gamerTag,StringComparison.InvariantCultureIgnoreCase)));
         }
+
+        [Test]
+        [TestCase("fcbd9c03-5602-43cb-97ba-af415137a32b")]
+        public async void ProvideValidMatchId_NegativeScore(string matchId)
+        {
+            var result = await HaloApiService.GetCustomPostGameCarnageReport(new Guid("fcbd9c03-5602-43cb-97ba-af415137a32b"));
+            
+            Assert.AreEqual(-1, result.TeamStats.First().Score);
+        }
     }
 }

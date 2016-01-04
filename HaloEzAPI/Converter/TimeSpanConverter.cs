@@ -7,7 +7,7 @@ namespace HaloEzAPI.Converter
     /// <summary>
     /// Taken from: http://stackoverflow.com/questions/12633588/parsing-iso-duration-with-json-net
     /// </summary>
-    public class JSONTimeSpanConverter : JsonConverter
+    public class TimeSpanConverter : JsonConverter
     {
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
@@ -16,7 +16,7 @@ namespace HaloEzAPI.Converter
             serializer.Serialize(writer, tsString);
         }
 
-        public override object ReadJson(JsonReader reader, Type objectType, object existingValue,JsonSerializer serializer)
+        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
             if (reader.TokenType == JsonToken.Null)
             {

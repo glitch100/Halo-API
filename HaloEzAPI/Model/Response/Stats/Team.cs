@@ -1,4 +1,7 @@
-﻿namespace HaloEzAPI.Model.Response.Stats
+﻿using HaloEzAPI.Converter;
+using Newtonsoft.Json;
+
+namespace HaloEzAPI.Model.Response.Stats
 {
     public class Team
     {
@@ -17,7 +20,8 @@
         /// Strongholds = number of points,
         /// Warzone = number of points
         /// </summary>
-        public uint Score { get; set; }
+        [JsonConverter(typeof(ScoreConverter))]
+        public int Score { get; set; }
 
         //The team's rank at the end of the match.
         public int Rank { get; set; }

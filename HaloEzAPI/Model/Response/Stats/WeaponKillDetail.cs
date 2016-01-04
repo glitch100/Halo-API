@@ -1,4 +1,5 @@
 using System;
+using HaloEzAPI.Converter;
 using Newtonsoft.Json;
 
 namespace HaloEzAPI.Model.Response.Stats
@@ -11,7 +12,7 @@ namespace HaloEzAPI.Model.Response.Stats
         public double TotalDamageDealt { get; set; }
         public int TotalShotsFired { get; set; }
         public int TotalShotsLanded { get; set; }
-        [JsonConverter(typeof(Converter.JSONTimeSpanConverter))]
+        [JsonConverter(typeof(TimeSpanConverter))]
         public TimeSpan TotalPossessionTime { get; set; }
     }
 }
