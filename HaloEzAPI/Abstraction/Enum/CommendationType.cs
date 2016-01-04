@@ -3,6 +3,7 @@
     public enum CommendationType
     {
         Progressive,
-        Meta
+        Meta,
+        Daily
     }
 }
