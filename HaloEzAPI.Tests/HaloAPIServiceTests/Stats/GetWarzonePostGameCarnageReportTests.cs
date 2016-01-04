@@ -43,5 +43,18 @@ namespace HaloEzAPI.Tests.HaloAPIServiceTests.Stats
             var result = await HaloApiService.GetWarzonePostGameCarnageReport(_validGuid);
             Assert.AreEqual(result.TotalDuration.ToString(),"00:17:16.8890008");
         }
+
+        [Test]
+        [TestCase("ea392dc3-5989-4fa8-b920-08e265220ffc")]
+        public async void ProvideValidMatchId_MetaCommendationDeltasAreSet(string matchId)
+        {
+            var result = await HaloApiService.GetWarzonePostGameCarnageReport(new Guid(matchId));
+
+            // The player earned the final level of the "Assistant" Meta commendation
+            var player = result.PlayerStats.FirstOrDefault(ps => ps.Player.Gamertag == "larry chimp man");
+            Assert.IsNotNull(player, "Player should exist in results");
+            var guid = player.MetaCommendationDeltas.First().PreviousMetRequirements.First().Guid;
+            Assert.AreEqual(new Guid("7077a782-ccba-4b0b-b2fd-5023a61fbb4c"), guid, "Requirement guid should be correct");
+        }
     }
 }
