@@ -78,6 +78,7 @@
     <Compile Include="HaloAPIServiceTests\MetaData\GetSeasonsTests.cs" />
     <Compile Include="HaloAPIServiceTests\MetaData\GetSkullsTests.cs" />
     <Compile Include="HaloAPIServiceTests\MetaData\GetSpartanRanksTests.cs" />
+    <Compile Include="HaloAPIServiceTests\MetaData\GetTeamColorsTests.cs" />
     <Compile Include="HaloAPIServiceTests\MetaData\GetVehiclesTests.cs" />
     <Compile Include="HaloAPIServiceTests\MetaData\GetWeaponsTests.cs" />
     <Compile Include="HaloAPIServiceTests\Profile\GetProfileEmblemTests.cs" />

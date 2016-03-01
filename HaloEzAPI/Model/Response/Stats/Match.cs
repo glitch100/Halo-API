@@ -20,10 +20,13 @@ namespace HaloEzAPI.Model.Response.Stats
         /// Null for campaign & custom games. 
         /// Playlists are available via the Metadata API.
         /// </summary>
+        /// 
         public Guid? HopperId { get; set; }
+        public Link Links { get; set; } 
         public MatchCompletedDate MatchCompletedDate { get; set; }
         public IEnumerable<Team> Teams { get; set; }
         public IEnumerable<MatchPlayer> Players { get; set; }
         public bool IsTeamGame { get; set; }
+        public string SeasonId { get; set; }
     }
 }

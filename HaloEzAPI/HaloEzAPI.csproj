@@ -140,6 +140,8 @@
     <Compile Include="Model\Response\Stats\CustomGameServiceRecordQueryResponse.cs" />
     <Compile Include="Model\Response\Stats\CustomGameStat.cs" />
     <Compile Include="Model\Response\Stats\CustomPostGameReport.cs" />
+    <Compile Include="Model\Response\Stats\Link.cs" />
+    <Compile Include="Model\Response\Stats\LinkItem.cs" />
     <Compile Include="Model\Response\Stats\StatsEnemy.cs" />
     <Compile Include="Model\Response\Error\CommonErrorMessages.cs" />
     <Compile Include="Model\Response\Error\HaloAPIError.cs" />

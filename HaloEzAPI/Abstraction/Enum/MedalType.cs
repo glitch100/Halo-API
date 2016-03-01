@@ -17,5 +17,6 @@ namespace HaloEzAPI.Abstraction.Enum
         KillingSpree,
         CaptureTheFlag,
         WeaponProficiency,
+        Ball,
     }
 }
