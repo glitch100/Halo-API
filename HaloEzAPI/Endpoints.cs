@@ -33,6 +33,11 @@ namespace HaloEzAPI
                 }
                 string baseUrl = string.Format("{0}/{1}/{2}/players/{3}/matches?",MajorPrefix,MinorPrefix,Title,gamertag);
                 return values.BuildUri(baseUrl);
+            }            
+            
+            public static Uri GetEventsForMatch(string matchId)
+            {
+                return  new Uri(string.Format("{0}/{1}/{2}/matches/{3}/events",MajorPrefix,MinorPrefix,Title,matchId));
             }
 
             public static Uri GetPostGameCarnageReport(string matchId, GameMode gameMode)

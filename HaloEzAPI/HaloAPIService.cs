@@ -48,7 +48,16 @@ namespace HaloEzAPI
             }
             return await _responseProcessor.ProcessRequest<PlayerMatches>(Endpoints.Stats.GetMatchesForPlayer(gamerTag, gameMode, start, count), StatCacheExpiry);
         }
-        
+
+        public async Task<MatchEvent> GetEventsForMatch(string matchId)
+        {
+            if (string.IsNullOrEmpty(matchId))
+            {
+                throw new HaloAPIException(CommonErrorMessages.InvalidMatchId);
+            }
+            return await _responseProcessor.ProcessRequest<MatchEvent>(Endpoints.Stats.GetEventsForMatch(matchId), StatCacheExpiry);
+        }
+
         #region Post Game Carnage Report
 
         /// <summary>

@@ -1,4 +1,5 @@
-﻿using HaloEzAPI.Abstraction.Enum;
+﻿using System.Runtime.Remoting;
+using HaloEzAPI.Abstraction.Enum;
 using HaloEzAPI.Model.Response.Error;
 using NUnit.Framework;
 

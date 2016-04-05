@@ -85,6 +85,7 @@
     <Compile Include="HaloAPIServiceTests\Profile\GetProfileImageTests.cs" />
     <Compile Include="HaloAPIServiceTests\Profile\GetSpartanImageTests.cs" />
     <Compile Include="HaloAPIServiceTests\Stats\GetCustomGameServiceRecordsTests.cs" />
+    <Compile Include="HaloAPIServiceTests\Stats\GetMatchEventsTests.cs" />
     <Compile Include="HaloAPIServiceTests\Stats\GetWarzoneServiceRecordsTests.cs" />
     <Compile Include="RequestRateHttpClientTests\GetRequestTests.cs" />
     <Compile Include="RequestRateHttpClientTests\SetAPITokenTests.cs" />
