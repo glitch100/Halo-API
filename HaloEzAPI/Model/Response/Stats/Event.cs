@@ -19,11 +19,11 @@ namespace HaloEzAPI.Model.Response.Stats
         public bool IsWeapon { get; set; }
         public Player Killer { get; set; }
         public KillerAgent KillerAgent { get; set; }
-        public IEnumerable<int> KillerAttachmentIds { get; set; }
-        public uint KillerStockId { get; set; }
+        public IEnumerable<uint> KillerWeaponAttachmentIds { get; set; }
+        public uint KillerWeaponStockId { get; set; }
         public WorldLocation KillerWorldLocation { get; set; }
         public Player Victim { get; set; }
-        public IEnumerable<int> VictimAttachmentIds { get; set; }
+        public IEnumerable<uint> VictimAttachmentIds { get; set; }
         public uint VictimStockId { get; set; }
         public WorldLocation VictimWorldLocation { get; set; }
         public string EventName { get; set; }

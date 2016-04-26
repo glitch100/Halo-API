@@ -27,6 +27,6 @@ namespace HaloEzAPI.Model.Response.Stats
         public IEnumerable<Team> Teams { get; set; }
         public IEnumerable<MatchPlayer> Players { get; set; }
         public bool IsTeamGame { get; set; }
-        public string SeasonId { get; set; }
+        public Guid? SeasonId { get; set; }
     }
 }
