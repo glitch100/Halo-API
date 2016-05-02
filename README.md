@@ -6,10 +6,11 @@ A C# Wrapper for the official Halo 5 API that can be seen at [http://developer.h
 
 Enjoy Halo 5 Guardians Game Data faster than ever before with this wrapper. Currently a WIP and soon to be finished and polished up, the API is updated almost daily with optimisations and more! Download it now, or utilise it via **NuGet**!
 
-###Current Version: 1.2.3
+###Current Version: 1.2.5
 Release Notes: 
-- Property Renames,
-- Adjusted Types to solve bugs
+- Changelog added
+- Fix to Guid casting via @JacobSnyder
+- New tests
 
 ###Supported Features
 - Rate Handling and Limit on Requests!
