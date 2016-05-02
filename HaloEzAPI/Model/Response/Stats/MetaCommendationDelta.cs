@@ -6,7 +6,7 @@ namespace HaloEzAPI.Model.Response.Stats
     public class MetaCommendationDelta
     {
         public Guid Id { get; set; }
-        public IEnumerable<MetRequirement> PreviousMetRequirements { get; set; } 
-        public IEnumerable<MetRequirement> MetRequirements { get; set; } 
+        public IEnumerable<RawGuid> PreviousMetRequirements { get; set; }
+        public IEnumerable<RawGuid> MetRequirements { get; set; } 
     }
 }

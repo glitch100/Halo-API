@@ -1,5 +1,8 @@
+using System;
+
 namespace HaloEzAPI.Model.Response.Stats
 {
+    [Obsolete("This has been made obsolete. Please check RawGuid instead.", true)]
     public class MetRequirement
     {
         public uint Data1 { get; set; }
