@@ -18,5 +18,6 @@ namespace HaloEzAPI.Abstraction.Enum
         CaptureTheFlag,
         WeaponProficiency,
         Ball,
+        Infection,
     }
 }
