@@ -86,7 +86,10 @@
     <Compile Include="HaloAPIServiceTests\Profile\GetSpartanImageTests.cs" />
     <Compile Include="HaloAPIServiceTests\Stats\GetCustomGameServiceRecordsTests.cs" />
     <Compile Include="HaloAPIServiceTests\Stats\GetMatchEventsTests.cs" />
+    <Compile Include="HaloAPIServiceTests\Stats\PlayerLeaderboardTests.cs" />
+    <Compile Include="HaloAPIServiceTests\UGC\GetGameVariantTests.cs" />
     <Compile Include="HaloAPIServiceTests\Stats\GetWarzoneServiceRecordsTests.cs" />
+    <Compile Include="HaloAPIServiceTests\UGC\GetMapVariantTests.cs" />
     <Compile Include="RequestRateHttpClientTests\GetRequestTests.cs" />
     <Compile Include="RequestRateHttpClientTests\SetAPITokenTests.cs" />
     <Compile Include="HaloAPIServiceTests\BaseHaloAPIServiceTests.cs" />

@@ -11,6 +11,5 @@ namespace HaloEzAPI.Model.Response.Stats
 
         public ResultCode ResultCode { get; set; }
         public T Result { get; set; }
- 
     }
 }

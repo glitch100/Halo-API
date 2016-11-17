@@ -6,7 +6,7 @@ A C# Wrapper for the official Halo 5 API that can be seen at [http://developer.h
 
 Enjoy Halo 5 Guardians Game Data faster than ever before with this wrapper. Currently a WIP and soon to be finished and polished up, the API is updated almost daily with optimisations and more! Download it now, or utilise it via **NuGet**!
 
-###Current Version: 1.2.6
+###Current Version: 1.3.0.0
 
 ###Supported Features
 - Rate Handling and Limit on Requests!
@@ -14,6 +14,7 @@ Enjoy Halo 5 Guardians Game Data faster than ever before with this wrapper. Curr
 - All the Endpoints the API has to offer!
 
 **Stats**
+- PlayerLeaderboard
 - Get Events For Match
 - Get Matches For Player
 - Get Arena PostGame Carnage Report
@@ -42,14 +43,19 @@ Enjoy Halo 5 Guardians Game Data faster than ever before with this wrapper. Curr
 - Get Requistion
 - Get Skulls
 - Get Spartan Ranks
-- Get Team Colours 
-- Get Vehicles 
-- Get Weapons 
+- Get Team Colours
+- Get Vehicles
+- Get Weapons
 
 **Profile**
 - Get Emblem Image
 - Get Spartan Image
 
+**UGC**
+- Get Game Variant
+- Get Map Variant
+- List Game Variants
+- List Map Variants
 
 ####Usage
 
@@ -59,10 +65,10 @@ You can download the source or get it via **NuGet**!
 ```C#
 //Initialize service with API Token. Optionally provide base api url
 var haloApiService = new HaloAPIService("MYAPITOKEN");
-//Retrieve the player matches from an associated gamertag,with optional gamemode, 
+//Retrieve the player matches from an associated gamertag,with optional gamemode,
 //start and count
 var playerMatches = await haloAPIService.GetMatchesForPlayer("Glitch100", GameMode.Arena);
-//Example of returning gamevariants from the match result set 
+//Example of returning gamevariants from the match result set
 var gameVariants = playerMatches.Results.Select(r => r.GameVariants);
 ```
 
@@ -73,7 +79,7 @@ var gameVariants = playerMatches.Results.Select(r => r.GameVariants);
 ----------
 
 
-####Help? 
+####Help?
 Contact me on Twitter **@Glitch100**
 
 ####Notes

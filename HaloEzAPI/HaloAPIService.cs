@@ -9,9 +9,11 @@ using System.Threading.Tasks;
 using HaloEzAPI.Abstraction.Enum;
 using HaloEzAPI.Caching;
 using HaloEzAPI.Limits;
+using HaloEzAPI.Model.Request;
 using HaloEzAPI.Model.Response.Error;
 using HaloEzAPI.Model.Response.MetaData;
 using HaloEzAPI.Model.Response.Stats;
+using HaloEzAPI.Model.Response.UGC;
 using Newtonsoft.Json;
 
 namespace HaloEzAPI
@@ -21,7 +23,8 @@ namespace HaloEzAPI
         private readonly ResponseProcessor _responseProcessor;
         private const int StatCacheExpiry = 1;
         private const int MetaCacheExpiry = 24;
-        private const int ProfileCacheExpirty = 24;
+        private const int ProfileCacheExpiry = 24;
+        private const int UGCCacheExpiry = 2;
 
         public HaloAPIService(string apiToken, string baseApiUrl = "https://www.haloapi.com")
         {
@@ -47,6 +50,18 @@ namespace HaloEzAPI
                 throw new HaloAPIException(CommonErrorMessages.InvalidGamerTag);
             }
             return await _responseProcessor.ProcessRequest<PlayerMatches>(Endpoints.Stats.GetMatchesForPlayer(gamerTag, gameMode, start, count), StatCacheExpiry);
+        }
+
+        /// <summary>
+        /// Gets the Player leaderboard for a season and playlist
+        /// </summary>
+        /// <param name="seasonId">Season Id</param>
+        /// <param name="playlistId">Playlist Id</param>
+        /// <param name="count">Count of results at any one time, defaults to 200, cannot be 0</param>
+        /// <returns></returns>
+        public async Task<PlayerLeaderboardResults> PlayerLeaderboard(string seasonId, string playlistId, int count = 200)
+        {
+            return await _responseProcessor.ProcessRequest<PlayerLeaderboardResults>(Endpoints.Stats.PlayerLeaderboard(seasonId, playlistId, count), StatCacheExpiry);
         }
 
         public async Task<MatchEvent> GetEventsForMatch(string matchId)
@@ -268,12 +283,81 @@ namespace HaloEzAPI
         #region Profile
         public async Task<Image> GetProfileEmblem(string gamerTag, int size = 256)
         {
-            return await _responseProcessor.ProcessImageRequest(Endpoints.Profile.GetEmblemImage(gamerTag, size), ProfileCacheExpirty);
+            return await _responseProcessor.ProcessImageRequest(Endpoints.Profile.GetEmblemImage(gamerTag, size), ProfileCacheExpiry);
         }
 
         public async Task<Image> GetSpartanImage(string gamerTag, int size = 256, CropType cropType = CropType.Full)
         {
-            return await _responseProcessor.ProcessImageRequest(Endpoints.Profile.GetSpartanImage(gamerTag, size, cropType), ProfileCacheExpirty);
+            return await _responseProcessor.ProcessImageRequest(Endpoints.Profile.GetSpartanImage(gamerTag, size, cropType), ProfileCacheExpiry);
+        }
+        #endregion
+
+        #region UGC
+
+        /// <summary>
+        /// Get a specific UGC Game Variant for a specific player via id
+        /// </summary>
+        /// <param name="gamerTag">Players gamertag</param>
+        /// <param name="variantId">Id of the game variant</param>
+        /// <returns></returns>
+        public async Task<UGCGameVariant> GetUGCGameVariant(string gamerTag, string variantId)
+        {
+            if (string.IsNullOrEmpty(gamerTag))
+            {
+                throw new HaloAPIException(CommonErrorMessages.InvalidGamerTag);
+            }
+            return await _responseProcessor.ProcessRequest<UGCGameVariant>(Endpoints.UGC.GetGameVariant(gamerTag, variantId), UGCCacheExpiry);
+        }
+
+        /// <summary>
+        /// Get a specific UGC Map Variant for a specific player via id
+        /// </summary>
+        /// <param name="gamerTag">Players gamertag</param>
+        /// <param name="variantId">Id of the game variant</param>
+        /// <returns></returns>
+        public async Task<UGCBase> GetUGCMapVariant(string gamerTag, string variantId)
+        {
+            if (string.IsNullOrEmpty(gamerTag))
+            {
+                throw new HaloAPIException(CommonErrorMessages.InvalidGamerTag);
+            }
+            return await _responseProcessor.ProcessRequest<UGCBase>(Endpoints.UGC.GetMapVariant(gamerTag, variantId), UGCCacheExpiry);
+        }
+
+        /// <summary>
+        /// Returns a list of UGC Map Variants for a specific player
+        /// </summary>
+        /// <param name="gamerTag">Players gamertag</param>
+        /// <param name="start"></param>
+        /// <param name="count"></param>
+        /// <param name="sort"></param>
+        /// <param name="order"></param>
+        /// <returns></returns>
+        public async Task<UGCSearchResult<UGCBase>> GetUGCMapVariants(string gamerTag, int start, int count, Sort sort, Order order )
+        {
+            if (string.IsNullOrEmpty(gamerTag))
+            {
+                throw new HaloAPIException(CommonErrorMessages.InvalidGamerTag);
+            }
+            return await _responseProcessor.ProcessRequest<UGCSearchResult<UGCBase>>(Endpoints.UGC.ListMapVariants(gamerTag, start, count, sort, order), UGCCacheExpiry);
+        }
+
+        /// <summary>
+        /// Returns a list of UGC Game Variants for a specific player
+        /// </summary>
+        /// <param name="gamerTag">Players gamertag</param>
+        /// <param name="start"></param>
+        /// <param name="count"></param>
+        /// <param name="sort"></param>
+        /// <param name="order"></param>
+        /// <returns></returns>
+        public async Task<UGCSearchResult<UGCBase>> GetUGCGameVariants(string gamerTag, int start, int count, Sort sort, Order order )
+        {
+            if (string.IsNullOrEmpty(gamerTag))
+            {
+                throw new HaloAPIException(CommonErrorMessages.InvalidGamerTag);
+            }
+            return await _responseProcessor.ProcessRequest<UGCSearchResult<UGCBase>>(Endpoints.UGC.ListGameVariants(gamerTag, start, count, sort, order), UGCCacheExpiry);
         }
         #endregion
     }

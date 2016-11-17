@@ -58,6 +58,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstraction\Enum\AccessControl.cs" />
     <Compile Include="Abstraction\Enum\CommendationType.cs" />
     <Compile Include="Abstraction\Enum\CreditResult.cs" />
     <Compile Include="Abstraction\Enum\CropType.cs" />
@@ -97,6 +98,8 @@
     <Compile Include="Limits\RequestRateHttpClient.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Model\Request\Order.cs" />
+    <Compile Include="Model\Request\Sort.cs" />
     <Compile Include="Model\Response\MetaData\BaseLevel.cs" />
     <Compile Include="Model\Response\MetaData\CampaignMission.cs" />
     <Compile Include="Model\Response\MetaData\Category.cs" />
@@ -146,6 +149,8 @@
     <Compile Include="Model\Response\Stats\Link.cs" />
     <Compile Include="Model\Response\Stats\LinkItem.cs" />
     <Compile Include="Model\Response\Stats\MatchEvent.cs" />
+    <Compile Include="Model\Response\Stats\PlayerLeaderboardResult.cs" />
+    <Compile Include="Model\Response\Stats\PlayerResult.cs" />
     <Compile Include="Model\Response\Stats\RawGuid.cs" />
     <Compile Include="Model\Response\Stats\StatsEnemy.cs" />
     <Compile Include="Model\Response\Error\CommonErrorMessages.cs" />
@@ -189,15 +194,18 @@
     <Compile Include="Model\Response\Stats\WorldLocation.cs" />
     <Compile Include="Model\Response\Stats\XpInfo.cs" />
     <Compile Include="Extensions\NameValueCollectionExtensions.cs" />
+    <Compile Include="Model\Response\UGC\TimeUtc.cs" />
+    <Compile Include="Model\Response\UGC\UGCBase.cs" />
+    <Compile Include="Model\Response\UGC\UGCGameVariant.cs" />
+    <Compile Include="Model\Response\UGC\UGCSearchResult.cs" />
+    <Compile Include="Model\Response\UGC\UGCStats.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResponseProcessor.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Model\Request\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
   <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">

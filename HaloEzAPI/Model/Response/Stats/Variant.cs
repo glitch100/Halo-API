@@ -10,7 +10,6 @@ namespace HaloEzAPI.Model.Response.Stats
     {
         public ResourceType ResourceType { get; set; }
         public Guid ResourceId { get; set; }
-        //TODO:Refactor
         public int OwnerType { get; set; }
         public string Owner { get; set; }
     }

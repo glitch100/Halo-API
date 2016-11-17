@@ -8,5 +8,6 @@
         public static string AccessDenied { get { return "Access Denied - Invalid or No API Token provided"; } }
         public static string TooManyRequests { get { return "Too many requests, please wait before sending more."; } }
         public static string BadRequest { get { return "Bad Request - please check the parameters you are passing, or the API Endpoint"; } }
+        public static string NoZeroAllowed { get { return "Bad Request - you can't use a 0 for the count here"; } }
     }
 }

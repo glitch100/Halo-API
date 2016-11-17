@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Specialized;
 using HaloEzAPI.Abstraction.Enum;
+using HaloEzAPI.Model.Request;
 using HaloEzAPI.Model.Response.Error;
 
 namespace HaloEzAPI
@@ -37,7 +38,7 @@ namespace HaloEzAPI
             
             public static Uri GetEventsForMatch(string matchId)
             {
-                return  new Uri(string.Format("{0}/{1}/{2}/matches/{3}/events",MajorPrefix,MinorPrefix,Title,matchId));
+                return new Uri(string.Format("{0}/{1}/{2}/matches/{3}/events",MajorPrefix,MinorPrefix,Title,matchId));
             }
 
             public static Uri GetPostGameCarnageReport(string matchId, GameMode gameMode)
@@ -80,6 +81,15 @@ namespace HaloEzAPI
                     return new Uri(string.Format("{0}/{1}/{2}/servicerecords/warzone?players={3}", MajorPrefix, MinorPrefix, Title, string.Join(",", players)));
                 }
                 throw new HaloAPIException("Unsupported GameMode provided for Service Record. Please use Arena, or Campaign");
+            }            
+            
+            public static Uri PlayerLeaderboard(string seasonId, string playlistId, int count = 200)
+            {
+                if (count == 0)
+                {
+                    throw new HaloAPIException(CommonErrorMessages.NoZeroAllowed);
+                }
+                return new Uri(string.Format("{0}/{1}/{2}/player-leaderboards/csr/{3}/{4}?count={5}", MajorPrefix, MinorPrefix, Title, seasonId, playlistId, count));
             }
         }
 
@@ -216,6 +226,68 @@ namespace HaloEzAPI
                 var baseUrl = string.Format("{0}/{1}/{2}/profiles/{3}/spartan", MajorPrefix, MinorPrefix, Title, gamerTag);
                 return values.BuildUri(baseUrl);
             }   
+        }
+
+        public static class UGC
+        {
+            internal static readonly string MinorPrefix = "ugc";
+
+            public static Uri GetGameVariant(string gamertag, string variant)
+            {
+                return new Uri(string.Format("{0}/{1}/{2}/players/{3}/gamevariants/{4}", MajorPrefix, MinorPrefix, Title, gamertag, variant));
+            }
+
+            public static Uri GetMapVariant(string gamertag, string variant)
+            {
+                return new Uri(string.Format("{0}/{1}/{2}/players/{3}/mapvariants/{4}", MajorPrefix, MinorPrefix, Title, gamertag, variant));
+            }
+
+            public static Uri ListGameVariants(string gamertag, int start = 0, int count = 25, Sort sort = Sort.Modified, Order order = Order.Desc)
+            {
+                var values = new NameValueCollection();
+
+                if (sort != Sort.Modified)
+                {
+                    values.Add("sort", sort.ToString());
+                }
+                if (order != Order.Desc)
+                {
+                    values.Add("order", order.ToString());
+                }
+                if (start > 0)
+                {
+                    values.Add("start", start.ToString());
+                }
+                if (count > 0 && count < 25)
+                {
+                    values.Add("count", count.ToString());
+                }
+                string baseUrl = string.Format("{0}/{1}/{2}/players/{3}/gamevariants?", MajorPrefix, MinorPrefix, Title, gamertag);
+                return values.BuildUri(baseUrl);            }
+
+            public static Uri ListMapVariants(string gamertag, int start = 0, int count = 25, Sort sort = Sort.Modified, Order order = Order.Desc)
+            {
+                var values = new NameValueCollection();
+
+                if (sort != Sort.Modified)
+                {
+                    values.Add("sort", sort.ToString());
+                }
+                if (order != Order.Desc)
+                {
+                    values.Add("order", order.ToString());
+                }
+                if (start > 0)
+                {
+                    values.Add("start", start.ToString());
+                }
+                if (count > 0 && count < 25)
+                {
+                    values.Add("count", count.ToString());
+                }
+                string baseUrl = string.Format("{0}/{1}/{2}/players/{3}/mapvariants?", MajorPrefix, MinorPrefix, Title, gamertag);
+                return values.BuildUri(baseUrl);
+            }
         }
     }
 }
