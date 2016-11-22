@@ -15,12 +15,13 @@ namespace HaloEzAPI.Tests.HaloAPIServiceTests.Stats
 
         [Test]
         [TestCase("3f35f75c-aee4-437a-9b49-535ba2e5f186")]
+        [TestCase("e46d0c1a-9962-44eb-a003-6fac499b0e08")]
         public async void Default_DoesNotReturnNull(string matchId)
         {
             var result = await HaloApiService.GetEventsForMatch(matchId);
 
             Assert.IsNotNull(result);
-        }        
+        }           
         
         [Test]
         [TestCase("")]

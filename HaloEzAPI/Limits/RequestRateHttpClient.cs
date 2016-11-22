@@ -86,14 +86,14 @@ namespace HaloEzAPI.Limits
                 _concurrentRequests = 0;
                 Stopwatch.Restart();
             }
-            _concurrentRequests++;
+            ++_concurrentRequests;
             var task = await HttpClient.GetAsync(endpoint).ContinueWith(t =>
             {
                 _rateSemaphore.Release();
                 if (_rateSemaphore.CurrentCount == _limit && Stopwatch.Elapsed.Seconds >= SecondsLimit)
                 {
                     Stopwatch.Restart();
-                    _concurrentRequests --;
+                    --_concurrentRequests;
                 }
                 return t;
             });

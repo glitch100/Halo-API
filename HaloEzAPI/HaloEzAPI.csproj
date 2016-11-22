@@ -65,6 +65,7 @@
     <Compile Include="Abstraction\Enum\DeathDiposition.cs" />
     <Compile Include="Abstraction\Enum\Difficulty.cs" />
     <Compile Include="Abstraction\Enum\EnumResolver.cs" />
+    <Compile Include="Abstraction\Enum\EventType.cs" />
     <Compile Include="Abstraction\Enum\Faction.cs" />
     <Compile Include="Abstraction\Enum\Flair.cs" />
     <Compile Include="Abstraction\Enum\FlexibleStatType.cs" />
@@ -79,6 +80,7 @@
     <Compile Include="Abstraction\Enum\ResourceType.cs" />
     <Compile Include="Abstraction\Enum\ResultCode.cs" />
     <Compile Include="Abstraction\Enum\RewardSourceType.cs" />
+    <Compile Include="Abstraction\Enum\Utils\EnumUtils.cs" />
     <Compile Include="Abstraction\Enum\WeaponType.cs" />
     <Compile Include="Abstraction\Interfaces\IDetail.cs" />
     <Compile Include="Abstraction\Interfaces\IEquipmentDamageDealt.cs" />
@@ -90,6 +92,7 @@
     <Compile Include="Abstraction\Interfaces\IRangeDamageDealt.cs" />
     <Compile Include="Abstraction\Interfaces\IWinLoss.cs" />
     <Compile Include="Caching\CacheManager.cs" />
+    <Compile Include="Converter\MatchEventConverter.cs" />
     <Compile Include="Converter\TimeSpanConverter.cs" />
     <Compile Include="Converter\ScoreConverter.cs" />
     <Compile Include="Endpoints.cs" />
@@ -132,6 +135,7 @@
     <Compile Include="Model\Response\Stats\ArenaPostGameReport.cs" />
     <Compile Include="Model\Response\Stats\ArenaServiceRecord.cs" />
     <Compile Include="Model\Response\Stats\ArenaStats.cs" />
+    <Compile Include="Model\Response\Stats\BoostData.cs" />
     <Compile Include="Model\Response\Stats\CampaignMissionStat.cs" />
     <Compile Include="Model\Response\Stats\CampaignPlayerStat.cs" />
     <Compile Include="Model\Response\Stats\CampaignPostGameReport.cs" />
@@ -145,7 +149,15 @@
     <Compile Include="Model\Response\Stats\CustomGameServiceRecordQueryResponse.cs" />
     <Compile Include="Model\Response\Stats\CustomGameStat.cs" />
     <Compile Include="Model\Response\Stats\CustomPostGameReport.cs" />
-    <Compile Include="Model\Response\Stats\Event.cs" />
+    <Compile Include="Model\Response\Stats\Events\DeathEvent.cs" />
+    <Compile Include="Model\Response\Stats\Events\Event.cs" />
+    <Compile Include="Model\Response\Stats\Events\GameEvent.cs" />
+    <Compile Include="Model\Response\Stats\Events\ImpulseEvent.cs" />
+    <Compile Include="Model\Response\Stats\Events\MedalEvent.cs" />
+    <Compile Include="Model\Response\Stats\Events\PlayerEvent.cs" />
+    <Compile Include="Model\Response\Stats\Events\RoundEvent.cs" />
+    <Compile Include="Model\Response\Stats\Events\WeaponDropEvent.cs" />
+    <Compile Include="Model\Response\Stats\Events\WeaponEvent.cs" />
     <Compile Include="Model\Response\Stats\Link.cs" />
     <Compile Include="Model\Response\Stats\LinkItem.cs" />
     <Compile Include="Model\Response\Stats\MatchEvent.cs" />

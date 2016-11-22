@@ -1,13 +1,9 @@
-using System;
 using System.Collections.Generic;
 using HaloEzAPI.Abstraction.Enum;
-using HaloEzAPI.Converter;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 
-namespace HaloEzAPI.Model.Response.Stats
+namespace HaloEzAPI.Model.Response.Stats.Events
 {
-    public class Event
+    public class DeathEvent : GameEvent
     {
         public IEnumerable<Player> Assistants { get; set; }
         public DeathDiposition DeathDiposition { get; set; }
@@ -17,6 +13,7 @@ namespace HaloEzAPI.Model.Response.Stats
         public bool IsMelee { get; set; }
         public bool IsShoulderBash { get; set; }
         public bool IsWeapon { get; set; }
+        public uint? ImpulseId { get; set; }
         public Player Killer { get; set; }
         public KillerAgent KillerAgent { get; set; }
         public IEnumerable<uint> KillerWeaponAttachmentIds { get; set; }
@@ -26,8 +23,5 @@ namespace HaloEzAPI.Model.Response.Stats
         public IEnumerable<uint> VictimAttachmentIds { get; set; }
         public uint VictimStockId { get; set; }
         public WorldLocation VictimWorldLocation { get; set; }
-        public string EventName { get; set; }
-        [JsonConverter(typeof(TimeSpanConverter))]
-        public TimeSpan TimeSinceStart { get; set; }
     }
 }

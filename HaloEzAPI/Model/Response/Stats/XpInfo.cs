@@ -11,5 +11,8 @@ namespace HaloEzAPI.Model.Response.Stats
         public int PerformanceXP { get; set; }
         public int PlayerRankXPAward { get; set; }
         public int BoostAmount { get; set; }
+        public int MatchSpeedWinAmount { get; set; }
+        public int ObjectiveCompletedAmount { get; set; }
+        public BoostData BoostData { get; set; }
     }
 }

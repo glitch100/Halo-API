@@ -19,5 +19,7 @@ namespace HaloEzAPI.Model.Response.Stats
         public Guid GameVariantId { get; set; }
         public Guid PlaylistId { get; set; }
         public bool IsMatchOver { get; set; }
+        public Variant MapVariantResourceId { get; set; }
+        public Variant GameVariantResourceId { get; set; }
     }
 }
