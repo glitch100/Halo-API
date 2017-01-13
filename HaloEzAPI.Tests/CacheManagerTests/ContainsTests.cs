@@ -12,27 +12,27 @@ namespace HaloEzAPI.Tests.CacheManagerTests
         [Test]
         public void Default_DoesNotThrow()
         {
-            Assert.DoesNotThrow(async () => CacheManager.Contains(string.Empty));
+            Assert.DoesNotThrow(async () => SingletonCacheManager.Instance.Contains(string.Empty));
         }
 
         [Test]
         public void ProvideInvalidKey_ReturnsFalse()
         {
-            Assert.IsFalse(CacheManager.Contains(string.Empty));
+            Assert.IsFalse(SingletonCacheManager.Instance.Contains(string.Empty));
         }
 
         [Test]
         public void ProvideValidKeyDoesntExist_ReturnsFalse()
         {
-            Assert.IsFalse(CacheManager.Contains("VALID"));
+            Assert.IsFalse(SingletonCacheManager.Instance.Contains("VALID"));
         }
 
         [Test]
         public void ProvideValidKeyDoesExist_ReturnsTrue()
         {
             var playerMatches = new PlayerMatches();
-            CacheManager.Add(playerMatches,"VALID",1);
-            Assert.IsTrue(CacheManager.Contains("VALID"));
+            SingletonCacheManager.Instance.Add(playerMatches,"VALID",1);
+            Assert.IsTrue(SingletonCacheManager.Instance.Contains("VALID"));
         }
     }
 }

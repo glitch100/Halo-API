@@ -7,6 +7,7 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using HaloEzAPI.Abstraction.Enum;
+using HaloEzAPI.Abstraction.Interfaces;
 using HaloEzAPI.Caching;
 using HaloEzAPI.Limits;
 using HaloEzAPI.Model.Request;
@@ -25,12 +26,17 @@ namespace HaloEzAPI
         private const int MetaCacheExpiry = 24;
         private const int ProfileCacheExpiry = 24;
         private const int UGCCacheExpiry = 2;
+        private const string BaseApiUrl = "https://www.haloapi.com";
 
-        public HaloAPIService(string apiToken, string baseApiUrl = "https://www.haloapi.com")
+        public HaloAPIService(string apiToken, string baseApiUrl = BaseApiUrl, IApiCacheManager apiCache = null)
         {
             Endpoints.MajorPrefix = baseApiUrl;
             RequestRateHttpClient.SetAPIToken(apiToken);
-            _responseProcessor = new ResponseProcessor();
+            if (apiCache == null)
+            {
+                apiCache = SingletonCacheManager.Instance;
+            }
+            _responseProcessor = new ResponseProcessor(apiCache);
         }
 
         #region Stats

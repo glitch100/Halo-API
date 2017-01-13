@@ -1,5 +1,11 @@
 # Changelog
 
+### 1.5.0
+**Release Date: 13/01/2017**
+- `StatTimelapse` adjusted to not ignore
+- Optional param in constructor to allow for new `CacheManager` that utilises `IApiCacheManager`
+- Tests adjusted
+
 ### 1.4.0
 **Release Date: 22/11/2016**
 - Added new types of events: Impulses, Medals, Player Spawns, Round Starts, Round Ends, Weapon Drops, Weapon Pickups, and Weapon Pickup Pads.

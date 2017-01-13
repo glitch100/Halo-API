@@ -92,6 +92,8 @@
     <Compile Include="Abstraction\Interfaces\IRangeDamageDealt.cs" />
     <Compile Include="Abstraction\Interfaces\IWinLoss.cs" />
     <Compile Include="Caching\CacheManager.cs" />
+    <Compile Include="Abstraction\Interfaces\IApiCacheManager.cs" />
+    <Compile Include="Caching\SingletonCacheManager.cs" />
     <Compile Include="Converter\MatchEventConverter.cs" />
     <Compile Include="Converter\TimeSpanConverter.cs" />
     <Compile Include="Converter\ScoreConverter.cs" />

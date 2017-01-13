@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
+using HaloEzAPI.Abstraction.Interfaces;
 using HaloEzAPI.Caching;
 using HaloEzAPI.Limits;
 using HaloEzAPI.Model.Response.Error;
@@ -12,8 +13,10 @@ namespace HaloEzAPI
 {
     public class ResponseProcessor
     {
-        public ResponseProcessor()
+        private readonly IApiCacheManager _apiCache;
+        public ResponseProcessor(IApiCacheManager apiCache)
         {
+            _apiCache = apiCache;
         }
 
         /// <summary>
@@ -80,26 +83,26 @@ namespace HaloEzAPI
         public async Task<Image> ProcessImageRequest(Uri endpoint, int cacheExpiryMin)
         {
             string key = endpoint.AbsoluteUri;
-            if (CacheManager.Contains(key))
+            if (_apiCache.Contains(key))
             {
-                return CacheManager.Get<Image>(key);
+                return _apiCache.Get<Image>(key);
             }
             var message = await RequestRateHttpClient.GetRequest(endpoint);
             var messageObject = await HandleImageResponse(message);
-            CacheManager.Add<Image>(messageObject, key, cacheExpiryMin);
+            _apiCache.Add<Image>(messageObject, key, cacheExpiryMin);
             return messageObject;
         }
 
         public async Task<T> ProcessRequest<T>(Uri endpoint,int cacheExpiryMin) where T : class
         {
             string key = endpoint.AbsoluteUri;
-            if (CacheManager.Contains(key))
+            if (_apiCache.Contains(key))
             {
-                return CacheManager.Get<T>(key);
+                return _apiCache.Get<T>(key);
             }
             var message = await RequestRateHttpClient.GetRequest(endpoint);
             var messageObject = await HandleResponse<T>(message);
-            CacheManager.Add<T>(messageObject, key, cacheExpiryMin);
+            _apiCache.Add<T>(messageObject, key, cacheExpiryMin);
             return messageObject;
         }
     }

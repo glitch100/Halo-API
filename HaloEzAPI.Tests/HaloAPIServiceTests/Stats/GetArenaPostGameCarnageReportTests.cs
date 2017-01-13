@@ -40,6 +40,13 @@ namespace HaloEzAPI.Tests.HaloAPIServiceTests.Stats
         }
 
         [Test]
+        public async void ProvideValidMatchId_CanRetrieveKnownImpulse()
+        {
+            var result = await HaloApiService.GetArenaPostGameCarnageReport(new Guid("e46d0c1a-9962-44eb-a003-6fac499b0e08"));
+            Assert.IsTrue(result.PlayerStats.Any(ps => ps.Player.Gamertag == "Glitch100"));
+        }
+
+        [Test]
         public async void ProvideValidMatchId_ValidData()
         {
             var result =

@@ -1,21 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.Caching;
+using HaloEzAPI.Abstraction.Interfaces;
 
 namespace HaloEzAPI.Caching
 {
-    public static class CacheManager
+    public class CacheManager: IApiCacheManager
     {
-        private static readonly object _lockObject = new object();
-        private static MemoryCache _cache;
-        private static readonly IList<string> _cacheKeysList; 
-        static CacheManager()
+        private readonly object _lockObject = new object();
+        private MemoryCache _cache;
+        private readonly IList<string> _cacheKeysList; 
+        public CacheManager()
         {
             _cache = MemoryCache.Default;
             _cacheKeysList = new List<string>();
         }
 
-        public static void Add<T>(T obj, string key, int expiryHours) where T : class 
+        public void Add<T>(T obj, string key, int expiryHours) where T : class 
         {
             if (!string.IsNullOrEmpty(key) && !Contains(key))
             {
@@ -30,7 +31,7 @@ namespace HaloEzAPI.Caching
             }
         }
 
-        public static T Get<T>(string key) where T: class 
+        public T Get<T>(string key) where T: class 
         {
             var cachedItem = _cache.Get(key.ToLower());
             if (cachedItem != null)
@@ -41,7 +42,7 @@ namespace HaloEzAPI.Caching
             return default(T);
         }
 
-        public static bool Contains(string key)
+        public bool Contains(string key)
         {
             if (string.IsNullOrEmpty(key))
             {
@@ -50,7 +51,7 @@ namespace HaloEzAPI.Caching
             return _cache.Get(key.ToLower()) != null;
         }
 
-        public static void Remove(string key)
+        public void Remove(string key)
         {
             if (Contains(key))
             {
@@ -64,7 +65,7 @@ namespace HaloEzAPI.Caching
             }
         }
 
-        public static void RemoveAll()
+        public void RemoveAll()
         {
             foreach (var key in _cacheKeysList)
             {

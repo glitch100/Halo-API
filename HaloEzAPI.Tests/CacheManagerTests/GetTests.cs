@@ -12,21 +12,21 @@ namespace HaloEzAPI.Tests.CacheManagerTests
         [Test]
         public void Default_DoesNotThrow()
         {
-            Assert.DoesNotThrow(async () => CacheManager.Get<PlayerMatches>(string.Empty));
+            Assert.DoesNotThrow(async () => SingletonCacheManager.Instance.Get<PlayerMatches>(string.Empty));
         }
 
         [Test]
         public void NonExistentEntry_ReturnsNull()
         {
-            Assert.IsNull(CacheManager.Get<PlayerMatches>("TEST"));
+            Assert.IsNull(SingletonCacheManager.Instance.Get<PlayerMatches>("TEST"));
         }
 
         [Test]
         public void EntryExists_ReturnsObject()
         {
             var playerMatches = new PlayerMatches() {Count = 2, IsTeamGame = true, ResultCount = 10, Start = 2};
-            CacheManager.Add(playerMatches,"VALID",1);
-            var obj = CacheManager.Get<PlayerMatches>("VALID");
+            SingletonCacheManager.Instance.Add(playerMatches,"VALID",1);
+            var obj = SingletonCacheManager.Instance.Get<PlayerMatches>("VALID");
             Assert.IsTrue(PlayerMatchesEqual(playerMatches,obj));
         }
 
@@ -34,8 +34,8 @@ namespace HaloEzAPI.Tests.CacheManagerTests
         public void RetrieveWrongType_ReturnsNull()
         {
             var playerMatches = new PlayerMatches() { Count = 2, IsTeamGame = true, ResultCount = 10, Start = 2 };
-            CacheManager.Add(playerMatches, "VALID", 1);
-            var obj = CacheManager.Get<CustomGameServiceRecord>("VALID");
+            SingletonCacheManager.Instance.Add(playerMatches, "VALID", 1);
+            var obj = SingletonCacheManager.Instance.Get<CustomGameServiceRecord>("VALID");
             Assert.IsNull(obj);
         }
 

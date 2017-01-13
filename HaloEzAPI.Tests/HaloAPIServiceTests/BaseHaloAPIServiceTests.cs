@@ -13,8 +13,8 @@ namespace HaloEzAPI.Tests.HaloAPIServiceTests
         [SetUp]
         public void SetUp()
         {
-            HaloApiService = new HaloAPIService("YOURTOKENHERE");
-            CacheManager.RemoveAll();
+            HaloApiService = new HaloAPIService("INSERT_KEY_HERE");
+            SingletonCacheManager.Instance.RemoveAll();
         }
 
         [Test]

@@ -12,16 +12,16 @@ namespace HaloEzAPI.Tests.CacheManagerTests
         [Test]
         public void Default_DoesNotThrow()
         {
-            Assert.DoesNotThrow(async () => CacheManager.Remove(string.Empty));
+            Assert.DoesNotThrow(async () => SingletonCacheManager.Instance.Remove(string.Empty));
         }
 
         [Test]
         public void ProvideValidKey_RemovesEntry()
         {
             var playerMatches = new PlayerMatches();
-            CacheManager.Add(playerMatches,"VALID",1);
-            CacheManager.Remove("VALID");
-            var obj = CacheManager.Get<PlayerMatches>("VALID");
+            SingletonCacheManager.Instance.Add(playerMatches,"VALID",1);
+            SingletonCacheManager.Instance.Remove("VALID");
+            var obj = SingletonCacheManager.Instance.Get<PlayerMatches>("VALID");
             Assert.IsNull(obj);
         }
     }    
@@ -32,7 +32,7 @@ namespace HaloEzAPI.Tests.CacheManagerTests
         [Test]
         public void Default_DoesNotThrow()
         {
-            Assert.DoesNotThrow(async () => CacheManager.RemoveAll());
+            Assert.DoesNotThrow(async () => SingletonCacheManager.Instance.RemoveAll());
         }
 
         [Test]
@@ -41,13 +41,13 @@ namespace HaloEzAPI.Tests.CacheManagerTests
             var playerMatches = new PlayerMatches();
             var playerMatches1 = new PlayerMatches();
             var playerMatches2 = new PlayerMatches();
-            CacheManager.Add(playerMatches,"VALID",1);
-            CacheManager.Add(playerMatches1, "VALID1", 1);
-            CacheManager.Add(playerMatches2, "VALID2", 1);
-            CacheManager.RemoveAll();
-            var obj = CacheManager.Get<PlayerMatches>("VALID");
-            var obj1 = CacheManager.Get<PlayerMatches>("VALID1");
-            var obj2 = CacheManager.Get<PlayerMatches>("VALID2");
+            SingletonCacheManager.Instance.Add(playerMatches,"VALID",1);
+            SingletonCacheManager.Instance.Add(playerMatches1, "VALID1", 1);
+            SingletonCacheManager.Instance.Add(playerMatches2, "VALID2", 1);
+            SingletonCacheManager.Instance.RemoveAll();
+            var obj = SingletonCacheManager.Instance.Get<PlayerMatches>("VALID");
+            var obj1 = SingletonCacheManager.Instance.Get<PlayerMatches>("VALID1");
+            var obj2 = SingletonCacheManager.Instance.Get<PlayerMatches>("VALID2");
             Assert.IsNull(obj);
             Assert.IsNull(obj1);
             Assert.IsNull(obj2);

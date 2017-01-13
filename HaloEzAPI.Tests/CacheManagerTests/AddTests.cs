@@ -13,15 +13,15 @@ namespace HaloEzAPI.Tests.CacheManagerTests
         public void Default_DoesNotThrow()
         {
             var playerMatches = new PlayerMatches();
-            Assert.DoesNotThrow(async () => CacheManager.Add(playerMatches, string.Empty, 0));
+            Assert.DoesNotThrow(async () => SingletonCacheManager.Instance.Add(playerMatches, string.Empty, 0));
         }       
         
         [Test]
         public void ProvideEmptyKey_DoesNotAdd()
         {
             var playerMatches = new PlayerMatches();
-            CacheManager.Add(playerMatches, string.Empty, 1);
-            Assert.False(CacheManager.Contains(string.Empty));
+            SingletonCacheManager.Instance.Add(playerMatches, string.Empty, 1);
+            Assert.False(SingletonCacheManager.Instance.Contains(string.Empty));
         }
 
         [Test]
@@ -31,8 +31,8 @@ namespace HaloEzAPI.Tests.CacheManagerTests
         public void ProvideValidKey_DoesNotAdd(string key)
         {
             var playerMatches = new PlayerMatches();
-            CacheManager.Add(playerMatches, key, 1);
-            Assert.True(CacheManager.Contains(key));
+            SingletonCacheManager.Instance.Add(playerMatches, key, 1);
+            Assert.True(SingletonCacheManager.Instance.Contains(key));
         }
 
         [Test]
@@ -40,9 +40,9 @@ namespace HaloEzAPI.Tests.CacheManagerTests
         {
             var playerMatches = new PlayerMatches() {Start = 115};
             var playerMatchesNotAdd = new PlayerMatches(){Start = 99};
-            CacheManager.Add(playerMatches, "IEXIST", 1);
-            CacheManager.Add(playerMatchesNotAdd, "IEXIST", 1);
-            var obj = CacheManager.Get<PlayerMatches>("IEXIST");
+            SingletonCacheManager.Instance.Add(playerMatches, "IEXIST", 1);
+            SingletonCacheManager.Instance.Add(playerMatchesNotAdd, "IEXIST", 1);
+            var obj = SingletonCacheManager.Instance.Get<PlayerMatches>("IEXIST");
             Assert.AreEqual(obj.Start, 115);
         }
     }
