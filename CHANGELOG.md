@@ -1,5 +1,10 @@
 # Changelog
 
+### 1.6.0
+**Release Date: 22/01/2017**
+- `GetCSRDesignations` endpoint added under metadata, after it was randomly missng
+- `bustCache` param added to all calls within the `HaloAPIService`. Doing so will by pass the cache and refill it with the new result
+
 ### 1.5.0
 **Release Date: 13/01/2017**
 - `StatTimelapse` adjusted to not ignore

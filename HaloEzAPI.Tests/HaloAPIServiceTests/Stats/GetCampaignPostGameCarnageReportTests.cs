@@ -27,6 +27,6 @@ namespace HaloEzAPI.Tests.HaloAPIServiceTests.Stats
         {
             var result = await HaloApiService.GetCampaignPostGameCarnageReport(_validGuid);
             Assert.IsTrue(result.PlayerStats.Any(ps=>ps.Player.Gamertag.Equals("Glitch100",StringComparison.InvariantCultureIgnoreCase)));
-        }
+        }        
     }
 }

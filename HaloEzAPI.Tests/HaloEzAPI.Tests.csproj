@@ -68,6 +68,7 @@
     <Compile Include="HaloAPIServiceTests\MetaData\GetGameBaseVariantsTests.cs" />
     <Compile Include="HaloAPIServiceTests\MetaData\GetGameVariantTests.cs" />
     <Compile Include="HaloAPIServiceTests\MetaData\GetGetCommendationsTests.cs" />
+    <Compile Include="HaloAPIServiceTests\MetaData\GetCSRDesignationsTests.cs" />
     <Compile Include="HaloAPIServiceTests\MetaData\GetImpulsesTests.cs" />
     <Compile Include="HaloAPIServiceTests\MetaData\GetMapsTests.cs" />
     <Compile Include="HaloAPIServiceTests\MetaData\GetMapVariantTests.cs" />

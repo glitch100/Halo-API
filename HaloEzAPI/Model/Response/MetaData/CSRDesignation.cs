@@ -7,7 +7,7 @@ namespace HaloEzAPI.Model.Response.MetaData
     {
         public string Name { get; set; }
         public string BannerImageUrl { get; set; }
-        public IEnumerable<CSRTier> CSRTiers { get; set; }
+        public IEnumerable<CSRTier> Tiers { get; set; }
         public int Id { get; set; }
         public Guid ContentId { get; set; }
     }
