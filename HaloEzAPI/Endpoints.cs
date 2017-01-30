@@ -62,24 +62,31 @@ namespace HaloEzAPI
                 throw new HaloAPIException("Unsupported GameMode provided for Post Game Carnage Report");
             }            
             
-            public static Uri GetServiceRecords(string[] players, GameMode gameMode)
+            public static Uri GetServiceRecords(string[] players, GameMode gameMode, string seasonId = "")
             {
+                string suffix = "players={3}";
+                if (seasonId != string.Empty)
+                {
+                    suffix = "players={3}&seasonId=" + seasonId;
+                }
+
                 if (gameMode == GameMode.Arena)
                 {
-                    return new Uri(string.Format("{0}/{1}/{2}/servicerecords/arena?players={3}", MajorPrefix, MinorPrefix, Title, string.Join(",",players)));
+                    return new Uri(string.Format("{0}/{1}/{2}/servicerecords/arena?" + suffix, MajorPrefix, MinorPrefix, Title, string.Join(",", players)));
                 }
                 if (gameMode == GameMode.Campaign)
                 {
-                    return new Uri(string.Format("{0}/{1}/{2}/servicerecords/campaign?players={3}", MajorPrefix, MinorPrefix, Title, string.Join(",", players)));
+                    return new Uri(string.Format("{0}/{1}/{2}/servicerecords/campaign?" + suffix, MajorPrefix, MinorPrefix, Title, string.Join(",", players)));
                 }                
                 if (gameMode == GameMode.Custom)
                 {
-                    return new Uri(string.Format("{0}/{1}/{2}/servicerecords/custom?players={3}", MajorPrefix, MinorPrefix, Title, string.Join(",", players)));
+                    return new Uri(string.Format("{0}/{1}/{2}/servicerecords/custom?" + suffix, MajorPrefix, MinorPrefix, Title, string.Join(",", players)));
                 }        
                 if (gameMode == GameMode.Warzone)
                 {
-                    return new Uri(string.Format("{0}/{1}/{2}/servicerecords/warzone?players={3}", MajorPrefix, MinorPrefix, Title, string.Join(",", players)));
+                    return new Uri(string.Format("{0}/{1}/{2}/servicerecords/warzone?" + suffix, MajorPrefix, MinorPrefix, Title, string.Join(",", players)));
                 }
+
                 throw new HaloAPIException("Unsupported GameMode provided for Service Record. Please use Arena, or Campaign");
             }            
             

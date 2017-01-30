@@ -17,7 +17,7 @@ namespace HaloEzAPI
         Task<CampaignPostGameReport> GetCampaignPostGameCarnageReport(Guid matchId, bool bustCache = false);
         Task<CustomPostGameReport> GetCustomPostGameCarnageReport(Guid matchId, bool bustCache = false);
         Task<WarzonePostGameReport> GetWarzonePostGameCarnageReport(Guid matchId, bool bustCache = false);
-        Task<ArenaServiceRecordQueryResponse> GetArenaServiceRecords([MaxLength(32)] string[] players, bool bustCache = false);
+        Task<ArenaServiceRecordQueryResponse> GetArenaServiceRecords([MaxLength(32)] string[] players, string seasonId = "", bool bustCache = false);
         Task<CampaignServiceRecordQueryResponse> GetCampaignServiceRecords([MaxLength(32)] string[] players, bool bustCache = false);
         Task<CustomGameServiceRecordQueryResponse> GetCustomGameServiceRecords([MaxLength(32)] string[] players, bool bustCache = false);
         Task<WarzoneServiceRecordQueryResponse> GetWarzoneServiceRecords([MaxLength(32)] string[] players, bool bustCache = false);

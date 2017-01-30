@@ -142,9 +142,9 @@ namespace HaloEzAPI
         /// </summary>
         /// <param name="players">Up to 32 Players can be requested</param>
         /// <returns></returns>
-        public async Task<ArenaServiceRecordQueryResponse> GetArenaServiceRecords([MaxLength(32)]string[] players, bool bustCache = false)
+        public async Task<ArenaServiceRecordQueryResponse> GetArenaServiceRecords([MaxLength(32)]string[] players, string seasonId = "", bool bustCache = false)
         {
-            return await _responseProcessor.ProcessRequest<ArenaServiceRecordQueryResponse>(Endpoints.Stats.GetServiceRecords(players, GameMode.Arena), StatCacheExpiry, bustCache);
+            return await _responseProcessor.ProcessRequest<ArenaServiceRecordQueryResponse>(Endpoints.Stats.GetServiceRecords(players, GameMode.Arena, seasonId), StatCacheExpiry, bustCache);
         }        
         
         /// <summary>

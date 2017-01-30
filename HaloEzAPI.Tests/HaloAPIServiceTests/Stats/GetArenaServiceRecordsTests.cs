@@ -60,5 +60,19 @@ namespace HaloEzAPI.Tests.HaloAPIServiceTests.Stats
             Assert.IsTrue(result.Results.ElementAt(1).ResultCode == ResultCode.Success);
             Assert.IsTrue(result.Results.ElementAt(2).ResultCode == ResultCode.Success);
         }
+
+
+        [Test]
+        [TestCase("glitch100")]
+        public async void ProvideValidSeasonId_ReturnsKnownGame(string gamertag1)
+        {
+            string seasonId = "54c9ee4f-d041-44ef-bd10-2c2f71edb5a4";
+
+            var result = await HaloApiService.GetArenaServiceRecords(new[] { gamertag1 }, seasonId);
+
+            Assert.IsTrue(result.Results.Count() == 1);
+            Assert.AreEqual(result.Results.First().Result.ArenaStats.MedalAwards.Count(), 105);
+        }
+
     }
 }

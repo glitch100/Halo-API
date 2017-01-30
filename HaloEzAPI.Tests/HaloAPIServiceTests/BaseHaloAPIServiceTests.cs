@@ -13,7 +13,7 @@ namespace HaloEzAPI.Tests.HaloAPIServiceTests
         [SetUp]
         public void SetUp()
         {
-            HaloApiService = new HaloAPIService("INSERT_KEY_HERE");
+            HaloApiService = new HaloAPIService("c3e362616ad14f78ad39bc17a47c9d0d");
             SingletonCacheManager.Instance.RemoveAll();
         }
 
