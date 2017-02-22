@@ -1,5 +1,5 @@
-﻿using HaloEzAPI.Abstraction.Enum;
-using HaloEzAPI.Model.Response.Stats;
+﻿using HaloEzAPI.Abstraction.Enum.Halo5;
+using HaloEzAPI.Model.Response.Stats.Halo5;
 
 namespace HaloEzAPI.Model.Response.UGC
 {

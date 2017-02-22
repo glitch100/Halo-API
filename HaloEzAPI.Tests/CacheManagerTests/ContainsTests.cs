@@ -1,6 +1,5 @@
 ﻿using HaloEzAPI.Caching;
-using HaloEzAPI.Model.Response;
-using HaloEzAPI.Model.Response.Stats;
+using HaloEzAPI.Model.Response.Stats.Halo5;
 using HaloEzAPI.Tests.HaloAPIServiceTests;
 using NUnit.Framework;
 

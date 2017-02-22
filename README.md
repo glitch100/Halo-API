@@ -2,18 +2,22 @@ Halo API
 ---------------
 <center><img src="http://i.imgur.com/EP1ilsq.png?1" /></center>
 
-A C# Wrapper for the official Halo 5 API that can be seen at [http://developer.haloapi.com](http://developer.haloapi.com) - Easy to use, and implement. It contains all current endpoints, tests, a rate handler and a cache system!
+A C# Wrapper for the official Halo 5 and Halo Wars 2 API's that can be seen at [http://developer.haloapi.com](http://developer.haloapi.com) - Easy to use, and implement. It contains all current endpoints, tests, a rate handler and a cache system!
 
-Enjoy Halo 5 Guardians Game Data faster than ever before with this wrapper. The API is updated regularly with optimisations, new endpoints and more! Download it now, or utilise it via **NuGet**!
+Enjoy Halo 5 Guardians, and Halo Wars 2 Game Data faster than ever before with this wrapper. The API is updated regularly with optimisations, new endpoints and more! Download it now, or utilise it via [**NuGet**](https://www.nuget.org/packages/HaloEzAPI)
 
-### Current Version: 1.7.0.0
+### More documentation
+* [Features](docs/Features.md)
+* [Halo 5 Support](docs/Halo5.md)
+* [Halo Wars 2 Support](docs/HaloWars2.md)
+* [Usage](docs/Usage.md)
 
-[Supported Features](docs/SupportedFeatures.md)
-[Usage](docs/Usage.md)
 
 #### Future Features On the way
-- More advanced logic and determination
-- Culminating results into richer data
+- All Halo Wars 2 Endpoints
+- Improved request rate limiter
+- Solution improvements
+- Query structure addition
 
 ----------
 

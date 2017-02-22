@@ -3,7 +3,7 @@ using System.Collections.Specialized;
 using System.Linq;
 using System.Web;
 
-namespace HaloEzAPI
+namespace HaloEzAPI.Extensions
 {
     public static class NameValueCollectionExtensions
     {

@@ -1,4 +1,4 @@
-﻿using HaloEzAPI.Abstraction.Enum;
+﻿using HaloEzAPI.Abstraction.Enum.Halo5;
 using HaloEzAPI.Caching;
 using HaloEzAPI.Limits;
 using HaloEzAPI.Model.Response.Error;
@@ -13,7 +13,7 @@ namespace HaloEzAPI.Tests.HaloAPIServiceTests
         [SetUp]
         public void SetUp()
         {
-            HaloApiService = new HaloAPIService("c3e362616ad14f78ad39bc17a47c9d0d");
+            HaloApiService = new HaloAPIService("OMITTED_INCLUDE_YOUR_OWN");
             SingletonCacheManager.Instance.RemoveAll();
         }
 

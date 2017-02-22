@@ -1,5 +1,14 @@
 # Changelog
 
+### 2.0.0
+- Adjusted folder structure to be title specific
+- Adjusted `Endpoints` to be title specific
+- Started adding in HW2 Endpoints:
+  - GetCampaignLevels
+- Added `HaloWars2` TO `HaloApiService` - plan on creating a `Halo5` associated property also
+- Tests adjusted
+- Major solution cleanup; first steps
+
 ### 1.7.0
 **Release Date: 30/01/2017**
 - `GetPlayerMatches` endpoint updated with optional `seasonId`

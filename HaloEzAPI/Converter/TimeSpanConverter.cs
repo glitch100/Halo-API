@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Xml;
-using HaloEzAPI.Model.Response.Stats;
 using Newtonsoft.Json;
 
 namespace HaloEzAPI.Converter

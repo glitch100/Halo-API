@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using HaloEzAPI.Abstraction.Enum;
+using HaloEzAPI.Abstraction.Enum.Halo5;
 using HaloEzAPI.Abstraction.Enum.Utils;
-using HaloEzAPI.Model.Response.Stats.Events;
+using HaloEzAPI.Model.Response.Stats.Halo5.Events;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 

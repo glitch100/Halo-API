@@ -3,9 +3,13 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Drawing;
 using System.Threading.Tasks;
-using HaloEzAPI.Abstraction.Enum;
-using HaloEzAPI.Model.Response.MetaData;
-using HaloEzAPI.Model.Response.Stats;
+using HaloEzAPI.Abstraction.Enum.Halo5;
+using HaloEzAPI.Model.Response.MetaData.Halo5;
+using HaloEzAPI.Model.Response.Stats.Halo5;
+using HaloEzAPI.Model.Response.Stats.Halo5.Arena;
+using HaloEzAPI.Model.Response.Stats.Halo5.Campaign;
+using HaloEzAPI.Model.Response.Stats.Halo5.CustomGame;
+using HaloEzAPI.Model.Response.Stats.Halo5.Warzone;
 
 namespace HaloEzAPI
 {

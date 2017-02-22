@@ -3,14 +3,19 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Drawing;
 using System.Threading.Tasks;
-using HaloEzAPI.Abstraction.Enum;
+using HaloEzAPI.Abstraction.Enum.Halo5;
 using HaloEzAPI.Abstraction.Interfaces;
 using HaloEzAPI.Caching;
 using HaloEzAPI.Limits;
 using HaloEzAPI.Model.Request;
 using HaloEzAPI.Model.Response.Error;
-using HaloEzAPI.Model.Response.MetaData;
-using HaloEzAPI.Model.Response.Stats;
+using HaloEzAPI.Model.Response.MetaData.Halo5;
+using HaloEzAPI.Model.Response.MetaData.HaloWars2.Campaign;
+using HaloEzAPI.Model.Response.Stats.Halo5;
+using HaloEzAPI.Model.Response.Stats.Halo5.Arena;
+using HaloEzAPI.Model.Response.Stats.Halo5.Campaign;
+using HaloEzAPI.Model.Response.Stats.Halo5.CustomGame;
+using HaloEzAPI.Model.Response.Stats.Halo5.Warzone;
 using HaloEzAPI.Model.Response.UGC;
 
 namespace HaloEzAPI
@@ -24,15 +29,36 @@ namespace HaloEzAPI
         private const int UGCCacheExpiry = 2;
         private const string BaseApiUrl = "https://www.haloapi.com";
 
+        public HaloWars2APIService HaloWars2;
+
         public HaloAPIService(string apiToken, string baseApiUrl = BaseApiUrl, IApiCacheManager apiCache = null)
         {
-            Endpoints.MajorPrefix = baseApiUrl;
+            Endpoints.Halo5.MajorPrefix = baseApiUrl;
+
             RequestRateHttpClient.SetAPIToken(apiToken);
             if (apiCache == null)
             {
                 apiCache = SingletonCacheManager.Instance;
             }
             _responseProcessor = new ResponseProcessor(apiCache);
+            HaloWars2 = new HaloWars2APIService(_responseProcessor, baseApiUrl, apiCache);
+        }
+
+        public class HaloWars2APIService
+        {
+            private readonly ResponseProcessor _responseProcessor;
+            public HaloWars2APIService(ResponseProcessor responseProcessor, string baseApiUrl = BaseApiUrl, IApiCacheManager apiCache = null)
+            {
+                Endpoints.HaloWars2.MajorPrefix = baseApiUrl;
+                _responseProcessor = responseProcessor;
+            }
+
+            #region MetaData
+            public async Task<CampaignLevels> GetCampaignLevels(int startAt = 0, bool bustCache = false)
+            {
+                return await _responseProcessor.ProcessRequest<CampaignLevels>(Endpoints.HaloWars2.MetaData.GetCampaignLevels(startAt), MetaCacheExpiry, bustCache);
+            }
+            #endregion
         }
 
         #region Stats
@@ -52,7 +78,7 @@ namespace HaloEzAPI
             {
                 throw new HaloAPIException(CommonErrorMessages.InvalidGamerTag);
             }
-            return await _responseProcessor.ProcessRequest<PlayerMatches>(Endpoints.Stats.GetMatchesForPlayer(gamerTag, gameMode, start, count), StatCacheExpiry, bustCache);
+            return await _responseProcessor.ProcessRequest<PlayerMatches>(Endpoints.Halo5.Stats.GetMatchesForPlayer(gamerTag, gameMode, start, count), StatCacheExpiry, bustCache);
         }
 
         /// <summary>
@@ -65,7 +91,7 @@ namespace HaloEzAPI
         /// <returns></returns>
         public async Task<PlayerLeaderboardResults> PlayerLeaderboard(string seasonId, string playlistId, int count = 200, bool bustCache = false)
         {
-            return await _responseProcessor.ProcessRequest<PlayerLeaderboardResults>(Endpoints.Stats.PlayerLeaderboard(seasonId, playlistId, count), StatCacheExpiry, bustCache);
+            return await _responseProcessor.ProcessRequest<PlayerLeaderboardResults>(Endpoints.Halo5.Stats.PlayerLeaderboard(seasonId, playlistId, count), StatCacheExpiry, bustCache);
         }
 
         public async Task<MatchEvent> GetEventsForMatch(string matchId, bool bustCache = false)
@@ -74,7 +100,7 @@ namespace HaloEzAPI
             {
                 throw new HaloAPIException(CommonErrorMessages.InvalidMatchId);
             }
-            return await _responseProcessor.ProcessRequest<MatchEvent>(Endpoints.Stats.GetEventsForMatch(matchId), StatCacheExpiry, bustCache);
+            return await _responseProcessor.ProcessRequest<MatchEvent>(Endpoints.Halo5.Stats.GetEventsForMatch(matchId), StatCacheExpiry, bustCache);
         }
 
         #region Post Game Carnage Report
@@ -90,7 +116,7 @@ namespace HaloEzAPI
             {
                 throw new HaloAPIException(CommonErrorMessages.InvalidMatchId);
             }
-            return await _responseProcessor.ProcessRequest<ArenaPostGameReport>(Endpoints.Stats.GetPostGameCarnageReport(matchId.ToString(), GameMode.Arena), StatCacheExpiry, bustCache);
+            return await _responseProcessor.ProcessRequest<ArenaPostGameReport>(Endpoints.Halo5.Stats.GetPostGameCarnageReport(matchId.ToString(), GameMode.Arena), StatCacheExpiry, bustCache);
         }
 
         /// <summary>
@@ -104,7 +130,7 @@ namespace HaloEzAPI
             {
                 throw new HaloAPIException(CommonErrorMessages.InvalidMatchId);
             }
-            return await _responseProcessor.ProcessRequest<CampaignPostGameReport>(Endpoints.Stats.GetPostGameCarnageReport(matchId.ToString(), GameMode.Campaign), StatCacheExpiry, bustCache);
+            return await _responseProcessor.ProcessRequest<CampaignPostGameReport>(Endpoints.Halo5.Stats.GetPostGameCarnageReport(matchId.ToString(), GameMode.Campaign), StatCacheExpiry, bustCache);
         }
 
         /// <summary>
@@ -118,7 +144,7 @@ namespace HaloEzAPI
             {
                 throw new HaloAPIException(CommonErrorMessages.InvalidMatchId);
             }
-            return await _responseProcessor.ProcessRequest<CustomPostGameReport>(Endpoints.Stats.GetPostGameCarnageReport(matchId.ToString(), GameMode.Custom), StatCacheExpiry, bustCache);
+            return await _responseProcessor.ProcessRequest<CustomPostGameReport>(Endpoints.Halo5.Stats.GetPostGameCarnageReport(matchId.ToString(), GameMode.Custom), StatCacheExpiry, bustCache);
         }       
         
         /// <summary>
@@ -132,7 +158,7 @@ namespace HaloEzAPI
             {
                 throw new HaloAPIException(CommonErrorMessages.InvalidMatchId);
             }
-            return await _responseProcessor.ProcessRequest<WarzonePostGameReport>(Endpoints.Stats.GetPostGameCarnageReport(matchId.ToString(), GameMode.Warzone), StatCacheExpiry, bustCache);
+            return await _responseProcessor.ProcessRequest<WarzonePostGameReport>(Endpoints.Halo5.Stats.GetPostGameCarnageReport(matchId.ToString(), GameMode.Warzone), StatCacheExpiry, bustCache);
         }
         #endregion 
 
@@ -144,7 +170,7 @@ namespace HaloEzAPI
         /// <returns></returns>
         public async Task<ArenaServiceRecordQueryResponse> GetArenaServiceRecords([MaxLength(32)]string[] players, string seasonId = "", bool bustCache = false)
         {
-            return await _responseProcessor.ProcessRequest<ArenaServiceRecordQueryResponse>(Endpoints.Stats.GetServiceRecords(players, GameMode.Arena, seasonId), StatCacheExpiry, bustCache);
+            return await _responseProcessor.ProcessRequest<ArenaServiceRecordQueryResponse>(Endpoints.Halo5.Stats.GetServiceRecords(players, GameMode.Arena, seasonId), StatCacheExpiry, bustCache);
         }        
         
         /// <summary>
@@ -154,7 +180,7 @@ namespace HaloEzAPI
         /// <returns></returns>
         public async Task<CampaignServiceRecordQueryResponse> GetCampaignServiceRecords([MaxLength(32)]string[] players, bool bustCache = false)
         {
-            return await _responseProcessor.ProcessRequest<CampaignServiceRecordQueryResponse>(Endpoints.Stats.GetServiceRecords(players, GameMode.Campaign), StatCacheExpiry, bustCache);
+            return await _responseProcessor.ProcessRequest<CampaignServiceRecordQueryResponse>(Endpoints.Halo5.Stats.GetServiceRecords(players, GameMode.Campaign), StatCacheExpiry, bustCache);
         }
 
         /// <summary>
@@ -164,7 +190,7 @@ namespace HaloEzAPI
         /// <returns></returns>
         public async Task<CustomGameServiceRecordQueryResponse> GetCustomGameServiceRecords([MaxLength(32)] string[] players, bool bustCache = false)
         {
-            return await _responseProcessor.ProcessRequest<CustomGameServiceRecordQueryResponse>(Endpoints.Stats.GetServiceRecords(players, GameMode.Custom), StatCacheExpiry, bustCache);
+            return await _responseProcessor.ProcessRequest<CustomGameServiceRecordQueryResponse>(Endpoints.Halo5.Stats.GetServiceRecords(players, GameMode.Custom), StatCacheExpiry, bustCache);
         }
 
         /// <summary>
@@ -174,7 +200,7 @@ namespace HaloEzAPI
         /// <returns></returns>
         public async Task<WarzoneServiceRecordQueryResponse> GetWarzoneServiceRecords([MaxLength(32)] string[] players, bool bustCache = false)
         {
-            return await _responseProcessor.ProcessRequest<WarzoneServiceRecordQueryResponse>(Endpoints.Stats.GetServiceRecords(players, GameMode.Warzone), StatCacheExpiry, bustCache);
+            return await _responseProcessor.ProcessRequest<WarzoneServiceRecordQueryResponse>(Endpoints.Halo5.Stats.GetServiceRecords(players, GameMode.Warzone), StatCacheExpiry, bustCache);
         }
         #endregion
 
@@ -184,107 +210,107 @@ namespace HaloEzAPI
 
         public async Task<IEnumerable<CampaignMission>> GetCampaignMissions(bool bustCache = false)
         {
-            return await _responseProcessor.ProcessRequest<IEnumerable<CampaignMission>>(Endpoints.MetaData.GetCampaignMissions(), MetaCacheExpiry, bustCache);
+            return await _responseProcessor.ProcessRequest<IEnumerable<CampaignMission>>(Endpoints.Halo5.MetaData.GetCampaignMissions(), MetaCacheExpiry, bustCache);
         }
 
         public async Task<IEnumerable<Commendation>> GetCommendations(bool bustCache = false)
         {
-            return await _responseProcessor.ProcessRequest<IEnumerable<Commendation>>(Endpoints.MetaData.GetCommendations(), MetaCacheExpiry, bustCache);
+            return await _responseProcessor.ProcessRequest<IEnumerable<Commendation>>(Endpoints.Halo5.MetaData.GetCommendations(), MetaCacheExpiry, bustCache);
         }
 
         public async Task<IEnumerable<CSRDesignation>> GetCSRDesignations(bool bustCache = false)
         {
-            return await _responseProcessor.ProcessRequest<IEnumerable<CSRDesignation>>(Endpoints.MetaData.GetCSRDesignations(), MetaCacheExpiry, bustCache);
+            return await _responseProcessor.ProcessRequest<IEnumerable<CSRDesignation>>(Endpoints.Halo5.MetaData.GetCSRDesignations(), MetaCacheExpiry, bustCache);
         }
 
         public async Task<IEnumerable<Enemy>> GetEnemies(bool bustCache = false)
         {
-            return await _responseProcessor.ProcessRequest<IEnumerable<Enemy>>(Endpoints.MetaData.GetEnemies(), MetaCacheExpiry, bustCache);
+            return await _responseProcessor.ProcessRequest<IEnumerable<Enemy>>(Endpoints.Halo5.MetaData.GetEnemies(), MetaCacheExpiry, bustCache);
         }
 
         public async Task<IEnumerable<FlexibleStat>> GetFlexibleStats(bool bustCache = false)
         {
-            return await _responseProcessor.ProcessRequest<IEnumerable<FlexibleStat>>(Endpoints.MetaData.GetFlexibleStats(), MetaCacheExpiry, bustCache);
+            return await _responseProcessor.ProcessRequest<IEnumerable<FlexibleStat>>(Endpoints.Halo5.MetaData.GetFlexibleStats(), MetaCacheExpiry, bustCache);
         }
 
         public async Task<IEnumerable<GameBaseVariant>> GetGameBaseVariants(bool bustCache = false)
         {
-            return await _responseProcessor.ProcessRequest<IEnumerable<GameBaseVariant>>(Endpoints.MetaData.GetGameBaseVariants(), MetaCacheExpiry, bustCache);
+            return await _responseProcessor.ProcessRequest<IEnumerable<GameBaseVariant>>(Endpoints.Halo5.MetaData.GetGameBaseVariants(), MetaCacheExpiry, bustCache);
         }
 
         public async Task<GameVariant> GetGameVariant(string id, bool bustCache = false)
         {
-            return await _responseProcessor.ProcessRequest<GameVariant>(Endpoints.MetaData.GetGameVariant(id), MetaCacheExpiry, bustCache);
+            return await _responseProcessor.ProcessRequest<GameVariant>(Endpoints.Halo5.MetaData.GetGameVariant(id), MetaCacheExpiry, bustCache);
         }
 
         public async Task<IEnumerable<Impulse>> GetImpulses(bool bustCache = false)
         {
-            return await _responseProcessor.ProcessRequest<IEnumerable<Impulse>>(Endpoints.MetaData.GetImpulses(), MetaCacheExpiry, bustCache);
+            return await _responseProcessor.ProcessRequest<IEnumerable<Impulse>>(Endpoints.Halo5.MetaData.GetImpulses(), MetaCacheExpiry, bustCache);
         }
 
         public async Task<MapVariant> GetMapVariant(string id, bool bustCache = false)
         {
-            return await _responseProcessor.ProcessRequest<MapVariant>(Endpoints.MetaData.GetMapVariants(id), MetaCacheExpiry, bustCache);
+            return await _responseProcessor.ProcessRequest<MapVariant>(Endpoints.Halo5.MetaData.GetMapVariants(id), MetaCacheExpiry, bustCache);
         }
 
         public async Task<IEnumerable<Map>> GetMaps(bool bustCache = false)
         {
-            return await _responseProcessor.ProcessRequest<IEnumerable<Map>>(Endpoints.MetaData.GetMaps(), MetaCacheExpiry, bustCache);
+            return await _responseProcessor.ProcessRequest<IEnumerable<Map>>(Endpoints.Halo5.MetaData.GetMaps(), MetaCacheExpiry, bustCache);
         }
 
         public async Task<IEnumerable<Medal>> GetMedals(bool bustCache = false)
         {
-            return await _responseProcessor.ProcessRequest<IEnumerable<Medal>>(Endpoints.MetaData.GetMedals(), MetaCacheExpiry, bustCache);
+            return await _responseProcessor.ProcessRequest<IEnumerable<Medal>>(Endpoints.Halo5.MetaData.GetMedals(), MetaCacheExpiry, bustCache);
         }
 
         public async Task<IEnumerable<Playlist>> GetPlaylists(bool bustCache = false)
         {
-            return await _responseProcessor.ProcessRequest<IEnumerable<Playlist>>(Endpoints.MetaData.GetPlaylists(), MetaCacheExpiry, bustCache);
+            return await _responseProcessor.ProcessRequest<IEnumerable<Playlist>>(Endpoints.Halo5.MetaData.GetPlaylists(), MetaCacheExpiry, bustCache);
         }
 
         public async Task<IEnumerable<RequisitionPack>> GetRequisitionPacks(bool bustCache = false)
         {
-            return await _responseProcessor.ProcessRequest<IEnumerable<RequisitionPack>>(Endpoints.MetaData.GetRequisitionPacks(), MetaCacheExpiry, bustCache);
+            return await _responseProcessor.ProcessRequest<IEnumerable<RequisitionPack>>(Endpoints.Halo5.MetaData.GetRequisitionPacks(), MetaCacheExpiry, bustCache);
         }
 
         public async Task<RequisitionPack> GetRequisitionPack(Guid id, bool bustCache = false)
         {
-            return await _responseProcessor.ProcessRequest<RequisitionPack>(Endpoints.MetaData.GetRequisitionPack(id), MetaCacheExpiry, bustCache);
+            return await _responseProcessor.ProcessRequest<RequisitionPack>(Endpoints.Halo5.MetaData.GetRequisitionPack(id), MetaCacheExpiry, bustCache);
         }
 
         public async Task<RequisitionPack> GetRequisition(Guid id, bool bustCache = false)
         {
-            return await _responseProcessor.ProcessRequest<RequisitionPack>(Endpoints.MetaData.GetRequisition(id), MetaCacheExpiry, bustCache);
+            return await _responseProcessor.ProcessRequest<RequisitionPack>(Endpoints.Halo5.MetaData.GetRequisition(id), MetaCacheExpiry, bustCache);
         }
 
         public async Task<IEnumerable<Skull>> GetSkulls(bool bustCache = false)
         {
-            return await _responseProcessor.ProcessRequest<IEnumerable<Skull>>(Endpoints.MetaData.GetSkulls(), MetaCacheExpiry, bustCache);
+            return await _responseProcessor.ProcessRequest<IEnumerable<Skull>>(Endpoints.Halo5.MetaData.GetSkulls(), MetaCacheExpiry, bustCache);
         }
 
         public async Task<IEnumerable<SpartanRank>> GetSpartanRanks(bool bustCache = false)
         {
-            return await _responseProcessor.ProcessRequest<IEnumerable<SpartanRank>>(Endpoints.MetaData.GetSpartanRanks(), MetaCacheExpiry, bustCache);
+            return await _responseProcessor.ProcessRequest<IEnumerable<SpartanRank>>(Endpoints.Halo5.MetaData.GetSpartanRanks(), MetaCacheExpiry, bustCache);
         }
 
         public async Task<IEnumerable<TeamColor>> GetTeamColours(bool bustCache = false)
         {
-            return await _responseProcessor.ProcessRequest<IEnumerable<TeamColor>>(Endpoints.MetaData.GetTeamColors(), MetaCacheExpiry, bustCache);
+            return await _responseProcessor.ProcessRequest<IEnumerable<TeamColor>>(Endpoints.Halo5.MetaData.GetTeamColors(), MetaCacheExpiry, bustCache);
         }
 
         public async Task<IEnumerable<Vehicle>> GetVehicles(bool bustCache = false)
         {
-            return await _responseProcessor.ProcessRequest<IEnumerable<Vehicle>>(Endpoints.MetaData.GetVehicles(), MetaCacheExpiry, bustCache);
+            return await _responseProcessor.ProcessRequest<IEnumerable<Vehicle>>(Endpoints.Halo5.MetaData.GetVehicles(), MetaCacheExpiry, bustCache);
         }
 
         public async Task<IEnumerable<Weapon>> GetWeapons(bool bustCache = false)
         {
-            return await _responseProcessor.ProcessRequest<IEnumerable<Weapon>>(Endpoints.MetaData.GetWeapons(), MetaCacheExpiry, bustCache);
+            return await _responseProcessor.ProcessRequest<IEnumerable<Weapon>>(Endpoints.Halo5.MetaData.GetWeapons(), MetaCacheExpiry, bustCache);
         }
 
         public async Task<IEnumerable<Season>> GetSeasons(bool bustCache = false)
         {
-            return await _responseProcessor.ProcessRequest<IEnumerable<Season>>(Endpoints.MetaData.GetSeasons(), MetaCacheExpiry, bustCache);
+            return await _responseProcessor.ProcessRequest<IEnumerable<Season>>(Endpoints.Halo5.MetaData.GetSeasons(), MetaCacheExpiry, bustCache);
         }
 
         #endregion
@@ -292,12 +318,12 @@ namespace HaloEzAPI
         #region Profile
         public async Task<Image> GetProfileEmblem(string gamerTag, int size = 256, bool bustCache = false)
         {
-            return await _responseProcessor.ProcessImageRequest(Endpoints.Profile.GetEmblemImage(gamerTag, size), ProfileCacheExpiry, bustCache);
+            return await _responseProcessor.ProcessImageRequest(Endpoints.Halo5.Profile.GetEmblemImage(gamerTag, size), ProfileCacheExpiry, bustCache);
         }
 
         public async Task<Image> GetSpartanImage(string gamerTag, int size = 256, CropType cropType = CropType.Full, bool bustCache = false)
         {
-            return await _responseProcessor.ProcessImageRequest(Endpoints.Profile.GetSpartanImage(gamerTag, size, cropType), ProfileCacheExpiry, bustCache);
+            return await _responseProcessor.ProcessImageRequest(Endpoints.Halo5.Profile.GetSpartanImage(gamerTag, size, cropType), ProfileCacheExpiry, bustCache);
         }
         #endregion
 
@@ -315,7 +341,7 @@ namespace HaloEzAPI
             {
                 throw new HaloAPIException(CommonErrorMessages.InvalidGamerTag);
             }
-            return await _responseProcessor.ProcessRequest<UGCGameVariant>(Endpoints.UGC.GetGameVariant(gamerTag, variantId), UGCCacheExpiry, bustCache);
+            return await _responseProcessor.ProcessRequest<UGCGameVariant>(Endpoints.Halo5.UGC.GetGameVariant(gamerTag, variantId), UGCCacheExpiry, bustCache);
         }
 
         /// <summary>
@@ -330,7 +356,7 @@ namespace HaloEzAPI
             {
                 throw new HaloAPIException(CommonErrorMessages.InvalidGamerTag);
             }
-            return await _responseProcessor.ProcessRequest<UGCBase>(Endpoints.UGC.GetMapVariant(gamerTag, variantId), UGCCacheExpiry, bustCache);
+            return await _responseProcessor.ProcessRequest<UGCBase>(Endpoints.Halo5.UGC.GetMapVariant(gamerTag, variantId), UGCCacheExpiry, bustCache);
         }
 
         /// <summary>
@@ -348,7 +374,7 @@ namespace HaloEzAPI
             {
                 throw new HaloAPIException(CommonErrorMessages.InvalidGamerTag);
             }
-            return await _responseProcessor.ProcessRequest<UGCSearchResult<UGCBase>>(Endpoints.UGC.ListMapVariants(gamerTag, start, count, sort, order), UGCCacheExpiry, bustCache);
+            return await _responseProcessor.ProcessRequest<UGCSearchResult<UGCBase>>(Endpoints.Halo5.UGC.ListMapVariants(gamerTag, start, count, sort, order), UGCCacheExpiry, bustCache);
         }
 
         /// <summary>
@@ -366,7 +392,7 @@ namespace HaloEzAPI
             {
                 throw new HaloAPIException(CommonErrorMessages.InvalidGamerTag);
             }
-            return await _responseProcessor.ProcessRequest<UGCSearchResult<UGCBase>>(Endpoints.UGC.ListGameVariants(gamerTag, start, count, sort, order), UGCCacheExpiry, bustCache);
+            return await _responseProcessor.ProcessRequest<UGCSearchResult<UGCBase>>(Endpoints.Halo5.UGC.ListGameVariants(gamerTag, start, count, sort, order), UGCCacheExpiry, bustCache);
         }
         #endregion
     }

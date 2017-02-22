@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Net.Http;
-using System.Threading.Tasks;
 using HaloEzAPI.Limits;
 using HaloEzAPI.Tests.HaloAPIServiceTests;
 using NUnit.Framework;

@@ -1,9 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace HaloEzAPI.Model.Response.UGC
+﻿namespace HaloEzAPI.Model.Response.UGC
 {
     public class UGCGameVariant : UGCBase
     {

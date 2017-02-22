@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Net;
 
 namespace HaloEzAPI.Model.Response.Error
 {
