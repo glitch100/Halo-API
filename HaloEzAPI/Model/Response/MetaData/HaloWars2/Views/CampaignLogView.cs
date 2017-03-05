@@ -2,8 +2,8 @@
 
 namespace HaloEzAPI.Model.Response.MetaData.HaloWars2.Views
 {
-    public class CampaignObjectiveView : BaseView
+    public class CampaignLogView : BaseView
     {
-        public ViewInnerId HW2CampaignObjective { get; set; }
+        public ViewInnerId HW2Log { get; set; }
     }
 }

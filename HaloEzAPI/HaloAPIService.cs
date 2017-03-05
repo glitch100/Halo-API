@@ -10,7 +10,11 @@ using HaloEzAPI.Limits;
 using HaloEzAPI.Model.Request;
 using HaloEzAPI.Model.Response.Error;
 using HaloEzAPI.Model.Response.MetaData.Halo5;
+using HaloEzAPI.Model.Response.MetaData.HaloWars2;
 using HaloEzAPI.Model.Response.MetaData.HaloWars2.Campaign;
+using HaloEzAPI.Model.Response.MetaData.HaloWars2.Cards;
+using HaloEzAPI.Model.Response.MetaData.HaloWars2.Shared;
+using HaloEzAPI.Model.Response.MetaData.HaloWars2.Views;
 using HaloEzAPI.Model.Response.Stats.Halo5;
 using HaloEzAPI.Model.Response.Stats.Halo5.Arena;
 using HaloEzAPI.Model.Response.Stats.Halo5.Campaign;
@@ -54,9 +58,29 @@ namespace HaloEzAPI
             }
 
             #region MetaData
-            public async Task<CampaignLevels> GetCampaignLevels(int startAt = 0, bool bustCache = false)
+            public async Task<HW2Result<CampaignContentItem>> GetCampaignLevels(int startAt = 0, bool bustCache = false)
             {
-                return await _responseProcessor.ProcessRequest<CampaignLevels>(Endpoints.HaloWars2.MetaData.GetCampaignLevels(startAt), MetaCacheExpiry, bustCache);
+                return await _responseProcessor.ProcessRequest<HW2Result<CampaignContentItem>>(Endpoints.HaloWars2.MetaData.GetCampaignLevels(startAt), MetaCacheExpiry, bustCache);
+            }
+
+            public async Task<HW2Result<CampaignLogContentItem>> GetCampaignLogs(int startAt = 0, bool bustCache = false)
+            {
+                return await _responseProcessor.ProcessRequest<HW2Result<CampaignLogContentItem>>(Endpoints.HaloWars2.MetaData.GetCampaignLogs(startAt), MetaCacheExpiry, bustCache);
+            }
+
+            public async Task<HW2Result<HW2ApiItem<CardKeywordView>>> GetCardKeywords(int startAt = 0, bool bustCache = false)
+            {
+                return await _responseProcessor.ProcessRequest<HW2Result<HW2ApiItem<CardKeywordView>>>(Endpoints.HaloWars2.MetaData.GetCardKeywords(startAt), MetaCacheExpiry, bustCache);
+            }  
+          
+            public async Task<HW2Result<HW2ApiItem<HW2CardView>>> GetCards(int startAt = 0, bool bustCache = false)
+            {
+                return await _responseProcessor.ProcessRequest<HW2Result<HW2ApiItem<HW2CardView>>>(Endpoints.HaloWars2.MetaData.GetCards(startAt), MetaCacheExpiry, bustCache);
+            }            
+            
+            public async Task<HW2Result<HW2ApiItem<HW2CardView>>> GetCSRDesignations(int startAt = 0, bool bustCache = false)
+            {
+                return await _responseProcessor.ProcessRequest<HW2Result<HW2ApiItem<HW2CardView>>>(Endpoints.HaloWars2.MetaData.GetCSRDesignations(startAt), MetaCacheExpiry, bustCache);
             }
             #endregion
         }

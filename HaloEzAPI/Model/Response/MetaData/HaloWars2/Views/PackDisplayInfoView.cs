@@ -2,8 +2,8 @@ using HaloEzAPI.Model.Response.MetaData.HaloWars2.Shared;
 
 namespace HaloEzAPI.Model.Response.MetaData.HaloWars2.Views
 {
-    public class SkullView : BaseView
+    public class PackDisplayInfoView : DisplayInfoView
     {
-        public ViewInnerId HW2Skull { get; set; }
+        public Details HW2PackDisplayInfo { get; set; }        
     }
 }

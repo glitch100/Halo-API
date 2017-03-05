@@ -13,7 +13,7 @@ namespace HaloEzAPI.Tests.HaloAPIServiceTests
         [SetUp]
         public void SetUp()
         {
-            HaloApiService = new HaloAPIService("OMITTED_INCLUDE_YOUR_OWN");
+            HaloApiService = new HaloAPIService("17fb8702802545d386763fc2279454aa");
             SingletonCacheManager.Instance.RemoveAll();
         }
 

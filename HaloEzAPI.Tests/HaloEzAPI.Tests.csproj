@@ -82,6 +82,9 @@
     <Compile Include="HaloAPIServiceTests\MetaData\Halo5\GetTeamColorsTests.cs" />
     <Compile Include="HaloAPIServiceTests\MetaData\Halo5\GetVehiclesTests.cs" />
     <Compile Include="HaloAPIServiceTests\MetaData\Halo5\GetWeaponsTests.cs" />
+    <Compile Include="HaloAPIServiceTests\MetaData\HaloWars2\GetCardsTests.cs" />
+    <Compile Include="HaloAPIServiceTests\MetaData\HaloWars2\GetCardKeywordsTests.cs" />
+    <Compile Include="HaloAPIServiceTests\MetaData\HaloWars2\GetCampaignLogsTests.cs" />
     <Compile Include="HaloAPIServiceTests\MetaData\HaloWars2\GetCampaignLevelsTests.cs" />
     <Compile Include="HaloAPIServiceTests\Profile\GetProfileEmblemTests.cs" />
     <Compile Include="HaloAPIServiceTests\Profile\GetProfileImageTests.cs" />

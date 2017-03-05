@@ -359,6 +359,30 @@ namespace HaloEzAPI
                 {
                     return new Uri(string.Format("{0}/{1}/{2}/campaign-levels/?startAt={3}", MajorPrefix, MinorPrefix, Title,
                         startAt));
+                }                
+                
+                public static Uri GetCampaignLogs(int startAt = 0)
+                {
+                    return new Uri(string.Format("{0}/{1}/{2}/campaign-logs/?startAt={3}", MajorPrefix, MinorPrefix, Title,
+                        startAt));
+                }                
+
+                public static Uri GetCardKeywords(int startAt = 0)
+                {
+                    return new Uri(string.Format("{0}/{1}/{2}/card-keywords/?startAt={3}", MajorPrefix, MinorPrefix, Title,
+                        startAt));
+                }
+
+                public static Uri GetCards(int startAt = 0)
+                {
+                    return new Uri(string.Format("{0}/{1}/{2}/cards/?startAt={3}", MajorPrefix, MinorPrefix, Title,
+                        startAt));
+                }      
+                
+                public static Uri GetCSRDesignations(int startAt = 0)
+                {
+                    return new Uri(string.Format("{0}/{1}/{2}/csr-designations/?startAt={3}", MajorPrefix, MinorPrefix, Title,
+                        startAt));
                 }
             }
         }
