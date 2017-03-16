@@ -138,6 +138,12 @@
     <Compile Include="Model\Response\MetaData\HaloWars2\Campaign\CampaignLogContentItem.cs" />
     <Compile Include="Model\Response\MetaData\HaloWars2\Cards\AwardedPackItem.cs" />
     <Compile Include="Model\Response\MetaData\HaloWars2\Cards\HW2Card.cs" />
+    <Compile Include="Model\Response\MetaData\HaloWars2\Cards\HW2CSRDesignation.cs" />
+    <Compile Include="Model\Response\MetaData\HaloWars2\Cards\HW2CSRDesignationDisplayInfo.cs" />
+    <Compile Include="Model\Response\MetaData\HaloWars2\Shared\HW2CsrDesignationTier.cs" />
+    <Compile Include="Model\Response\MetaData\HaloWars2\Shared\HW2CSRDesignationTierView.cs" />
+    <Compile Include="Model\Response\MetaData\HaloWars2\Shared\HW2CSRDisplayInfoItem.cs" />
+    <Compile Include="Model\Response\MetaData\HaloWars2\Views\HW2CardDisplayInfoView.cs" />
     <Compile Include="Model\Response\MetaData\HaloWars2\Shared\IdentityMetaData.cs" />
     <Compile Include="Model\Response\MetaData\HaloWars2\Imaging\Image.cs" />
     <Compile Include="Model\Response\MetaData\HaloWars2\Imaging\ImageItem.cs" />
@@ -148,6 +154,9 @@
     <Compile Include="Model\Response\MetaData\HaloWars2\Cards\HW2CardKeyword.cs" />
     <Compile Include="Model\Response\MetaData\HaloWars2\Cards\HW2CardDisplayInfo.cs" />
     <Compile Include="Model\Response\MetaData\HaloWars2\Views\HW2CardView.cs" />
+    <Compile Include="Model\Response\MetaData\HaloWars2\Shared\HW2CardDisplayInfoItem.cs" />
+    <Compile Include="Model\Response\MetaData\HaloWars2\Views\HW2CSRDesignationDisplayInfoView.cs" />
+    <Compile Include="Model\Response\MetaData\HaloWars2\Views\HW2CSRDesignationView.cs" />
     <Compile Include="Model\Response\MetaData\HaloWars2\Views\ImageView.cs" />
     <Compile Include="Model\Response\MetaData\HaloWars2\Imaging\Media.cs" />
     <Compile Include="Model\Response\MetaData\HaloWars2\Shared\Details.cs" />

@@ -1,6 +1,18 @@
 # Changelog
 
+**Release Date: 16/03/2017**
+### 2.1.0
+- Added in new Halo Wars 2 Endpoints
+- GetCampaignLevels
+- GetCampaignLogs
+- GetCardKeywords
+- GetCards
+- GetCSRDesignations
+- Adjusted models to be more generic
+- Tests
+
 ### 2.0.0
+**Release Date: 23/02/2017**
 - Adjusted folder structure to be title specific
 - Adjusted `Endpoints` to be title specific
 - Started adding in HW2 Endpoints:

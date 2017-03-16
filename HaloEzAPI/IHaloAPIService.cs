@@ -15,6 +15,7 @@ namespace HaloEzAPI
 {
     public interface IHaloAPIService
     {
+        #region Halo 5
         //Stats
         Task<PlayerMatches> GetMatchesForPlayer(string gamerTag, GameMode gameMode, int start, int count, bool bustCache = false);
         Task<ArenaPostGameReport> GetArenaPostGameCarnageReport(Guid matchId, bool bustCache = false);
@@ -51,5 +52,11 @@ namespace HaloEzAPI
         //Profile
         Task<Image> GetProfileEmblem(string gamerTag, int size = 256, bool bustCache = false);
         Task<Image> GetSpartanImage(string gamerTag, int size = 256, CropType cropType = CropType.Full, bool bustCache = false);
+        #endregion
+
+        #region Halo Wars 2
+        //MetaData
+        #endregion 
+
     }
 }

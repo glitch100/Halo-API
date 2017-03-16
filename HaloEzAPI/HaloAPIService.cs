@@ -76,11 +76,11 @@ namespace HaloEzAPI
             public async Task<HW2Result<HW2ApiItem<HW2CardView>>> GetCards(int startAt = 0, bool bustCache = false)
             {
                 return await _responseProcessor.ProcessRequest<HW2Result<HW2ApiItem<HW2CardView>>>(Endpoints.HaloWars2.MetaData.GetCards(startAt), MetaCacheExpiry, bustCache);
-            }            
-            
-            public async Task<HW2Result<HW2ApiItem<HW2CardView>>> GetCSRDesignations(int startAt = 0, bool bustCache = false)
+            }
+
+            public async Task<HW2Result<HW2ApiItem<HW2CSRDesignationView>>> GetCSRDesignations(int startAt = 0, bool bustCache = false)
             {
-                return await _responseProcessor.ProcessRequest<HW2Result<HW2ApiItem<HW2CardView>>>(Endpoints.HaloWars2.MetaData.GetCSRDesignations(startAt), MetaCacheExpiry, bustCache);
+                return await _responseProcessor.ProcessRequest<HW2Result<HW2ApiItem<HW2CSRDesignationView>>>(Endpoints.HaloWars2.MetaData.GetCSRDesignations(startAt), MetaCacheExpiry, bustCache);
             }
             #endregion
         }

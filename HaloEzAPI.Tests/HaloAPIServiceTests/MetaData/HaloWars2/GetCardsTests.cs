@@ -35,7 +35,7 @@ namespace HaloEzAPI.Tests.HaloAPIServiceTests.MetaData.HaloWars2
             
             Assert.True(firstCard.View.Title == "UNIT_UNSC_WARTHOG_LASTSTAND");
             Assert.True(firstCard.View.HW2Card.EnergyCost == 140);
-            Assert.True(firstCard.View.HW2Card.DisplayInfo.SpecialAbilityDescription == "22");
+            Assert.True(firstCard.View.HW2Card.DisplayInfo.View.HW2CardDisplayInfo.SubtypeDescription == "CORE VEHICLE");
         }
     }
 }

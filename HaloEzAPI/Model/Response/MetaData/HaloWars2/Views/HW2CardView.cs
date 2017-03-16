@@ -7,8 +7,4 @@ namespace HaloEzAPI.Model.Response.MetaData.HaloWars2.Views
     {
         public HW2Card HW2Card { get; set; }
     }
-
-    public class HW2CsrDesignation
-    {
-    }
 }

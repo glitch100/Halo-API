@@ -6,3 +6,7 @@
 
 **Meta Data**
 - GetCampaignLevels
+- GetCampaignLogs
+- GetCardKeywords
+- GetCards
+- GetCSRDesignations

@@ -13,12 +13,11 @@ namespace HaloEzAPI.Model.Response.MetaData.HaloWars2.Cards
         public bool ExcludeFromCardGeneration { get; set; }
         public IdentityMetaData Leader { get; set; }
         public ImageItem ForegroundImage { get; set; }
-        public HW2CardDisplayInfo DisplayInfo { get; set; }
+        public HW2CardDisplayInfoItem DisplayInfo { get; set; }
         public IdentityMetaData GameObject { get; set; }
         public int? LastStandNumber { get; set; }
         public int EnergyCost { get; set; }
         public PlayType PlayType { get; set; }
         public IEnumerable<IdentityMetaData> Keywords { get;set; }
     }
-
 }
