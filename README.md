@@ -1,5 +1,5 @@
 <img src="http://i.imgur.com/EP1ilsq.png?1" />
------------------
+
 # Halo API - Halo 5, and Halo Wars 2 API
 
 A C# Wrapper for the official Halo 5 and Halo Wars 2 API's that can be seen at [http://developer.haloapi.com](http://developer.haloapi.com) - Easy to use, and implement. It contains all current endpoints, tests, a rate handler and a cache system!
