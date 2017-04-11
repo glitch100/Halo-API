@@ -1,5 +1,11 @@
 # Changelog
 
+**Release Date: 11/04/2017**
+### 2.2.0
+- Added in new Halo Wars 2 Endpoints
+- GetDifficulties
+- Tests
+
 **Release Date: 16/03/2017**
 ### 2.1.0
 - Added in new Halo Wars 2 Endpoints

@@ -82,6 +82,11 @@ namespace HaloEzAPI
             {
                 return await _responseProcessor.ProcessRequest<HW2Result<HW2ApiItem<HW2CSRDesignationView>>>(Endpoints.HaloWars2.MetaData.GetCSRDesignations(startAt), MetaCacheExpiry, bustCache);
             }
+
+            public async Task<HW2Result<HW2ApiItem<HW2DifficultyView>>> GetDifficulties(int startAt = 0, bool bustCache = false)
+            {
+                return await _responseProcessor.ProcessRequest<HW2Result<HW2ApiItem<HW2DifficultyView>>>(Endpoints.HaloWars2.MetaData.GetDifficulties(startAt), MetaCacheExpiry, bustCache);
+            }
             #endregion
         }
 

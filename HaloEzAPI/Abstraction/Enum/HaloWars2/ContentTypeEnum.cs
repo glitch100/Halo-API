@@ -13,6 +13,8 @@
         HW2CsrDesignation,
         HW2CsrDesignationTier,
         HW2CsrDesignationDisplayInfo,
+        HW2Difficulty,
+        HW2DifficultyDisplayInfo,
         HW2GameObject,
         HW2Leader,
         HW2Log,

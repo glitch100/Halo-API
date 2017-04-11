@@ -384,6 +384,12 @@ namespace HaloEzAPI
                     return new Uri(string.Format("{0}/{1}/{2}/csr-designations/?startAt={3}", MajorPrefix, MinorPrefix, Title,
                         startAt));
                 }
+                
+                public static Uri GetDifficulties(int startAt = 0)
+                {
+                    return new Uri(string.Format("{0}/{1}/{2}/difficulties/?startAt={3}", MajorPrefix, MinorPrefix, Title,
+                        startAt));
+                }
             }
         }
     }
