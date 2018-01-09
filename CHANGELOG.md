@@ -1,6 +1,10 @@
 # Changelog
 
 **Release Date: 11/04/2017**
+### 2.3.0
+- Added in `CustomLocal` Game Type and `Oddball` medals. Courtesy of @HaloDataHive
+
+**Release Date: 11/04/2017**
 ### 2.2.0
 - Added in new Halo Wars 2 Endpoints
 - GetDifficulties

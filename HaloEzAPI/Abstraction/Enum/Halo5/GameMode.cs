@@ -6,6 +6,7 @@
         Arena,
         Campaign,
         Custom,
+        CustomLocal,
         Warzone,
         All
     }

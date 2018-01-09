@@ -67,6 +67,12 @@ namespace HaloEzAPI
                             new Uri(string.Format("{0}/{1}/{2}/custom/matches/{3}", MajorPrefix, MinorPrefix, Title,
                                 matchId));
                     }
+                    if (gameMode == GameMode.CustomLocal)
+                    {
+                        return
+                            new Uri(string.Format("{0}/{1}/{2}/customlocal/matches/{3}", MajorPrefix, MinorPrefix, Title,
+                                matchId));
+                    }
                     if (gameMode == GameMode.Warzone)
                     {
                         return
@@ -100,6 +106,12 @@ namespace HaloEzAPI
                     {
                         return
                             new Uri(string.Format("{0}/{1}/{2}/servicerecords/custom?" + suffix, MajorPrefix,
+                                MinorPrefix, Title, string.Join(",", players)));
+                    }
+                    if (gameMode == GameMode.CustomLocal)
+                    {
+                        return
+                            new Uri(string.Format("{0}/{1}/{2}/servicerecords/customlocal?" + suffix, MajorPrefix,
                                 MinorPrefix, Title, string.Join(",", players)));
                     }
                     if (gameMode == GameMode.Warzone)

@@ -19,5 +19,6 @@ namespace HaloEzAPI.Abstraction.Enum.Halo5
         WeaponProficiency,
         Ball,
         Infection,
+        Oddball,
     }
 }
