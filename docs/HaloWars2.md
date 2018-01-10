@@ -10,3 +10,5 @@
 - GetCardKeywords
 - GetCards
 - GetCSRDesignations
+- GetGameObjectCategories
+- GetGameObjects

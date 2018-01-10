@@ -401,6 +401,18 @@ namespace HaloEzAPI
                 {
                     return new Uri(string.Format("{0}/{1}/{2}/difficulties/?startAt={3}", MajorPrefix, MinorPrefix, Title,
                         startAt));
+                }  
+                              
+                public static Uri GetGameObjectCategories(int startAt = 0)
+                {
+                    return new Uri(string.Format("{0}/{1}/{2}/game-object-categories/?startAt={3}", MajorPrefix, MinorPrefix, Title,
+                        startAt));
+                }         
+
+                public static Uri GetGameObjects(int startAt = 0)
+                {
+                    return new Uri(string.Format("{0}/{1}/{2}/game-objects/?startAt={3}", MajorPrefix, MinorPrefix, Title,
+                        startAt));
                 }
             }
         }
