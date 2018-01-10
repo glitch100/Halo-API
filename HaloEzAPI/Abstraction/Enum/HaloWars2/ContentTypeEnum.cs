@@ -21,6 +21,7 @@
         HW2Pack,
         HW2Skull,
         HW2Object,
+        HW2ObjectCategory,
         Image,
     }
 }

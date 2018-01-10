@@ -87,6 +87,16 @@ namespace HaloEzAPI
             {
                 return await _responseProcessor.ProcessRequest<HW2Result<HW2ApiItem<HW2DifficultyView>>>(Endpoints.HaloWars2.MetaData.GetDifficulties(startAt), MetaCacheExpiry, bustCache);
             }
+
+            public async Task<HW2Result<HW2ApiItem<BaseView>>> GetGameObjectCategories(int startAt = 0, bool bustCache = false)
+            {
+                return await _responseProcessor.ProcessRequest<HW2Result<HW2ApiItem<BaseView>>>(Endpoints.HaloWars2.MetaData.GetGameObjectCategories(startAt), MetaCacheExpiry, bustCache);
+            }
+
+            public async Task<HW2Result<HW2ApiItem<HW2ObjectView>>> GetGameObjects(int startAt = 0, bool bustCache = false)
+            {
+                return await _responseProcessor.ProcessRequest<HW2Result<HW2ApiItem<HW2ObjectView>>>(Endpoints.HaloWars2.MetaData.GetGameObjects(startAt), MetaCacheExpiry, bustCache);
+            }
             #endregion
         }
 
