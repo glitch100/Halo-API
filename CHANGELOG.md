@@ -1,6 +1,10 @@
 # Changelog
 
-**Release Date: 02/12/2018**
+**Release Date: 30/01/2018**
+### 2.5.0
+- Added in Halo Wars 2 Endpoints for leader powers
+
+**Release Date: 02/01/2018**
 ### 2.4.0
 - Added in Halo Wars 2 Endpoints and associated types:
   - `GetGameObjectCategories`

@@ -82,6 +82,7 @@
     <Compile Include="Abstraction\Enum\Halo5\RewardSourceType.cs" />
     <Compile Include="Abstraction\Enum\HaloWars2\ContentTypeEnum.cs" />
     <Compile Include="Abstraction\Enum\HaloWars2\EffectivenessAgainstGameObject.cs" />
+    <Compile Include="Abstraction\Enum\HaloWars2\LeaderId.cs" />
     <Compile Include="Abstraction\Enum\HaloWars2\PlayType.cs" />
     <Compile Include="Abstraction\Enum\HaloWars2\Rarity.cs" />
     <Compile Include="Abstraction\Enum\Utils\EnumUtils.cs" />
@@ -143,8 +144,15 @@
     <Compile Include="Model\Response\MetaData\HaloWars2\Cards\HW2CSRDesignationDisplayInfo.cs" />
     <Compile Include="Model\Response\MetaData\HaloWars2\Cards\HW2Difficulty.cs" />
     <Compile Include="Model\Response\MetaData\HaloWars2\Cards\HW2DifficultyDisplayInfo.cs" />
+    <Compile Include="Model\Response\MetaData\HaloWars2\Cards\HW2Leader.cs" />
+    <Compile Include="Model\Response\MetaData\HaloWars2\Cards\HW2LeaderDisplayInfo.cs" />
+    <Compile Include="Model\Response\MetaData\HaloWars2\Cards\HW2LeaderPower.cs" />
+    <Compile Include="Model\Response\MetaData\HaloWars2\Cards\HW2LeaderPowerDisplayInfo.cs" />
+    <Compile Include="Model\Response\MetaData\HaloWars2\Cards\HW2LeaderPowerInnerViewDisplayInfo.cs" />
     <Compile Include="Model\Response\MetaData\HaloWars2\Cards\HW2Object.cs" />
     <Compile Include="Model\Response\MetaData\HaloWars2\Cards\HW2ObjectDisplayInfo.cs" />
+    <Compile Include="Model\Response\MetaData\HaloWars2\Cards\HW2StartingArmyDisplayInfo.cs" />
+    <Compile Include="Model\Response\MetaData\HaloWars2\Cards\HW2StartingArmyOptionsView.cs" />
     <Compile Include="Model\Response\MetaData\HaloWars2\Shared\HW2CsrDesignationTier.cs" />
     <Compile Include="Model\Response\MetaData\HaloWars2\Shared\HW2CSRDesignationTierView.cs" />
     <Compile Include="Model\Response\MetaData\HaloWars2\Shared\HW2CSRDisplayInfoItem.cs" />
@@ -166,8 +174,12 @@
     <Compile Include="Model\Response\MetaData\HaloWars2\Views\HW2CSRDesignationView.cs" />
     <Compile Include="Model\Response\MetaData\HaloWars2\Views\HW2DifficultyDisplayInfoView.cs" />
     <Compile Include="Model\Response\MetaData\HaloWars2\Views\HW2DifficultyView.cs" />
+    <Compile Include="Model\Response\MetaData\HaloWars2\Views\HW2LeaderDisplayInfoView.cs" />
+    <Compile Include="Model\Response\MetaData\HaloWars2\Views\HW2LeaderPowerView.cs" />
+    <Compile Include="Model\Response\MetaData\HaloWars2\Views\HW2LeaderView.cs" />
     <Compile Include="Model\Response\MetaData\HaloWars2\Views\HW2ObjectDisplayInfoView.cs" />
     <Compile Include="Model\Response\MetaData\HaloWars2\Views\HW2ObjectView.cs" />
+    <Compile Include="Model\Response\MetaData\HaloWars2\Views\HW2StartingArmyDisplayInfoView.cs" />
     <Compile Include="Model\Response\MetaData\HaloWars2\Views\ImageView.cs" />
     <Compile Include="Model\Response\MetaData\HaloWars2\Imaging\Media.cs" />
     <Compile Include="Model\Response\MetaData\HaloWars2\Shared\Details.cs" />

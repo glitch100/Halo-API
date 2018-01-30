@@ -97,6 +97,15 @@ namespace HaloEzAPI
             {
                 return await _responseProcessor.ProcessRequest<HW2Result<HW2ApiItem<HW2ObjectView>>>(Endpoints.HaloWars2.MetaData.GetGameObjects(startAt), MetaCacheExpiry, bustCache);
             }
+
+            public async Task<HW2Result<HW2ApiItem<HW2LeaderPowerView>>> GetLeaderPowers(int startAt = 0, bool bustCache = false)
+            {
+                return await _responseProcessor.ProcessRequest<HW2Result<HW2ApiItem<HW2LeaderPowerView>>>(Endpoints.HaloWars2.MetaData.GetLeaderPowers(startAt), MetaCacheExpiry, bustCache);
+            }
+            public async Task<HW2Result<HW2ApiItem<HW2LeaderView>>> GetLeaders(int startAt = 0, bool bustCache = false)
+            {
+                return await _responseProcessor.ProcessRequest<HW2Result<HW2ApiItem<HW2LeaderView>>>(Endpoints.HaloWars2.MetaData.GetLeaders(startAt), MetaCacheExpiry, bustCache);
+            }
             #endregion
         }
 

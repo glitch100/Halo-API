@@ -414,6 +414,18 @@ namespace HaloEzAPI
                     return new Uri(string.Format("{0}/{1}/{2}/game-objects/?startAt={3}", MajorPrefix, MinorPrefix, Title,
                         startAt));
                 }
+
+                public static Uri GetLeaderPowers(int startAt = 0)
+                {
+                    return new Uri(string.Format("{0}/{1}/{2}/leader-powers/?startAt={3}", MajorPrefix, MinorPrefix, Title,
+                        startAt));
+                }
+
+                public static Uri GetLeaders(int startAt = 0)
+                {
+                    return new Uri(string.Format("{0}/{1}/{2}/leaders/?startAt={3}", MajorPrefix, MinorPrefix, Title,
+                        startAt));
+                }
             }
         }
     }

@@ -2,8 +2,10 @@
 {
     public enum Faction
     {
+        Unknown,
         UNSC,
         Covenant,
-        Promethean
+        Promethean,
+        Banished,
     }
 }
