@@ -103,6 +103,7 @@
     <Compile Include="Converter\TimeSpanConverter.cs" />
     <Compile Include="Converter\ScoreConverter.cs" />
     <Compile Include="Endpoints.cs" />
+    <Compile Include="HaloAPIConfig.cs" />
     <Compile Include="HaloAPIService.cs" />
     <Compile Include="IHaloAPIService.cs" />
     <Compile Include="Limits\RequestRateHttpClient.cs">
@@ -151,6 +152,7 @@
     <Compile Include="Model\Response\MetaData\HaloWars2\Cards\HW2LeaderPowerInnerViewDisplayInfo.cs" />
     <Compile Include="Model\Response\MetaData\HaloWars2\Cards\HW2Object.cs" />
     <Compile Include="Model\Response\MetaData\HaloWars2\Cards\HW2ObjectDisplayInfo.cs" />
+    <Compile Include="Model\Response\MetaData\HaloWars2\Cards\HW2Playlist.cs" />
     <Compile Include="Model\Response\MetaData\HaloWars2\Cards\HW2StartingArmyDisplayInfo.cs" />
     <Compile Include="Model\Response\MetaData\HaloWars2\Cards\HW2StartingArmyOptionsView.cs" />
     <Compile Include="Model\Response\MetaData\HaloWars2\Shared\HW2CsrDesignationTier.cs" />
@@ -158,6 +160,7 @@
     <Compile Include="Model\Response\MetaData\HaloWars2\Shared\HW2CSRDisplayInfoItem.cs" />
     <Compile Include="Model\Response\MetaData\HaloWars2\Shared\HW2DifficultyDisplayInfoItem.cs" />
     <Compile Include="Model\Response\MetaData\HaloWars2\Shared\HW2ObjectDisplayInfo.cs" />
+    <Compile Include="Model\Response\MetaData\HaloWars2\Views\ComputerDifficulty.cs" />
     <Compile Include="Model\Response\MetaData\HaloWars2\Views\HW2CardDisplayInfoView.cs" />
     <Compile Include="Model\Response\MetaData\HaloWars2\Shared\IdentityMetaData.cs" />
     <Compile Include="Model\Response\MetaData\HaloWars2\Imaging\Image.cs" />
@@ -179,6 +182,7 @@
     <Compile Include="Model\Response\MetaData\HaloWars2\Views\HW2LeaderView.cs" />
     <Compile Include="Model\Response\MetaData\HaloWars2\Views\HW2ObjectDisplayInfoView.cs" />
     <Compile Include="Model\Response\MetaData\HaloWars2\Views\HW2ObjectView.cs" />
+    <Compile Include="Model\Response\MetaData\HaloWars2\Views\HW2PlaylistView.cs" />
     <Compile Include="Model\Response\MetaData\HaloWars2\Views\HW2StartingArmyDisplayInfoView.cs" />
     <Compile Include="Model\Response\MetaData\HaloWars2\Views\ImageView.cs" />
     <Compile Include="Model\Response\MetaData\HaloWars2\Imaging\Media.cs" />

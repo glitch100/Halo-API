@@ -5,6 +5,9 @@ using System.Drawing;
 using System.Threading.Tasks;
 using HaloEzAPI.Abstraction.Enum.Halo5;
 using HaloEzAPI.Model.Response.MetaData.Halo5;
+using HaloEzAPI.Model.Response.MetaData.HaloWars2;
+using HaloEzAPI.Model.Response.MetaData.HaloWars2.Shared;
+using HaloEzAPI.Model.Response.MetaData.HaloWars2.Views;
 using HaloEzAPI.Model.Response.Stats.Halo5;
 using HaloEzAPI.Model.Response.Stats.Halo5.Arena;
 using HaloEzAPI.Model.Response.Stats.Halo5.Campaign;
@@ -56,7 +59,8 @@ namespace HaloEzAPI
 
         #region Halo Wars 2
         //MetaData
-        #endregion 
+
+        #endregion
 
     }
 }

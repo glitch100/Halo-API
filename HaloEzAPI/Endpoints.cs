@@ -426,6 +426,13 @@ namespace HaloEzAPI
                     return new Uri(string.Format("{0}/{1}/{2}/leaders/?startAt={3}", MajorPrefix, MinorPrefix, Title,
                         startAt));
                 }
+
+
+                public static Uri GetPlaylists(int startAt = 0)
+                {
+                    return new Uri(string.Format("{0}/{1}/{2}/playlists/?startAt={3}", MajorPrefix, MinorPrefix, Title,
+                        startAt));
+                }
             }
         }
     }
