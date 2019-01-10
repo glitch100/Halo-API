@@ -1,5 +1,10 @@
 # Changelog
 
+**Release Date: 10/01/2019**
+### 2.6.0
+- Added in Halo Wars 2 Endpoints for playlist
+- Added config for constructor
+
 **Release Date: 30/01/2018**
 ### 2.5.0
 - Added in Halo Wars 2 Endpoints for leader powers

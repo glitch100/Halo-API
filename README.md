@@ -15,9 +15,7 @@ Enjoy Halo 5 Guardians, and Halo Wars 2 Game Data faster than ever before with t
 
 #### Future Features On the way
 - All Halo Wars 2 Endpoints
-- Improved request rate limiter
 - Solution improvements
-- Query structure addition
 
 ----------
 
