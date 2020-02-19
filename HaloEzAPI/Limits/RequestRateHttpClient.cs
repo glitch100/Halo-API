@@ -2,8 +2,10 @@
 using System.Diagnostics;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading;
 using System.Threading.Tasks;
+using log4net;
 
 namespace HaloEzAPI.Limits
 {
@@ -16,6 +18,8 @@ namespace HaloEzAPI.Limits
         private static readonly HttpClient HttpClient;
         private static SemaphoreSlim _rateSemaphore;
         private static int _limit = 10;
+        private static ILog _logger;
+
         /// <summary>
         /// Number of seconds the for the Limit of requests (10 seconds for 10 requests etc)
         /// </summary>
@@ -30,6 +34,7 @@ namespace HaloEzAPI.Limits
                 AutomaticDecompression =  DecompressionMethods.Deflate | DecompressionMethods.GZip 
             };
             HttpClient = new HttpClient(httpClientHandler);
+            HttpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             _rateSemaphore = new SemaphoreSlim(_limit,_limit);
             Stopwatch = new Stopwatch();
         }
@@ -40,6 +45,7 @@ namespace HaloEzAPI.Limits
         /// <param name="token">Your Halo Developer API Token</param>
         public static void SetAPIToken(string token)
         {
+            _logger.Debug("Setting API Token");
             if (string.IsNullOrEmpty(token))
             {
                 return;
@@ -57,6 +63,7 @@ namespace HaloEzAPI.Limits
         /// <param name="limit">Request limit</param>
         public static void SetRequestLimit(int limit)
         {
+            _logger.Debug("Setting Request Limit");
             _limit = limit;
             _rateSemaphore = new SemaphoreSlim(limit, limit);
         }
@@ -67,6 +74,7 @@ namespace HaloEzAPI.Limits
         /// <param name="limit">Seconds limit</param>
         public static void SetSecondsLimit(int limit)
         {
+            _logger.Debug("Setting Seconds Limit");
             SecondsLimit = limit;
         }
 
@@ -77,18 +85,20 @@ namespace HaloEzAPI.Limits
         /// <returns></returns>
         public static async Task<HttpResponseMessage> GetRequest(Uri endpoint)
         {
+            _logger.Debug($"Get request to {endpoint.AbsoluteUri}");
             await _rateSemaphore.WaitAsync();
             if (Stopwatch.Elapsed.Seconds >= SecondsLimit || _rateSemaphore.CurrentCount == 0 || _concurrentRequests == _limit)
             {
                 int seconds = (SecondsLimit - Stopwatch.Elapsed.Seconds) * 1000;
                 int sleep = seconds > 0 ? seconds : seconds * -1;
-                Thread.Sleep(sleep);
+                await Task.Delay(sleep);
                 _concurrentRequests = 0;
                 Stopwatch.Restart();
             }
             ++_concurrentRequests;
             var task = await HttpClient.GetAsync(endpoint).ContinueWith(t =>
             {
+                _logger.Debug($"Response returned for {endpoint.AbsoluteUri}");
                 _rateSemaphore.Release();
                 if (_rateSemaphore.CurrentCount == _limit && Stopwatch.Elapsed.Seconds >= SecondsLimit)
                 {
