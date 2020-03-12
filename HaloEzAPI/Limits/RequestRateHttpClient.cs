@@ -29,6 +29,7 @@ namespace HaloEzAPI.Limits
         private static int _concurrentRequests = 0;
         static RequestRateHttpClient()
         {
+            // TODO: On migration to dotnet core use the HttpClientFactory
             var httpClientHandler = new HttpClientHandler
             {
                 AutomaticDecompression =  DecompressionMethods.Deflate | DecompressionMethods.GZip 
@@ -45,7 +46,7 @@ namespace HaloEzAPI.Limits
         /// <param name="token">Your Halo Developer API Token</param>
         public static void SetAPIToken(string token)
         {
-            _logger.Debug("Setting API Token");
+            _logger.Debug(string.Format("Setting API Token to: {0}", token));
             if (string.IsNullOrEmpty(token))
             {
                 return;
@@ -79,7 +80,7 @@ namespace HaloEzAPI.Limits
         }
 
         /// <summary>
-        /// Goes to make a Get requst to the specifed Uri, only if it hasn't exceeded the call limit 
+        /// Goes to make a Get request to the specified Uri, only if it hasn't exceeded the call limit 
         /// </summary>
         /// <param name="endpoint">Endpoint to request</param>
         /// <returns></returns>

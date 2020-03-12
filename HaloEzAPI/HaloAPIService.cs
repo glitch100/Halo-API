@@ -43,7 +43,7 @@ namespace HaloEzAPI
             _profileCacheExpiry = config.ProfileCacheExpiry;
             _ugcCacheExpiry = config.UGCCacheExpiry;
             RequestRateHttpClient.SetAPIToken(config.APIToken);
-            if (apiCache == null)
+            if (apiCache == null && config.UseDefaultCache)
             {
                 apiCache = SingletonCacheManager.Instance;
             }

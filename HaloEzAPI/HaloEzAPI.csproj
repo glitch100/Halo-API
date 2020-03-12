@@ -90,6 +90,7 @@
     <Compile Include="Abstraction\Enum\HaloWars2\Rarity.cs" />
     <Compile Include="Abstraction\Enum\Utils\EnumUtils.cs" />
     <Compile Include="Abstraction\Enum\Halo5\WeaponType.cs" />
+    <Compile Include="Abstraction\Interfaces\IAsyncApiCacheManager.cs" />
     <Compile Include="Abstraction\Interfaces\IDetail.cs" />
     <Compile Include="Abstraction\Interfaces\IEquipmentDamageDealt.cs" />
     <Compile Include="Abstraction\Interfaces\IGuidContentIds.cs" />

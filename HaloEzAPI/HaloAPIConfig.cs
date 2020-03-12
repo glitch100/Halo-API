@@ -8,5 +8,6 @@
         public int ProfileCacheExpiry { get; set; }
         public int UGCCacheExpiry { get; set; }
         public string BaseApiUrl { get; set; }
+        public bool UseDefaultCache { get; set; } = true;
     }
 }

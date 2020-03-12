@@ -2,6 +2,8 @@
 
 # Halo API - Halo 5, and Halo Wars 2 API
 
+*03/12/2020* - Undertaking project review to move to .netcore3.0 in prep for Halo Infinity.
+
 A C# Wrapper for the official Halo 5 and Halo Wars 2 API's that can be seen at [http://developer.haloapi.com](http://developer.haloapi.com) - Easy to use, and implement. It contains all current endpoints, tests, a rate handler and a cache system!
 
 Enjoy Halo 5 Guardians, and Halo Wars 2 Game Data faster than ever before with this wrapper. The API is updated regularly with optimisations, new endpoints and more! Download it now, or utilise it via [**NuGet**](https://www.nuget.org/packages/HaloEzAPI)
