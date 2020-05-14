@@ -65,7 +65,7 @@
     <Compile Include="Abstraction\Enum\Halo5\CommendationType.cs" />
     <Compile Include="Abstraction\Enum\Halo5\CreditResult.cs" />
     <Compile Include="Abstraction\Enum\Halo5\CropType.cs" />
-    <Compile Include="Abstraction\Enum\Halo5\DeathDiposition.cs" />
+    <Compile Include="Abstraction\Enum\Halo5\DeathDisposition.cs" />
     <Compile Include="Abstraction\Enum\Halo5\Difficulty.cs" />
     <Compile Include="Abstraction\Enum\Halo5\EnumResolver.cs" />
     <Compile Include="Abstraction\Enum\Halo5\EventType.cs" />

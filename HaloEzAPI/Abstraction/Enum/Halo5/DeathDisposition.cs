@@ -1,6 +1,6 @@
 ﻿namespace HaloEzAPI.Abstraction.Enum.Halo5
 {
-    public enum DeathDiposition
+    public enum DeathDisposition
     {
         Friendly = 0,
         Hostile = 1,
