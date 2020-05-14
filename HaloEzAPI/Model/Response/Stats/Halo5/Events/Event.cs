@@ -10,7 +10,7 @@ namespace HaloEzAPI.Model.Response.Stats.Halo5.Events
     public class FullEvent
     {
         public IEnumerable<Player> Assistants { get; set; }
-        public DeathDiposition DeathDiposition { get; set; }
+        public DeathDisposition DeathDisposition { get; set; }
         public bool IsAssassination { get; set; }
         public bool IsGroundPound { get; set; }
         public bool IsHeadshot { get; set; }
