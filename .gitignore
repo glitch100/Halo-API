@@ -45,3 +45,4 @@ _ReSharper*/
 
 /packages/Newtonsoft.Json.4.5.11/lib/portable-net40+sl4+wp7+win8/Newtonsoft.Json.dll
 HaloEzApi/packages*
+/.vs/slnx.sqlite
