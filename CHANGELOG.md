@@ -1,5 +1,24 @@
 # Changelog
 
+**Release Date: 10/01/2019**
+### 2.6.0
+- Added in Halo Wars 2 Endpoints for playlist
+- Added config for constructor
+
+**Release Date: 30/01/2018**
+### 2.5.0
+- Added in Halo Wars 2 Endpoints for leader powers
+
+**Release Date: 02/01/2018**
+### 2.4.0
+- Added in Halo Wars 2 Endpoints and associated types:
+  - `GetGameObjectCategories`
+  - `GetGameObjects`
+
+**Release Date: 01/10/2018**
+### 2.3.0 & 2.3.1 (Doc Update)
+- Added in `CustomLocal` Game Type and `Oddball` medals. Courtesy of @HaloDataHive
+
 **Release Date: 11/04/2017**
 ### 2.2.0
 - Added in new Halo Wars 2 Endpoints

@@ -21,6 +21,10 @@
         HW2Pack,
         HW2Skull,
         HW2Object,
+        HW2ObjectCategory,
+        HW2LeaderPower,
+        HW2LeaderPowerDisplayInfo,
+        HW2StartingArmy,
         Image,
     }
 }

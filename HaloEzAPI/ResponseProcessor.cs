@@ -47,6 +47,10 @@ namespace HaloEzAPI
                 Image image;
                 using (var stream = await message.Content.ReadAsStreamAsync())
                 {
+                    if (stream.Length == 0)
+                    {
+                        throw new HaloAPIException("Bad Stream for Image");
+                    }
                     image = Image.FromStream(stream);
                 }
                 return image;

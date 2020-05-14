@@ -67,6 +67,12 @@ namespace HaloEzAPI
                             new Uri(string.Format("{0}/{1}/{2}/custom/matches/{3}", MajorPrefix, MinorPrefix, Title,
                                 matchId));
                     }
+                    if (gameMode == GameMode.CustomLocal)
+                    {
+                        return
+                            new Uri(string.Format("{0}/{1}/{2}/customlocal/matches/{3}", MajorPrefix, MinorPrefix, Title,
+                                matchId));
+                    }
                     if (gameMode == GameMode.Warzone)
                     {
                         return
@@ -100,6 +106,12 @@ namespace HaloEzAPI
                     {
                         return
                             new Uri(string.Format("{0}/{1}/{2}/servicerecords/custom?" + suffix, MajorPrefix,
+                                MinorPrefix, Title, string.Join(",", players)));
+                    }
+                    if (gameMode == GameMode.CustomLocal)
+                    {
+                        return
+                            new Uri(string.Format("{0}/{1}/{2}/servicerecords/customlocal?" + suffix, MajorPrefix,
                                 MinorPrefix, Title, string.Join(",", players)));
                     }
                     if (gameMode == GameMode.Warzone)
@@ -388,6 +400,37 @@ namespace HaloEzAPI
                 public static Uri GetDifficulties(int startAt = 0)
                 {
                     return new Uri(string.Format("{0}/{1}/{2}/difficulties/?startAt={3}", MajorPrefix, MinorPrefix, Title,
+                        startAt));
+                }  
+                              
+                public static Uri GetGameObjectCategories(int startAt = 0)
+                {
+                    return new Uri(string.Format("{0}/{1}/{2}/game-object-categories/?startAt={3}", MajorPrefix, MinorPrefix, Title,
+                        startAt));
+                }         
+
+                public static Uri GetGameObjects(int startAt = 0)
+                {
+                    return new Uri(string.Format("{0}/{1}/{2}/game-objects/?startAt={3}", MajorPrefix, MinorPrefix, Title,
+                        startAt));
+                }
+
+                public static Uri GetLeaderPowers(int startAt = 0)
+                {
+                    return new Uri(string.Format("{0}/{1}/{2}/leader-powers/?startAt={3}", MajorPrefix, MinorPrefix, Title,
+                        startAt));
+                }
+
+                public static Uri GetLeaders(int startAt = 0)
+                {
+                    return new Uri(string.Format("{0}/{1}/{2}/leaders/?startAt={3}", MajorPrefix, MinorPrefix, Title,
+                        startAt));
+                }
+
+
+                public static Uri GetPlaylists(int startAt = 0)
+                {
+                    return new Uri(string.Format("{0}/{1}/{2}/playlists/?startAt={3}", MajorPrefix, MinorPrefix, Title,
                         startAt));
                 }
             }

@@ -56,7 +56,8 @@ namespace HaloEzAPI
 
         #region Halo Wars 2
         //MetaData
-        #endregion 
+
+        #endregion
 
     }
 }
