@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package >
+  <metadata>
+    <id>HaloEzAPI</id>
+    <version>2.7.0</version>
+    <title>Halo API - Halo 5 and Halo Wars 2 API</title>
+    <authors>Jon Evans</authors>
+    <owners>Jon Evans</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <projectUrl>https://github.com/glitch100/Halo-API/</projectUrl>
+    <icon>http://i.imgur.com/EP1ilsq.png</icon>
+    <description>A simple and easy to use C# Wrapper for the official Halo 5 and Halo Wars 2 API that can be seen at http://developer.haloapi.com/ that aims to bring in all the endpoints so developers can build and implement great apps that expose the awesome data within the Halo games</description>
+    <summary>C# Wrapper of the Official Halo 5 and HW2 API provided by 343i. Easy to use and extend.</summary>
+    <releaseNotes>Fixed enum</releaseNotes>
+    <copyright>Copyright 2020</copyright>
+    <tags>halo halo5 api halowaypoint xbox 15th xboxapi wars 2 infinity</tags>
+  </metadata>
+</package>

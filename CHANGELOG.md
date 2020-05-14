@@ -1,5 +1,10 @@
 # Changelog
 
+**Release Date: 14/05/2020**
+### 2.7.0
+- Fix for spelling mistake in enum
+- Credit to https://twitter.com/HaloDataHive
+
 **Release Date: 10/01/2019**
 ### 2.6.0
 - Added in Halo Wars 2 Endpoints for playlist
