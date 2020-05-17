@@ -1,5 +1,9 @@
 # Changelog
 
+**Release Date: 17/05/2020**
+### 2.7.1
+- Fix for Logging issue
+
 **Release Date: 14/05/2020**
 ### 2.7.0
 - Fix for spelling mistake in enum

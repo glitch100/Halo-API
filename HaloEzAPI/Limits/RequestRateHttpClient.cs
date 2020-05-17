@@ -18,7 +18,6 @@ namespace HaloEzAPI.Limits
         private static readonly HttpClient HttpClient;
         private static SemaphoreSlim _rateSemaphore;
         private static int _limit = 10;
-        private static ILog _logger;
 
         /// <summary>
         /// Number of seconds the for the Limit of requests (10 seconds for 10 requests etc)
@@ -46,7 +45,6 @@ namespace HaloEzAPI.Limits
         /// <param name="token">Your Halo Developer API Token</param>
         public static void SetAPIToken(string token)
         {
-            _logger.Debug(string.Format("Setting API Token to: {0}", token));
             if (string.IsNullOrEmpty(token))
             {
                 return;
@@ -64,7 +62,6 @@ namespace HaloEzAPI.Limits
         /// <param name="limit">Request limit</param>
         public static void SetRequestLimit(int limit)
         {
-            _logger.Debug("Setting Request Limit");
             _limit = limit;
             _rateSemaphore = new SemaphoreSlim(limit, limit);
         }
@@ -75,7 +72,6 @@ namespace HaloEzAPI.Limits
         /// <param name="limit">Seconds limit</param>
         public static void SetSecondsLimit(int limit)
         {
-            _logger.Debug("Setting Seconds Limit");
             SecondsLimit = limit;
         }
 
@@ -86,7 +82,6 @@ namespace HaloEzAPI.Limits
         /// <returns></returns>
         public static async Task<HttpResponseMessage> GetRequest(Uri endpoint)
         {
-            _logger.Debug($"Get request to {endpoint.AbsoluteUri}");
             await _rateSemaphore.WaitAsync();
             if (Stopwatch.Elapsed.Seconds >= SecondsLimit || _rateSemaphore.CurrentCount == 0 || _concurrentRequests == _limit)
             {
@@ -99,7 +94,6 @@ namespace HaloEzAPI.Limits
             ++_concurrentRequests;
             var task = await HttpClient.GetAsync(endpoint).ContinueWith(t =>
             {
-                _logger.Debug($"Response returned for {endpoint.AbsoluteUri}");
                 _rateSemaphore.Release();
                 if (_rateSemaphore.CurrentCount == _limit && Stopwatch.Elapsed.Seconds >= SecondsLimit)
                 {
